@@ -47,10 +47,22 @@ People who are not familiar with excel and other spreadsheet applications.
 
 ## Technical Constraints
 
-
 - Must have simplified mobile view for graphs and displaying finished budget
 - Full view only available on desktop mode (browser)
 - Must support user authentication
+
+## Tech stack
+
+### Frontend
+- Svelte
+
+### Backend
+- Python
+- FastAPI
+- Supabase
+
+### Hosting
+Vercel, Netlify, Heroku or similar
 
 ## Success Criteria
 
