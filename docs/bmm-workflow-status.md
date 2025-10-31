@@ -3,9 +3,9 @@ PROJECT_TYPE: software
 PROJECT_LEVEL: 2
 FIELD_TYPE: greenfield
 CURRENT_PHASE: 1-Analysis
-CURRENT_WORKFLOW: research
-NEXT_ACTION: Guide me through Research
-NEXT_COMMAND: research
+CURRENT_WORKFLOW: product-brief
+NEXT_ACTION: Produce Project Brief
+NEXT_COMMAND: product-brief
 NEXT_AGENT: analyst
 START_DATE: 2025-10-29
 LAST_UPDATED: 2025-10-31

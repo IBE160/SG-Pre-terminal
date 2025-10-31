@@ -37,16 +37,3 @@ Based on the documents, the core goal is to create a fun, engaging, and visually
 *   **Supabase** is particularly well-suited due to its built-in authentication and, most importantly, its **real-time features**, which are a perfect match for the collaborative community challenges.
 
 The stack is modern, powerful, and aligns very well with the specific, user-centric features you aim to build.
-
----
-
-Now, let's continue with the technical research process.
-
-What's the context for this decision?
-
-- New greenfield project
-- Adding to existing system (brownfield)
-- Refactoring/modernizing legacy system
-- Proof of concept / prototype
-- Production-ready implementation
-- Academic/learning purpose
