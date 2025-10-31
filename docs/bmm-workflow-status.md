@@ -3,12 +3,12 @@ PROJECT_TYPE: software
 PROJECT_LEVEL: 2
 FIELD_TYPE: greenfield
 CURRENT_PHASE: 1-Analysis
-CURRENT_WORKFLOW: brainstorm-project
-NEXT_ACTION: Start Brainstorming
-NEXT_COMMAND: brainstorm-project
-NEXT_AGENT: brainstorming-coach
+CURRENT_WORKFLOW: research
+NEXT_ACTION: Guide me through Research
+NEXT_COMMAND: research
+NEXT_AGENT: analyst
 START_DATE: 2025-10-29
-LAST_UPDATED: 2025-10-30
+LAST_UPDATED: 2025-10-31
 PHASE_1_COMPLETE: false
 PHASE_2_COMPLETE: false
 PHASE_3_COMPLETE: false
