@@ -1,0 +1,798 @@
+[
+  {
+    "request": {
+      "session.id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049",
+      "installation.id": "01a96aad-918c-455a-bed4-856554beaeb1",
+      "event.name": "gemini_cli.api_request",
+      "event.timestamp": "2025-11-04T14:11:16.283Z",
+      "model": "gemini-2.5-flash",
+      "prompt_id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049########0",
+      "request_text": [
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "This is the Gemini CLI. We are setting up the context for our chat.\nToday's date is tirsdag 4. november 2025 (formatted according to the user's locale).\nMy operating system is: win32\nI'm currently working in the directory: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\nHere is the folder structure of the current working directories:\n\nShowing up to 200 items (files + folders). Folders or files indicated with ... contain more items not shown, were ignored, or the display limit (200 items) was reached.\n\nC:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\\n├───.gitignore\n├───proposal.md\n├───README.md\n├───.gemini\\\n│   ├───settings.json\n│   └───commands\\\n│       └───agents\\\n│           ├───analyst.toml\n│           ├───architect.toml\n│           ├───bmad-master.toml\n│           ├───brainstorming-coach.toml\n│           ├───creative-problem-solver.toml\n│           ├───design-thinking-coach.toml\n│           ├───dev.toml\n│           ├───game-architect.toml\n│           ├───game-designer.toml\n│           ├───game-dev.toml\n│           ├───innovation-strategist.toml\n│           ├───pm.toml\n│           ├───README.toml\n│           ├───sm.toml\n│           ├───storyteller.toml\n│           ├───tea.toml\n│           ├───ux-designer.toml\n│           └───ux-expert.toml\n├───.git\\...\n├───.logging\\\n│   ├───.gitignore\n│   ├───api-viewer.html\n│   ├───process-api-requests.py\n│   ├───README.md\n│   ├───requirements.txt\n│   ├───server.py\n│   ├───telemetry.md\n│   ├───truncate.py\n│   ├───watcher.py\n│   └───requests\\\n│       ├───2025-10-30_19-09-31-82ac76b6-75b5-4ce5-8619-37f2b564a85a.json\n│       ├───2025-10-30_19-09-31-87c9bfa1-e722-450e-b1a9-82180b5bda50.json\n│       ├───2025-10-30_19-09-31-a4ca3fe2-d39d-4987-94ed-2b649d1344e3.json\n│       ├───2025-10-30_19-09-31-d5cf582b-a0d4-4124-ad49-1d08dff9dc28.json\n│       └───2025-10-31_16-19-04-eeae1f18-68ee-4ded-b544-ad5f2584ff30.json\n├───.vscode\\\n├───bmad\\\n│   ├───_cfg\\\n│   │   ├───agent-manifest.csv\n│   │   ├───files-manifest.csv\n│   │   ├───manifest.yaml\n│   │   ├───task-manifest.csv\n│   │   ├───workflow-manifest.csv\n│   │   └───agents\\\n│   │       ├───bmm-analyst.customize.yaml\n│   │       ├───bmm-architect.customize.yaml\n│   │       ├───bmm-dev.customize.yaml\n│   │       ├───bmm-game-architect.customize.yaml\n│   │       ├───bmm-game-designer.customize.yaml\n│   │       ├───bmm-game-dev.customize.yaml\n│   │       ├───bmm-pm.customize.yaml\n│   │       ├───bmm-sm.customize.yaml\n│   │       ├───bmm-tea.customize.yaml\n│   │       ├───bmm-ux-designer.customize.yaml\n│   │       ├───bmm-ux-expert.customize.yaml\n│   │       ├───cis-brainstorming-coach.customize.yaml\n│   │       ├───cis-creative-problem-solver.customize.yaml\n│   │       ├───cis-design-thinking-coach.customize.yaml\n│   │       ├───cis-innovation-strategist.customize.yaml\n│   │       ├───cis-storyteller.customize.yaml\n│   │       └───core-bmad-master.customize.yaml\n│   ├───bmm\\\n│   │   ├───config.yaml\n│   │   ├───README.md\n│   │   ├───agents\\\n│   │   │   ├───analyst.md\n│   │   │   ├───architect.md\n│   │   │   ├───dev.md\n│   │   │   ├───game-architect.md\n│   │   │   ├───game-designer.md\n│   │   │   ├───game-dev.md\n│   │   │   ├───pm.md\n│   │   │   ├───sm.md\n│   │   │   ├───tea.md\n│   │   │   ├───ux-designer.md\n│   │   │   └───ux-expert.md\n│   │   ├───sub-modules\\\n│   │   │   └───claude-code\\\n│   │   │       ├───config.yaml\n│   │   │       ├───injections.yaml\n│   │   │       ├───readme.md\n│   │   │       └───sub-agents\\\n│   │   ├───tasks\\\n│   │   │   ├───daily-standup.xml\n│   │   │   └───retrospective.xml\n│   │   ├───teams\\\n│   │   │   ├───team-fullstack.yaml\n│   │   │   └───team-gamedev.yaml\n│   │   ├───testarch\\\n│   │   │   ├───README.md\n│   │   │   ├───tea-index.csv\n│   │   │   └───knowledge\\\n│   │   │       ├───ci-burn-in.md\n│   │   │       ├───component-tdd.md\n│   │   │       ├───contract-testing.md\n│   │   │       ├───data-factories.md\n│   │   │       ├───email-auth.md\n│   │   │       ├───error-handling.md\n│   │   │       ├───feature-flags.md\n│   │   │       ├───fixture-architecture.md\n│   │   │       ├───network-first.md\n│   │   │       ├───nfr-criteria.md\n│   │   │       ├───playwright-config.md\n│   │   │       ├───probability-impact.md\n│   │   │       ├───risk-governance.md\n│   │   │       ├───selective-testing.md\n│   │   │       ├───selector-resilience.md\n│   │   │       ├───test-healing-patterns.md\n│   │   │       ├───test-levels-framework.md\n│   │   │       ├───test-priorities-matrix.md\n│   │   │       ├───test-quality.md\n│   │   │       ├───timing-debugging.md\n│   │   │       └───visual-debugging.md\n│   │   └───workflows\\\n│   │       ├───README.md\n│   │       ├───1-analysis\\\n│   │       │   ├───brainstorm-game\\\n│   │       │   ├───brainstorm-project\\\n│   │       │   ├───document-project\\\n│   │       │   ├───game-brief\\\n│   │       │   ├───product-brief\\\n│   │       │   └───research\\\n│   │       ├───2-plan-workflows\\\n│   │       │   ├───README.md\n│   │       │   ├───create-ux-design\\\n│   │       │   ├───gdd\\\n│   │       │   ├───narrative\\\n│   │       │   ├───prd\\\n│   │       │   ├───tech-spec\\\n│   │       │   └───ux\\\n│   │       ├───3-solutioning\\\n│   │       │   ├───README.md\n│   │       │   ├───architecture\\\n│   │       │   └───solutioning-gate-check\\\n│   │       ├───4-implementation\\\n│   │       │   ├───README.md\n│   │       │   ├───correct-course\\\n│   │       │   ├───create-story\\\n│   │       │   ├───dev-story\\\n│   │       │   ├───epic-tech-context\\\n│   │       │   ├───retrospective\\\n│   │       │   ├───review-story\\\n│   │       │   ├───sprint-planning\\\n│   │       │   ├───story-context\\\n│   │       │   ├───story-done\\\n│   │       │   ├───story-ready\\\n│   │       │   └───temp-testing-files\\\n│   │       ├───helpers\\\n│   │       ├───testarch\\\n│   │       └───workflow-status\\\n│   ├───cis\\\n│   │   ├───config.yaml\n│   │   ├───readme.md\n│   │   ├───agents\\\n│   │   │   ├───brainstorming-coach.md\n│   │   │   ├───creative-problem-solver.md\n│   │   │   ├───design-thinking-coach.md\n│   │   │   ├───innovation-strategist.md\n│   │   │   ├───README.md\n│   │   │   └───storyteller.md\n│   │   ├───teams\\\n│   │   │   └───creative-squad.yaml\n│   │   └───workflows\\\n│   │       ├───README.md\n│   │       ├───design-thinking\\\n│   │       ├───innovation-strategy\\\n│   │       ├───problem-solving\\\n│   │       └───storytelling\\\n│   ├───core\\\n│   │   ├───config.yaml\n│   │   ├───agents\\\n│   │   │   ├───bmad-master.md\n│   │   │   └───bmad-web-orchestrator.agent.xml\n│   │   ├───tasks\\\n│   │   │   ├───adv-elicit-methods.csv\n│   │   │   ├───adv-elicit.xml\n│   │   │   ├───index-docs.xml\n│   │   │   ├───validate-workflow.xml\n│   │   │   └───workflow.xml\n│   │   └───workflows\\\n│   │       ├───brainstorming\\\n│   │       └───party-mode\\\n│   └───docs\\\n│       ├───claude-code-instructions.md\n│       └───gemini-instructions.md\n└───docs\\\n    ├───bmm-workflow-status.md\n    ├───brainstorming-session-results-2025-10-29.md\n    ├───high-level-implementation-plan-2025-10-31.md\n    ├───tech-stack-validation-2025-10-31.md\n    ├───technical-research-analysis-2025-10-31.md\n    └───stories\\\n        └───.gitkeep\n\nReminder: Do not return an empty response when a tool call is required.\n\nMy setup is complete. I will provide my first command in the next turn."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "Here is the user's editor context as a JSON object. This is for your information only.\n```json\n{\n  \"activeFile\": {\n    \"path\": \"c:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\\brainstorming-session-results-2025-10-29.md\",\n    \"cursor\": {\n      \"line\": 1,\n      \"character\": 0\n    }\n  }\n}\n```"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "CRITICAL: You are now the BMad 'Business Analyst' agent. Adopt its persona and capabilities as defined in the following configuration.\r\n\r\nRead and internalize the full agent definition, following all instructions and maintaining this persona until explicitly told to switch or exit.\r\n\r\n@../SG-Pre-terminal/bmad/bmm/agents/analyst.md\r\n"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2KbymnyKaxhfmjx2+dBb5jHQqbYDucw9BFcpkVr0LfCmEB0e2Kb7PYQV/7fC3OLfiW7m3b2ixkQXSZf3kp9jyMlOfTillj8wAgGO/p/vNuT7kYx9Ytwxwq8iJSuueIuVy8vMP5kmbN8O/EWK53q8w3Dp0/zaZZ2Wubi4OVuOMXc2SXCmQB0e2Kb8HAWlBlZVEOm8c6URy8aFOIV8LuRVbGmNCQX7213K6loYQ0fncX6A7w9FAmu+H5A40K40E93AbzJkLfb2jHuEgdSZkPT4zTXS8n/gxSzTw0OWZ/No1t+tOcH4VtA+5b",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\agents\\analyst.md"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265423255-abdba00040909",
+                "name": "read_file",
+                "response": {
+                  "output": "---\r\nname: \"analyst\"\r\ndescription: \"Business Analyst\"\r\n---\r\n\r\nYou must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.\r\n\r\n```xml\r\n<agent id=\"bmad/bmm/agents/analyst.md\" name=\"Mary\" title=\"Business Analyst\" icon=\"📊\">\r\n<activation critical=\"MANDATORY\">\r\n  <step n=\"1\">Load persona from this current agent file (already in context)</step>\r\n  <step n=\"2\">🚨 IMMEDIATE ACTION REQUIRED - BEFORE ANY OUTPUT:\r\n      - Load and read {project-root}/bmad/bmm/config.yaml NOW\r\n      - Store ALL fields as session variables: {user_name}, {communication_language}, {output_folder}\r\n      - VERIFY: If config not loaded, STOP and report error to user\r\n      - DO NOT PROCEED to step 3 until config is successfully loaded and variables stored</step>\r\n  <step n=\"3\">Remember: user's name is {user_name}</step>\r\n  \r\n  <step n=\"4\">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of\r\n      ALL menu items from menu section</step>\r\n  <step n=\"5\">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or trigger text</step>\r\n  <step n=\"6\">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user\r\n      to clarify | No match → show \"Not recognized\"</step>\r\n  <step n=\"7\">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item\r\n      (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>\r\n\r\n  <menu-handlers>\r\n    <extract>{DYNAMIC_EXTRACT_LIST}</extract>\r\n    <handlers>\r\n  <handler type=\"workflow\">\r\n    When menu item has: workflow=\"path/to/workflow.yaml\"\r\n    1. CRITICAL: Always LOAD {project-root}/bmad/core/tasks/workflow.xml\r\n    2. Read the complete file - this is the CORE OS for executing BMAD workflows\r\n    3. Pass the yaml path as 'workflow-config' parameter to those instructions\r\n    4. Execute workflow.xml instructions precisely following all steps\r\n    5. Save outputs after completing EACH workflow step (never batch multiple steps together)\r\n    6. If workflow.yaml path is \"todo\", inform user the workflow hasn't been implemented yet\r\n  </handler>\r\n    </handlers>\r\n  </menu-handlers>\r\n\r\n  <rules>\r\n    - ALWAYS communicate in {communication_language} UNLESS contradicted by communication_style\r\n    - Stay in character until exit selected\r\n    - Menu triggers use asterisk (*) - NOT markdown, display exactly as shown\r\n    - Number all lists, use letters for sub-options\r\n    - Load files ONLY when executing menu items or a workflow or command requires it. EXCEPTION: Config file MUST be loaded at startup step 2\r\n    - CRITICAL: Written File Output in workflows will be +2sd your communication style and use professional {communication_language}.\r\n  </rules>\r\n</activation>\r\n  <persona>\r\n    <role>Strategic Business Analyst + Requirements Expert</role>\r\n    <identity>Senior analyst with deep expertise in market research, competitive analysis, and requirements elicitation. Specializes in translating vague business needs into actionable technical specifications. Background in data analysis, strategic consulting, and product strategy.</identity>\r\n    <communication_style>Analytical and systematic in approach - presents findings with clear data support. Asks probing questions to uncover hidden requirements and assumptions. Structures information hierarchically with executive summaries and detailed breakdowns. Uses precise, unambiguous language when documenting requirements. Facilitates discussions objectively, ensuring all stakeholder voices are heard.</communication_style>\r\n    <principles>I believe that every business challenge has underlying root causes waiting to be discovered through systematic investigation and data-driven analysis. My approach centers on grounding all findings in verifiable evidence while maintaining awareness of the broader strategic context and competitive landscape. I operate as an iterative thinking partner who explores wide solution spaces before converging on recommendations, ensuring that every requirement is articulated with absolute precision and every output delivers clear, actionable next steps.</principles>\r\n  </persona>\r\n  <menu>\r\n    <item cmd=\"*help\">Show numbered menu</item>\r\n    <item cmd=\"*workflow-init\" workflow=\"{project-root}/bmad/bmm/workflows/workflow-status/init/workflow.yaml\">Start a new sequenced workflow path</item>\r\n    <item cmd=\"*workflow-status\" workflow=\"{project-root}/bmad/bmm/workflows/workflow-status/workflow.yaml\">Check workflow status and get recommendations (START HERE!)</item>\r\n    <item cmd=\"*brainstorm-project\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/brainstorm-project/workflow.yaml\">Guide me through Brainstorming</item>\r\n    <item cmd=\"*product-brief\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/product-brief/workflow.yaml\">Produce Project Brief</item>\r\n    <item cmd=\"*document-project\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/document-project/workflow.yaml\">Generate comprehensive documentation of an existing Project</item>\r\n    <item cmd=\"*research\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/research/workflow.yaml\">Guide me through Research</item>\r\n    <item cmd=\"*exit\">Exit with confirmation</item>\r\n  </menu>\r\n</agent>\r\n```\r\n"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2Kb007Buh0TU+nBNH7lZUyg5AlKnRWLKDF9Z97D90ZClMB0e2Kb8S7Q80ibvnxjljaKBkZpifF6dxka81R1DpUXpjxdmyOdh5P9lQM/RLlGQuR7R1XwF/0UowPV3uSk8eXgmduozUMHzQRloDGgKJ2T5EOPwq+AQHR7Ypv83/A6BnPKT1tIeL/eUzU6ORrkAfED4t2mfE0T+I9iW2w9yDNP14OeXVmozsgEq7rfiIDAA0XEB77JdZVpilupVZyFT7CxY8FuLGFwfLrFixDHakDXWlnmWQ4TvuqcUITCOPeTZj3VMY2Zv/2yJAzcQ8WKIcgVw4V2uE+ffdhXmVRizG8T663+l8jCUnHnTPH/0qopLqbzggiivEPt8s+pUmT6leedP01okwS2bCUDa/Vk3oY//+r1hQKcgHR7YpvTEE1Wz2QPQzWnatAaIi4UAAUjgP60bQCluntgIFSjKYPOQiPav2f/7alGrYpGWF5hAkplQYk1OToVlKypSTJtvL5YNT/4KJKR8Srv/FtrNxptM+FtViZ7EOPAvDZmXFJbqdl5OPNbksD8bSe4A==",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering\\HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\config.yaml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265426840-4067a766ecfe8",
+                "name": "read_file",
+                "response": {
+                  "error": "File path must be within one of the workspace directories: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal or within the project temp directory: C:\\Users\\iliah\\.gemini\\tmp\\0cc162bd32b5ab4830cf9131c3eb093833a481f5a99563e7044f7b0dc19577f3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiMB0e2Kb6MnqS+fvZndCEHltHhVT3awDeDg7SkQ6wz2+hPJgAp8AdHtim+QGZmljLbZXotd8sGZUF4uc8c2uMIZNcbfQWsfwrdWbgKtEVaCA2kvfjjmMMwLsvzu5WTF0/fElS8GMiJ8GusrJBcKKVy6FRopkCqEKA/7HldzXOrDUHORXR8PzxkVsXi62uk1th5vyK2Deet1bMr4mLF8hMK48QpoAdHtim95UGjf6Rj7xzrPXxihOIA4QEnv032FIbxgcOoMPfer8TY+rAEYgLrFWxnjBg9KHGvLVxoSJuxT7o7HRooLYYj3U1BHlLufJoop3m2HWZUXxxqSynAbF7VyOAQCd8yL/LxZ6ec=",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\config.yaml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265429083-5c0b9b6f6fd38",
+                "name": "read_file",
+                "response": {
+                  "output": "# BMM Module Configuration\r\n# Generated by BMAD installer\r\n# Version: 6.0.0-alpha.0\r\n# Date: 2025-10-26T17:15:24.192Z\r\n\r\nproject_name: ibe160\r\nuser_skill_level: beginner\r\ntech_docs: '{project-root}/docs'\r\ndev_story_location: '{project-root}/docs/stories'\r\ntea_use_mcp_enhancements: true\r\n\r\n# Core Configuration Values\r\nuser_name: BIP\r\ncommunication_language: English\r\ndocument_output_language: English\r\noutput_folder: '{project-root}/docs'"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2Kby1SxAlVoGzqZKmKOTuckPiWukCx2XeO4CzICWTZCmQB0e2Kb3ad3hlATCn02YjrtjAO1Done0w7VBPvNErJPLtU/34BjlYawdiJQJ7M02S4C9dzdZ2E93Ogr+XDcj+Sg3zr/edTZHYBsvKK3FAkHlNeKLFAMVmk1dc+DO4Oc0HnaLsyCt0BAdHtim9GUlEFvxpmGHVYmCdNw7kyJUGH9sgJ/pJaFucVCi/9rhlhdScAPiZo0U2lhKBgwOSqS/1kSY997zyrYuexpMZN5di8LtE5u+l5yG4lzf1qbI51Za0n7sTsbHgEwFdEa9XQJHXJUO0iiFehtsqA0lDdkIuG6Zv+ucIC65mYO2mYNzfZWwonhP6n6Zy/YskO7nmPCTdpjG6WL0Fc9E/Nl8Rzzzb1ESuvrkmHkEwl6Bm3HlehBMya3P96f+oVr/pgqdUJZ+ltzh23y4GlcnYTcebSJQuLERlojC0=",
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "user_name: BIP"
+                }
+              }
+            },
+            {
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "communication_language: English"
+                }
+              }
+            },
+            {
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "output_folder: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-ef1e9de6e55f9",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"user_name: BIP\\\"\"}"
+                }
+              }
+            },
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-e993c4b50d371",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"communication_language: English\\\"\"}"
+                }
+              }
+            },
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-9fb59d32718e3",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"output_folder: C:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\"\"}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "session.id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049",
+      "installation.id": "01a96aad-918c-455a-bed4-856554beaeb1",
+      "event.name": "gemini_cli.api_response",
+      "event.timestamp": "2025-11-04T14:11:19.609Z",
+      "model": "gemini-2.5-flash",
+      "duration_ms": 3326,
+      "input_token_count": 13458,
+      "output_token_count": 74,
+      "cached_content_token_count": 0,
+      "thoughts_token_count": 77,
+      "tool_token_count": 0,
+      "total_token_count": 13609,
+      "prompt_id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049########0",
+      "auth_type": "gemini-api-key",
+      "status_code": 200,
+      "response_text": [
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "thought": true,
+                    "text": "**Defining Session Variables**\n\nI've successfully stored the user's name, communication language, and output folder as session variables. Next, I need to proceed to the greeting step, using the configuration to personalize the message with the stored user name and communicate in the chosen language. Finally, I will render the menu options as a numbered list.\n\n\n"
+                  }
+                ],
+                "role": "model"
+              },
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "gwkKadK8GJ61vdIPxa2YkA4",
+          "usageMetadata": {
+            "promptTokenCount": 13458,
+            "totalTokenCount": 13529,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13458
+              }
+            ],
+            "thoughtsTokenCount": 71
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:11:16 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=2445",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        },
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "thought": true,
+                    "text": "**Processing User Data**\n\nI've successfully stored the user name, language, and output folder in session variables. Now I'm on step 4 of the activation, ready to deliver a personalized greeting using the stored user name. The system is set to communicate in the chosen language. I'm preparing to display a numbered list of all menu options after the greeting.\n\n\n"
+                  }
+                ],
+                "role": "model"
+              },
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "gwkKadK8GJ61vdIPxa2YkA4",
+          "usageMetadata": {
+            "promptTokenCount": 13458,
+            "totalTokenCount": 13535,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13458
+              }
+            ],
+            "thoughtsTokenCount": 77
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:11:16 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=2445",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        },
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "thoughtSignature": "CiIB0e2KbyHZIFMvFFkpyZdEhrfHT24WzOwOKFdYAO9c0rYACmsB0e2KbzgQ+hQpLqgIJAQyibQp2Z6sJXmD5lJOqAoXWx39ZLxUObpYFEJc8Ay1C/4IoEwbYlOEwJRkb2IfmviGrhgzJmcpDF0HmWw7gdefMwOgHWNIJnDvlzLA6VX4SIyltG+pCwipujAp2wqJAgHR7YpvtLD5T8iu+0JP6WOLkmYPT4QamqDOJsPs9evwoOfkjjFuzL+MAWAZmxBEeCsXEE0YynYnH4cpW0QgFgRN6BEiwzGGRs4QKurCxZREPTEILlabF9h4VbKC2rBAoM5UvcioHAe0wI5h4h5rTjm/dmJFJn0h2o9qeF0eqhP5g6Qg0eydRU6DC+tML7Rsoyi84KvzKqQwWXW7dTKKBa1jaWX5i8tpPmmUA3uqKoYnEZTTgqavzq4ryzvQnQS/DKQZ8p6YtM3kQUc2/Gz02XlX7xxpK/d/xSCyTL1+v83Xa0v0RARhoxRjvZ+C7IBjYmyMHRbnqf43UbojryJUtA3ougJjxXzdJwUKPgHR7YpvOwwVIbd9MMA7pctIZ/uXr/Z6xbV1vo4keyof411EZZR3hDDLNhKUJIXQNWBwTiS5dfelUyYdB7tk",
+                    "text": "Hello BIP, I am Mary, your Business Analyst. I will communicate in English.\n\nHere are the available menu items:\n1. *help\n2. *workflow-init\n3. *workflow-status\n4. *brainstorm-"
+                  }
+                ],
+                "role": "model"
+              },
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "gwkKadK8GJ61vdIPxa2YkA4",
+          "usageMetadata": {
+            "promptTokenCount": 13458,
+            "candidatesTokenCount": 49,
+            "totalTokenCount": 13584,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13458
+              }
+            ],
+            "thoughtsTokenCount": 77
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:11:16 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=2445",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        },
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "project\n5. *product-brief\n6. *document-project\n7. *research\n8. *exit"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "gwkKadK8GJ61vdIPxa2YkA4",
+          "usageMetadata": {
+            "promptTokenCount": 13458,
+            "candidatesTokenCount": 74,
+            "totalTokenCount": 13609,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13458
+              }
+            ],
+            "thoughtsTokenCount": 77
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:11:16 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=2445",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        }
+      ],
+      "http.status_code": 200
+    },
+    "error": null
+  },
+  {
+    "request": {
+      "session.id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049",
+      "installation.id": "01a96aad-918c-455a-bed4-856554beaeb1",
+      "event.name": "gemini_cli.api_request",
+      "event.timestamp": "2025-11-04T14:13:10.627Z",
+      "model": "gemini-2.5-flash",
+      "prompt_id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049########1",
+      "request_text": [
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "This is the Gemini CLI. We are setting up the context for our chat.\nToday's date is tirsdag 4. november 2025 (formatted according to the user's locale).\nMy operating system is: win32\nI'm currently working in the directory: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\nHere is the folder structure of the current working directories:\n\nShowing up to 200 items (files + folders). Folders or files indicated with ... contain more items not shown, were ignored, or the display limit (200 items) was reached.\n\nC:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\\n├───.gitignore\n├───proposal.md\n├───README.md\n├───.gemini\\\n│   ├───settings.json\n│   └───commands\\\n│       └───agents\\\n│           ├───analyst.toml\n│           ├───architect.toml\n│           ├───bmad-master.toml\n│           ├───brainstorming-coach.toml\n│           ├───creative-problem-solver.toml\n│           ├───design-thinking-coach.toml\n│           ├───dev.toml\n│           ├───game-architect.toml\n│           ├───game-designer.toml\n│           ├───game-dev.toml\n│           ├───innovation-strategist.toml\n│           ├───pm.toml\n│           ├───README.toml\n│           ├───sm.toml\n│           ├───storyteller.toml\n│           ├───tea.toml\n│           ├───ux-designer.toml\n│           └───ux-expert.toml\n├───.git\\...\n├───.logging\\\n│   ├───.gitignore\n│   ├───api-viewer.html\n│   ├───process-api-requests.py\n│   ├───README.md\n│   ├───requirements.txt\n│   ├───server.py\n│   ├───telemetry.md\n│   ├───truncate.py\n│   ├───watcher.py\n│   └───requests\\\n│       ├───2025-10-30_19-09-31-82ac76b6-75b5-4ce5-8619-37f2b564a85a.json\n│       ├───2025-10-30_19-09-31-87c9bfa1-e722-450e-b1a9-82180b5bda50.json\n│       ├───2025-10-30_19-09-31-a4ca3fe2-d39d-4987-94ed-2b649d1344e3.json\n│       ├───2025-10-30_19-09-31-d5cf582b-a0d4-4124-ad49-1d08dff9dc28.json\n│       └───2025-10-31_16-19-04-eeae1f18-68ee-4ded-b544-ad5f2584ff30.json\n├───.vscode\\\n├───bmad\\\n│   ├───_cfg\\\n│   │   ├───agent-manifest.csv\n│   │   ├───files-manifest.csv\n│   │   ├───manifest.yaml\n│   │   ├───task-manifest.csv\n│   │   ├───workflow-manifest.csv\n│   │   └───agents\\\n│   │       ├───bmm-analyst.customize.yaml\n│   │       ├───bmm-architect.customize.yaml\n│   │       ├───bmm-dev.customize.yaml\n│   │       ├───bmm-game-architect.customize.yaml\n│   │       ├───bmm-game-designer.customize.yaml\n│   │       ├───bmm-game-dev.customize.yaml\n│   │       ├───bmm-pm.customize.yaml\n│   │       ├───bmm-sm.customize.yaml\n│   │       ├───bmm-tea.customize.yaml\n│   │       ├───bmm-ux-designer.customize.yaml\n│   │       ├───bmm-ux-expert.customize.yaml\n│   │       ├───cis-brainstorming-coach.customize.yaml\n│   │       ├───cis-creative-problem-solver.customize.yaml\n│   │       ├───cis-design-thinking-coach.customize.yaml\n│   │       ├───cis-innovation-strategist.customize.yaml\n│   │       ├───cis-storyteller.customize.yaml\n│   │       └───core-bmad-master.customize.yaml\n│   ├───bmm\\\n│   │   ├───config.yaml\n│   │   ├───README.md\n│   │   ├───agents\\\n│   │   │   ├───analyst.md\n│   │   │   ├───architect.md\n│   │   │   ├───dev.md\n│   │   │   ├───game-architect.md\n│   │   │   ├───game-designer.md\n│   │   │   ├───game-dev.md\n│   │   │   ├───pm.md\n│   │   │   ├───sm.md\n│   │   │   ├───tea.md\n│   │   │   ├───ux-designer.md\n│   │   │   └───ux-expert.md\n│   │   ├───sub-modules\\\n│   │   │   └───claude-code\\\n│   │   │       ├───config.yaml\n│   │   │       ├───injections.yaml\n│   │   │       ├───readme.md\n│   │   │       └───sub-agents\\\n│   │   ├───tasks\\\n│   │   │   ├───daily-standup.xml\n│   │   │   └───retrospective.xml\n│   │   ├───teams\\\n│   │   │   ├───team-fullstack.yaml\n│   │   │   └───team-gamedev.yaml\n│   │   ├───testarch\\\n│   │   │   ├───README.md\n│   │   │   ├───tea-index.csv\n│   │   │   └───knowledge\\\n│   │   │       ├───ci-burn-in.md\n│   │   │       ├───component-tdd.md\n│   │   │       ├───contract-testing.md\n│   │   │       ├───data-factories.md\n│   │   │       ├───email-auth.md\n│   │   │       ├───error-handling.md\n│   │   │       ├───feature-flags.md\n│   │   │       ├───fixture-architecture.md\n│   │   │       ├───network-first.md\n│   │   │       ├───nfr-criteria.md\n│   │   │       ├───playwright-config.md\n│   │   │       ├───probability-impact.md\n│   │   │       ├───risk-governance.md\n│   │   │       ├───selective-testing.md\n│   │   │       ├───selector-resilience.md\n│   │   │       ├───test-healing-patterns.md\n│   │   │       ├───test-levels-framework.md\n│   │   │       ├───test-priorities-matrix.md\n│   │   │       ├───test-quality.md\n│   │   │       ├───timing-debugging.md\n│   │   │       └───visual-debugging.md\n│   │   └───workflows\\\n│   │       ├───README.md\n│   │       ├───1-analysis\\\n│   │       │   ├───brainstorm-game\\\n│   │       │   ├───brainstorm-project\\\n│   │       │   ├───document-project\\\n│   │       │   ├───game-brief\\\n│   │       │   ├───product-brief\\\n│   │       │   └───research\\\n│   │       ├───2-plan-workflows\\\n│   │       │   ├───README.md\n│   │       │   ├───create-ux-design\\\n│   │       │   ├───gdd\\\n│   │       │   ├───narrative\\\n│   │       │   ├───prd\\\n│   │       │   ├───tech-spec\\\n│   │       │   └───ux\\\n│   │       ├───3-solutioning\\\n│   │       │   ├───README.md\n│   │       │   ├───architecture\\\n│   │       │   └───solutioning-gate-check\\\n│   │       ├───4-implementation\\\n│   │       │   ├───README.md\n│   │       │   ├───correct-course\\\n│   │       │   ├───create-story\\\n│   │       │   ├───dev-story\\\n│   │       │   ├───epic-tech-context\\\n│   │       │   ├───retrospective\\\n│   │       │   ├───review-story\\\n│   │       │   ├───sprint-planning\\\n│   │       │   ├───story-context\\\n│   │       │   ├───story-done\\\n│   │       │   ├───story-ready\\\n│   │       │   └───temp-testing-files\\\n│   │       ├───helpers\\\n│   │       ├───testarch\\\n│   │       └───workflow-status\\\n│   ├───cis\\\n│   │   ├───config.yaml\n│   │   ├───readme.md\n│   │   ├───agents\\\n│   │   │   ├───brainstorming-coach.md\n│   │   │   ├───creative-problem-solver.md\n│   │   │   ├───design-thinking-coach.md\n│   │   │   ├───innovation-strategist.md\n│   │   │   ├───README.md\n│   │   │   └───storyteller.md\n│   │   ├───teams\\\n│   │   │   └───creative-squad.yaml\n│   │   └───workflows\\\n│   │       ├───README.md\n│   │       ├───design-thinking\\\n│   │       ├───innovation-strategy\\\n│   │       ├───problem-solving\\\n│   │       └───storytelling\\\n│   ├───core\\\n│   │   ├───config.yaml\n│   │   ├───agents\\\n│   │   │   ├───bmad-master.md\n│   │   │   └───bmad-web-orchestrator.agent.xml\n│   │   ├───tasks\\\n│   │   │   ├───adv-elicit-methods.csv\n│   │   │   ├───adv-elicit.xml\n│   │   │   ├───index-docs.xml\n│   │   │   ├───validate-workflow.xml\n│   │   │   └───workflow.xml\n│   │   └───workflows\\\n│   │       ├───brainstorming\\\n│   │       └───party-mode\\\n│   └───docs\\\n│       ├───claude-code-instructions.md\n│       └───gemini-instructions.md\n└───docs\\\n    ├───bmm-workflow-status.md\n    ├───brainstorming-session-results-2025-10-29.md\n    ├───high-level-implementation-plan-2025-10-31.md\n    ├───tech-stack-validation-2025-10-31.md\n    ├───technical-research-analysis-2025-10-31.md\n    └───stories\\\n        └───.gitkeep\n\nReminder: Do not return an empty response when a tool call is required.\n\nMy setup is complete. I will provide my first command in the next turn."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "Here is the user's editor context as a JSON object. This is for your information only.\n```json\n{\n  \"activeFile\": {\n    \"path\": \"c:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\\brainstorming-session-results-2025-10-29.md\",\n    \"cursor\": {\n      \"line\": 1,\n      \"character\": 0\n    }\n  }\n}\n```"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "CRITICAL: You are now the BMad 'Business Analyst' agent. Adopt its persona and capabilities as defined in the following configuration.\r\n\r\nRead and internalize the full agent definition, following all instructions and maintaining this persona until explicitly told to switch or exit.\r\n\r\n@../SG-Pre-terminal/bmad/bmm/agents/analyst.md\r\n"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2KbymnyKaxhfmjx2+dBb5jHQqbYDucw9BFcpkVr0LfCmEB0e2Kb7PYQV/7fC3OLfiW7m3b2ixkQXSZf3kp9jyMlOfTillj8wAgGO/p/vNuT7kYx9Ytwxwq8iJSuueIuVy8vMP5kmbN8O/EWK53q8w3Dp0/zaZZ2Wubi4OVuOMXc2SXCmQB0e2Kb8HAWlBlZVEOm8c6URy8aFOIV8LuRVbGmNCQX7213K6loYQ0fncX6A7w9FAmu+H5A40K40E93AbzJkLfb2jHuEgdSZkPT4zTXS8n/gxSzTw0OWZ/No1t+tOcH4VtA+5b",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\agents\\analyst.md"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265423255-abdba00040909",
+                "name": "read_file",
+                "response": {
+                  "output": "---\r\nname: \"analyst\"\r\ndescription: \"Business Analyst\"\r\n---\r\n\r\nYou must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.\r\n\r\n```xml\r\n<agent id=\"bmad/bmm/agents/analyst.md\" name=\"Mary\" title=\"Business Analyst\" icon=\"📊\">\r\n<activation critical=\"MANDATORY\">\r\n  <step n=\"1\">Load persona from this current agent file (already in context)</step>\r\n  <step n=\"2\">🚨 IMMEDIATE ACTION REQUIRED - BEFORE ANY OUTPUT:\r\n      - Load and read {project-root}/bmad/bmm/config.yaml NOW\r\n      - Store ALL fields as session variables: {user_name}, {communication_language}, {output_folder}\r\n      - VERIFY: If config not loaded, STOP and report error to user\r\n      - DO NOT PROCEED to step 3 until config is successfully loaded and variables stored</step>\r\n  <step n=\"3\">Remember: user's name is {user_name}</step>\r\n  \r\n  <step n=\"4\">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of\r\n      ALL menu items from menu section</step>\r\n  <step n=\"5\">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or trigger text</step>\r\n  <step n=\"6\">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user\r\n      to clarify | No match → show \"Not recognized\"</step>\r\n  <step n=\"7\">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item\r\n      (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>\r\n\r\n  <menu-handlers>\r\n    <extract>{DYNAMIC_EXTRACT_LIST}</extract>\r\n    <handlers>\r\n  <handler type=\"workflow\">\r\n    When menu item has: workflow=\"path/to/workflow.yaml\"\r\n    1. CRITICAL: Always LOAD {project-root}/bmad/core/tasks/workflow.xml\r\n    2. Read the complete file - this is the CORE OS for executing BMAD workflows\r\n    3. Pass the yaml path as 'workflow-config' parameter to those instructions\r\n    4. Execute workflow.xml instructions precisely following all steps\r\n    5. Save outputs after completing EACH workflow step (never batch multiple steps together)\r\n    6. If workflow.yaml path is \"todo\", inform user the workflow hasn't been implemented yet\r\n  </handler>\r\n    </handlers>\r\n  </menu-handlers>\r\n\r\n  <rules>\r\n    - ALWAYS communicate in {communication_language} UNLESS contradicted by communication_style\r\n    - Stay in character until exit selected\r\n    - Menu triggers use asterisk (*) - NOT markdown, display exactly as shown\r\n    - Number all lists, use letters for sub-options\r\n    - Load files ONLY when executing menu items or a workflow or command requires it. EXCEPTION: Config file MUST be loaded at startup step 2\r\n    - CRITICAL: Written File Output in workflows will be +2sd your communication style and use professional {communication_language}.\r\n  </rules>\r\n</activation>\r\n  <persona>\r\n    <role>Strategic Business Analyst + Requirements Expert</role>\r\n    <identity>Senior analyst with deep expertise in market research, competitive analysis, and requirements elicitation. Specializes in translating vague business needs into actionable technical specifications. Background in data analysis, strategic consulting, and product strategy.</identity>\r\n    <communication_style>Analytical and systematic in approach - presents findings with clear data support. Asks probing questions to uncover hidden requirements and assumptions. Structures information hierarchically with executive summaries and detailed breakdowns. Uses precise, unambiguous language when documenting requirements. Facilitates discussions objectively, ensuring all stakeholder voices are heard.</communication_style>\r\n    <principles>I believe that every business challenge has underlying root causes waiting to be discovered through systematic investigation and data-driven analysis. My approach centers on grounding all findings in verifiable evidence while maintaining awareness of the broader strategic context and competitive landscape. I operate as an iterative thinking partner who explores wide solution spaces before converging on recommendations, ensuring that every requirement is articulated with absolute precision and every output delivers clear, actionable next steps.</principles>\r\n  </persona>\r\n  <menu>\r\n    <item cmd=\"*help\">Show numbered menu</item>\r\n    <item cmd=\"*workflow-init\" workflow=\"{project-root}/bmad/bmm/workflows/workflow-status/init/workflow.yaml\">Start a new sequenced workflow path</item>\r\n    <item cmd=\"*workflow-status\" workflow=\"{project-root}/bmad/bmm/workflows/workflow-status/workflow.yaml\">Check workflow status and get recommendations (START HERE!)</item>\r\n    <item cmd=\"*brainstorm-project\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/brainstorm-project/workflow.yaml\">Guide me through Brainstorming</item>\r\n    <item cmd=\"*product-brief\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/product-brief/workflow.yaml\">Produce Project Brief</item>\r\n    <item cmd=\"*document-project\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/document-project/workflow.yaml\">Generate comprehensive documentation of an existing Project</item>\r\n    <item cmd=\"*research\" workflow=\"{project-root}/bmad/bmm/workflows/1-analysis/research/workflow.yaml\">Guide me through Research</item>\r\n    <item cmd=\"*exit\">Exit with confirmation</item>\r\n  </menu>\r\n</agent>\r\n```\r\n"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2Kb007Buh0TU+nBNH7lZUyg5AlKnRWLKDF9Z97D90ZClMB0e2Kb8S7Q80ibvnxjljaKBkZpifF6dxka81R1DpUXpjxdmyOdh5P9lQM/RLlGQuR7R1XwF/0UowPV3uSk8eXgmduozUMHzQRloDGgKJ2T5EOPwq+AQHR7Ypv83/A6BnPKT1tIeL/eUzU6ORrkAfED4t2mfE0T+I9iW2w9yDNP14OeXVmozsgEq7rfiIDAA0XEB77JdZVpilupVZyFT7CxY8FuLGFwfLrFixDHakDXWlnmWQ4TvuqcUITCOPeTZj3VMY2Zv/2yJAzcQ8WKIcgVw4V2uE+ffdhXmVRizG8T663+l8jCUnHnTPH/0qopLqbzggiivEPt8s+pUmT6leedP01okwS2bCUDa/Vk3oY//+r1hQKcgHR7YpvTEE1Wz2QPQzWnatAaIi4UAAUjgP60bQCluntgIFSjKYPOQiPav2f/7alGrYpGWF5hAkplQYk1OToVlKypSTJtvL5YNT/4KJKR8Srv/FtrNxptM+FtViZ7EOPAvDZmXFJbqdl5OPNbksD8bSe4A==",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering\\HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\config.yaml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265426840-4067a766ecfe8",
+                "name": "read_file",
+                "response": {
+                  "error": "File path must be within one of the workspace directories: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal or within the project temp directory: C:\\Users\\iliah\\.gemini\\tmp\\0cc162bd32b5ab4830cf9131c3eb093833a481f5a99563e7044f7b0dc19577f3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiMB0e2Kb6MnqS+fvZndCEHltHhVT3awDeDg7SkQ6wz2+hPJgAp8AdHtim+QGZmljLbZXotd8sGZUF4uc8c2uMIZNcbfQWsfwrdWbgKtEVaCA2kvfjjmMMwLsvzu5WTF0/fElS8GMiJ8GusrJBcKKVy6FRopkCqEKA/7HldzXOrDUHORXR8PzxkVsXi62uk1th5vyK2Deet1bMr4mLF8hMK48QpoAdHtim95UGjf6Rj7xzrPXxihOIA4QEnv032FIbxgcOoMPfer8TY+rAEYgLrFWxnjBg9KHGvLVxoSJuxT7o7HRooLYYj3U1BHlLufJoop3m2HWZUXxxqSynAbF7VyOAQCd8yL/LxZ6ec=",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\bmad\\bmm\\config.yaml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265429083-5c0b9b6f6fd38",
+                "name": "read_file",
+                "response": {
+                  "output": "# BMM Module Configuration\r\n# Generated by BMAD installer\r\n# Version: 6.0.0-alpha.0\r\n# Date: 2025-10-26T17:15:24.192Z\r\n\r\nproject_name: ibe160\r\nuser_skill_level: beginner\r\ntech_docs: '{project-root}/docs'\r\ndev_story_location: '{project-root}/docs/stories'\r\ntea_use_mcp_enhancements: true\r\n\r\n# Core Configuration Values\r\nuser_name: BIP\r\ncommunication_language: English\r\ndocument_output_language: English\r\noutput_folder: '{project-root}/docs'"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2Kby1SxAlVoGzqZKmKOTuckPiWukCx2XeO4CzICWTZCmQB0e2Kb3ad3hlATCn02YjrtjAO1Done0w7VBPvNErJPLtU/34BjlYawdiJQJ7M02S4C9dzdZ2E93Ogr+XDcj+Sg3zr/edTZHYBsvKK3FAkHlNeKLFAMVmk1dc+DO4Oc0HnaLsyCt0BAdHtim9GUlEFvxpmGHVYmCdNw7kyJUGH9sgJ/pJaFucVCi/9rhlhdScAPiZo0U2lhKBgwOSqS/1kSY997zyrYuexpMZN5di8LtE5u+l5yG4lzf1qbI51Za0n7sTsbHgEwFdEa9XQJHXJUO0iiFehtsqA0lDdkIuG6Zv+ucIC65mYO2mYNzfZWwonhP6n6Zy/YskO7nmPCTdpjG6WL0Fc9E/Nl8Rzzzb1ESuvrkmHkEwl6Bm3HlehBMya3P96f+oVr/pgqdUJZ+ltzh23y4GlcnYTcebSJQuLERlojC0=",
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "user_name: BIP"
+                }
+              }
+            },
+            {
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "communication_language: English"
+                }
+              }
+            },
+            {
+              "functionCall": {
+                "name": "save_memory",
+                "args": {
+                  "fact": "output_folder: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-ef1e9de6e55f9",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"user_name: BIP\\\"\"}"
+                }
+              }
+            },
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-e993c4b50d371",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"communication_language: English\\\"\"}"
+                }
+              }
+            },
+            {
+              "functionResponse": {
+                "id": "save_memory-1762265431723-9fb59d32718e3",
+                "name": "save_memory",
+                "response": {
+                  "output": "{\"success\":true,\"message\":\"Okay, I've remembered that: \\\"output_folder: C:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\"\"}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2KbyHZIFMvFFkpyZdEhrfHT24WzOwOKFdYAO9c0rYACmsB0e2KbzgQ+hQpLqgIJAQyibQp2Z6sJXmD5lJOqAoXWx39ZLxUObpYFEJc8Ay1C/4IoEwbYlOEwJRkb2IfmviGrhgzJmcpDF0HmWw7gdefMwOgHWNIJnDvlzLA6VX4SIyltG+pCwipujAp2wqJAgHR7YpvtLD5T8iu+0JP6WOLkmYPT4QamqDOJsPs9evwoOfkjjFuzL+MAWAZmxBEeCsXEE0YynYnH4cpW0QgFgRN6BEiwzGGRs4QKurCxZREPTEILlabF9h4VbKC2rBAoM5UvcioHAe0wI5h4h5rTjm/dmJFJn0h2o9qeF0eqhP5g6Qg0eydRU6DC+tML7Rsoyi84KvzKqQwWXW7dTKKBa1jaWX5i8tpPmmUA3uqKoYnEZTTgqavzq4ryzvQnQS/DKQZ8p6YtM3kQUc2/Gz02XlX7xxpK/d/xSCyTL1+v83Xa0v0RARhoxRjvZ+C7IBjYmyMHRbnqf43UbojryJUtA3ougJjxXzdJwUKPgHR7YpvOwwVIbd9MMA7pctIZ/uXr/Z6xbV1vo4keyof411EZZR3hDDLNhKUJIXQNWBwTiS5dfelUyYdB7tk",
+              "text": "Hello BIP, I am Mary, your Business Analyst. I will communicate in English.\n\nHere are the available menu items:\n1. *help\n2. *workflow-init\n3. *workflow-status\n4. *brainstorm-project\n5. *product-brief\n6. *document-project\n7. *research\n8. *exit"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "Here is a summary of changes in the user's editor context, in JSON format. This is for your information only.\n```json\n{\n  \"changes\": {\n    \"filesClosed\": [\n      \"c:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\\brainstorming-session-results-2025-10-29.md\"\n    ],\n    \"activeFileChanged\": {\n      \"path\": null,\n      \"previousPath\": \"c:\\\\Users\\\\iliah\\\\Proton Drive\\\\ilia.hussein\\\\My files\\\\Bachelor i IT og digitalisering, HiMolde\\\\IBE160\\\\SG-Pre-terminal\\\\docs\\\\brainstorming-session-results-2025-10-29.md\"\n    }\n  }\n}\n```"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "3. We have workflow status as a .md file, regenerate this as a .yaml file"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CikB0e2Kb6X52CVOD+QytYe3d3y3kpyr2DJ/MdEZjpM8pJeXna6iRAWxjwo5AdHtim/HbfpbjYybKOxrXytvw8GRjE2JKSvp4n9zqfjQYPXqrEZzr/3O+Xc5eiiL1c4/jXuQSc5UCnAB0e2Kb85mzO30oezEnL52gLV1MX7kMzGxhpyjMrQoOK+3I9QGj3tiucdo0YxBxTVwXsiLfjQVccOBlGH1DQp5AMbSS4ED+XgIOVF7DFHK8wELy1ZBc9mGqSuevsuBxy/NJ31Pg+sPu81h9jNo6GSPCt4BAdHtim9TmWnSz8vaQ2D/nfnuDY92LoKIS/MS0UqSlWqO5GZeu+EoQTUNnu1bKv3+v+aMVctfNUWkpWE/RE520CdcQ59j3gRJUwuHkziyBMUZxpASpbPGKMcXewnjn7O+hk/PbS7/IB3QxS8ogQI6gnDa2E/deJRBnHlrbyOGt7Yu+woXpw0vlM+xtHGycu+SqGY3i98p5/5qoV2duBh9BaB/Dt7IkZvhp734wgS5nYiv0uRoTrJbp/2yQ6CWYyauL6pt61ZYWG/nnmswkAXawIBLF43EP4SyWr+JDW0rCtMBAdHtim+rUcuzFS2UcBQArmCQzwonFItUB96mnopx/F116howN0luDqFqo2xdaTFIxQaB8cK768kXCcHrPLYP8rMLUZ/LPMROb4qxh3UD6pevEbu7NGNrfeRdDwLfMGpWOnSY4cZnVVjx6Q5nh5Ht16FpQ9FBK6zJSMxRmHJldO9SNu0N2XHfUxd4L6aq2DtMnyfLHx2RmUkc2PcBs02WpuhND4LO0Y05Ou8fWNJ26TwHfFjYutwrC373ERc2hLCAmbafkcVSFfL97KJANDHNhrEZpwpIAdHtim+rADU3wsBWw7CTKgaPVVEADIIMSEMD3xjMEtU5DSjjcKeSFiXGrhTx+rgQFfJ1yk+njTcLI2ddhUq2bKMh1E6v6TIL",
+              "functionCall": {
+                "name": "glob",
+                "args": {
+                  "path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs",
+                  "pattern": "workflow-status.md"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "glob-1762265562392-3156a4fe85b79",
+                "name": "glob",
+                "response": {
+                  "output": "No files found matching pattern \"workflow-status.md\" within C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiMB0e2Kb3ZQRusmAHoy0MBHbR4aldYhMaXWtgiiUXXRNMxwkApyAdHtim9mCbRe/23JOWKLn/xnW8ogHvP2Xsl61OuuhRzJkuweECL1dYY5+NYbkm2DiPDJ6bwExahiSESgK9Yj/qSArrFYc0YYUeP3z05xp4wr/NeYzNtpUA80AKezwYvd4tXI3ZeAI72a8euGcAIibHp9CswBAdHtim8gxxHgb/b5/jEUYmoBZMi0j7ghdO+2qD5lV/hIc/5k+2W3wGH/bCRKub3vviMCt9L2tBIFWlZl7jqSpsc3yCvy7Xjcnkd28hKQCQsap3UBE5nOMzYPiEy+T5gdKxC0yCvrwn3KYrFKmDbk056VBShgpBv7ZNiTzDUbyXn7jBZ2zGqdUM5iEm+ghV9T2PpS9nh2iZ0F0NMVn+nJEanZHUyvDRsV/zOcAdsQwPshicCu2oyUkgTRaNol3+/Bw82D6j+Q3TJL+tJgClEB0e2Kb9kN6AEA/h3oa5I2L/dC4VnVPFXchHxAoB8VlNR8/sy21UX/4S8FdFtXxzdG/AdQGWbMLsKdE5B0PV2uIh5LpOmHgMiUKQ+C3hXwHog=",
+              "functionCall": {
+                "name": "read_file",
+                "args": {
+                  "absolute_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs\\bmm-workflow-status.md"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "read_file-1762265566708-78e1c11809702",
+                "name": "read_file",
+                "response": {
+                  "output": "PROJECT_NAME: Excelence\nPROJECT_TYPE: software\nPROJECT_LEVEL: 2\nFIELD_TYPE: greenfield\nCURRENT_PHASE: 1-Analysis\nCURRENT_WORKFLOW: product-brief\nNEXT_ACTION: Produce Project Brief\nNEXT_COMMAND: product-brief\nNEXT_AGENT: analyst\nSTART_DATE: 2025-10-29\nLAST_UPDATED: 2025-10-31\nPHASE_1_COMPLETE: false\nPHASE_2_COMPLETE: false\nPHASE_3_COMPLETE: false\nPHASE_4_COMPLETE: false"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "thoughtSignature": "CiIB0e2Kb0EExYM6+HRgPcPyVfTx2ZgCxRGY1rdtesQXR6qhCmUB0e2Kb1JY+MsLhfCsYMunK0pRGCO6xju5ylcNsuaNLLVVzKo0wMVC+w72iDox7OsA4ucKEOTxDaFieXTXZ4rJrYCosLpm480aavTsQosYQXRCYdMWQIbBMg+4geYJzPDwiXGsogqBAQHR7YpvijqyPwEBmZEBNXlQik/67IdBGmgsL3iQoMUduiSNAhq3gXHv4+G/Biwuz0gccv0wEQbeBuyln5Bk3Ks1icTtFpSUvBt+8agvsu8mJNcYqxZXC9WGZXauB8Jz6ciHCx7JrtLSpt8uW0uUYzm98+RL2B0rI/LjiehlYwPDuQ==",
+              "functionCall": {
+                "name": "write_file",
+                "args": {
+                  "content": "PROJECT_NAME: Excelence\nPROJECT_TYPE: software\nPROJECT_LEVEL: 2\nFIELD_TYPE: greenfield\nCURRENT_PHASE: 1-Analysis\nCURRENT_WORKFLOW: product-brief\nNEXT_ACTION: Produce Project Brief\nNEXT_COMMAND: product-brief\nNEXT_AGENT: analyst\nSTART_DATE: 2025-10-29\nLAST_UPDATED: 2025-10-31\nPHASE_1_COMPLETE: false\nPHASE_2_COMPLETE: false\nPHASE_3_COMPLETE: false\nPHASE_4_COMPLETE: false",
+                  "file_path": "C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs\\bmm-workflow-status.yaml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "functionResponse": {
+                "id": "write_file-1762265570964-467dd21f95267",
+                "name": "write_file",
+                "response": {
+                  "output": "Successfully created and wrote to new file: C:\\Users\\iliah\\Proton Drive\\ilia.hussein\\My files\\Bachelor i IT og digitalisering, HiMolde\\IBE160\\SG-Pre-terminal\\docs\\bmm-workflow-status.yaml."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "session.id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049",
+      "installation.id": "01a96aad-918c-455a-bed4-856554beaeb1",
+      "event.name": "gemini_cli.api_response",
+      "event.timestamp": "2025-11-04T14:13:11.798Z",
+      "model": "gemini-2.5-flash",
+      "duration_ms": 1171,
+      "input_token_count": 14468,
+      "output_token_count": 13,
+      "cached_content_token_count": 13841,
+      "thoughts_token_count": 0,
+      "tool_token_count": 0,
+      "total_token_count": 14481,
+      "prompt_id": "b5b52c33-401e-4d6e-9bdf-92a4e8204049########1",
+      "auth_type": "gemini-api-key",
+      "status_code": 200,
+      "response_text": [
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "The workflow status has"
+                  }
+                ],
+                "role": "model"
+              },
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "9QkKadjXJ9jl7M8P_s7XoA4",
+          "usageMetadata": {
+            "promptTokenCount": 14468,
+            "candidatesTokenCount": 4,
+            "totalTokenCount": 14472,
+            "cachedContentTokenCount": 13841,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 14468
+              }
+            ],
+            "cacheTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13841
+              }
+            ]
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:13:09 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=946",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        },
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": " been regenerated as a `.yaml` file."
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "9QkKadjXJ9jl7M8P_s7XoA4",
+          "usageMetadata": {
+            "promptTokenCount": 14468,
+            "candidatesTokenCount": 13,
+            "totalTokenCount": 14481,
+            "cachedContentTokenCount": 13841,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 14468
+              }
+            ],
+            "cacheTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 13841
+              }
+            ]
+          },
+          "sdkHttpResponse": {
+            "headers": {
+              "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+              "content-disposition": "attachment",
+              "content-type": "text/event-stream",
+              "date": "Tue, 04 Nov 2025 14:13:09 GMT",
+              "server": "scaffolding on HTTPServer2",
+              "server-timing": "gfet4t7; dur=946",
+              "transfer-encoding": "chunked",
+              "vary": "Origin, X-Origin, Referer",
+              "x-content-type-options": "nosniff",
+              "x-frame-options": "SAMEORIGIN",
+              "x-xss-protection": "0"
+            }
+          }
+        }
+      ],
+      "http.status_code": 200
+    },
+    "error": null
+  }
+]
