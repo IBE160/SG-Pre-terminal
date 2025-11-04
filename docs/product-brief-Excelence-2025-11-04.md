@@ -22,7 +22,7 @@ Individuals and smaller organizations who are not familiar with Excel or other s
 *   **Simple Graphs:** Visual representation of income and expenses through easy-to-understand graphs.
 *   **Data Export:** Ability to export budget data to Excel/CSV files.
 *   **User Authentication:** Secure user registration and login.
-*   **Responsive Design:** Simplified mobile view for graphs and displaying finished budget; full view on desktop.
+*   **Desktop View:** Full view available on desktop. Mobile view will be implemented in a later phase.
 
 ### Nice-to-Have Features (Optional Extensions):
 
@@ -39,7 +39,6 @@ Excelence will differentiate itself through a strong focus on user experience an
 *   **Engaging Animations:** Fun and simple animations for immediate visual feedback.
 *   **Customizable Categories:** Use of customizable icons or emojis for categories.
 *   **Gamified Progress:** Optional "Game Mode" with financial goals, progress tracking, badges, and achievement pop-ups.
-*   **Community Challenges:** Real-time collaborative challenges for families or groups to work towards shared financial goals.
 
 ## 6. Technical Architecture (High-Level)
 
@@ -62,7 +61,7 @@ Excelence will differentiate itself through a strong focus on user experience an
 *   Users can create, edit, and delete income/expense categories and entries.
 *   Clear, easy-to-understand graphs displaying financial overview.
 *   Ability to export budget data to Excel/CSV.
-*   Responsive design for both mobile and desktop views.
+*   The application provides a full view on desktop.
 *   Positive user feedback on ease of use and engagement features.
 
 ## 9. Open Questions / Future Considerations
