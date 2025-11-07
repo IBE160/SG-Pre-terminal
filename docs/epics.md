@@ -1,9 +1,8 @@
 # Excelence - Epic Breakdown
 
 **Author:** BIP
-**Date:** 2025-11-06
+**Date:** 2025-11-07
 **Project Level:** 2
-**Target Scale:** Medium project - multiple epics, 10+ stories
 
 ---
 
@@ -27,262 +26,245 @@ Each epic includes:
 
 ---
 
-## Epic 1: Foundation & User Authentication
+**Epic 1: Project Foundation & Core Budgeting**
 
-**Expanded Goal:** To establish the core technical infrastructure for Excelence, including the SvelteKit frontend, FastAPI backend, and Supabase database, and to implement secure user registration and login functionality, ensuring a stable and accessible platform for users.
-
-**Story Breakdown:**
-
-**Story 1.1: Project Setup & Repository Initialization**
-
-As a developer,
-I want to initialize the SvelteKit and FastAPI projects and set up a monorepo structure,
-So that the development environment is ready and version control is established.
-
-**Acceptance Criteria:**
-1. A new SvelteKit project is created.
-2. A new FastAPI project is created.
-3. A monorepo structure is configured (e.g., using `pnpm` workspaces or similar).
-4. A `.gitignore` file is configured for both frontend and backend.
-5. Basic `README.md` files are present for both projects.
-
-**Prerequisites:** None
-
-**Story 1.2: Supabase Project Setup & Schema Definition**
-
-As a developer,
-I want to set up a new Supabase project and define the initial database schema for users, income, expenses, and categories,
-So that the application has a persistent data store and authentication services.
-
-**Acceptance Criteria:**
-1. A new Supabase project is created.
-2. The `users` table is defined with appropriate columns (e.g., `id`, `email`, `created_at`).
-3. The `income` table is defined with columns like `id`, `user_id`, `category_id`, `amount`, `description`, `date`.
-4. The `expenses` table is defined with columns like `id`, `user_id`, `category_id`, `amount`, `description`, `date`.
-5. The `categories` table is defined with columns like `id`, `user_id`, `name`, `type`.
-6. Row-Level Security (RLS) is enabled and configured for all tables to ensure data privacy.
-
-**Prerequisites:** Story 1.1
-
-**Story 1.3: User Registration & Login (Frontend)**
-
-As a user,
-I want to be able to register for a new account and log in to the application,
-So that I can access my personal budgeting features securely.
-
-**Acceptance Criteria:**
-1. A registration form is available on the frontend.
-2. A login form is available on the frontend.
-3. Users can successfully register with an email and password.
-4. Users can successfully log in with their registered credentials.
-5. Error messages are displayed for invalid registration or login attempts.
-6. Upon successful login, the user is redirected to the main dashboard.
-
-**Prerequisites:** Story 1.2
-
-**Story 1.4: User Authentication (Backend & Supabase Integration)**
-
-As a developer,
-I want to integrate Supabase authentication into the FastAPI backend and SvelteKit frontend,
-So that user sessions are managed securely and protected routes can be implemented.
-
-**Acceptance Criteria:**
-1. FastAPI backend is configured to use Supabase client for authentication.
-2. SvelteKit frontend uses Supabase client for managing user sessions.
-3. Protected routes are implemented in SvelteKit that require a logged-in user.
-4. User session data is accessible on the frontend after login.
-5. Users can log out of the application.
-
-**Prerequisites:** Story 1.3
+**Goal:** Establish the project's technical foundation, implement user authentication, and deliver the core functionalities for tracking income, expenses, and categories.
 
 ---
 
-## Epic 2: Core Budgeting Functionality
+**Story 1.1: Backend and Database Setup**
 
-**Expanded Goal:** To implement the primary features for managing a budget, including creating categories, tracking income and expenses, and viewing a summary dashboard with calculations and graphs, providing users with a clear overview of their financial situation.
-
-**Story Breakdown:**
-
-**Story 2.1: Category Management (CRUD)**
-
-As a user,
-I want to be able to create, edit, and delete different categories for my income and expenses,
-So that I can organize my finances according to my needs.
+As a developer,
+I want to set up the FastAPI backend and connect it to a Supabase project,
+So that we have a foundational server and database to build upon.
 
 **Acceptance Criteria:**
-1. A dedicated section or modal exists for managing categories.
-2. Users can add new categories with a name and type (income/expense).
-3. Users can edit existing category names.
-4. Users can delete categories (with a confirmation).
-5. Categories are associated with the logged-in user.
-
-**Prerequisites:** Epic 1 Completion
-
-**Story 2.2: Income Tracking (CRUD)**
-
-As a user,
-I want to be able to add, edit, and delete my income entries, assigning them to a category,
-So that I can accurately track my money coming in.
-
-**Acceptance Criteria:**
-1. A form or interface is available for adding new income entries.
-2. Users can specify amount, description, and select an existing income category.
-3. Users can edit existing income entries.
-4. Users can delete income entries.
-5. Income entries are associated with the logged-in user and selected category.
-
-**Prerequisites:** Story 2.1
-
-**Story 2.3: Expense Tracking (CRUD)**
-
-As a user,
-I want to be able to add, edit, and delete my expense entries, assigning them to a category,
-So that I can accurately track my money going out.
-
-**Acceptance Criteria:**
-1. A form or interface is available for adding new expense entries.
-2. Users can specify amount, description, and select an existing expense category.
-3. Users can edit existing expense entries.
-4. Users can delete expense entries.
-5. Expense entries are associated with the logged-in user and selected category.
-
-**Prerequisites:** Story 2.1
-
-**Story 2.4: Financial Summary Dashboard**
-
-As a user,
-I want to see a dashboard that displays my total income, total expenses, and current balance,
-So that I can quickly understand my overall financial status.
-
-**Acceptance Criteria:**
-1. The main dashboard displays the sum of all income entries for a selected period.
-2. The main dashboard displays the sum of all expense entries for the same period.
-3. The main dashboard displays the calculated balance (income - expenses).
-4. The dashboard updates in real-time or upon data changes.
-
-**Prerequisites:** Stories 2.2, 2.3
-
-**Story 2.5: Simple Income/Expense Graphs**
-
-As a user,
-I want to see a simple visual graph of my income and expenses on the dashboard,
-So that I can quickly grasp trends and proportions of my money flow.
-
-**Acceptance Criteria:**
-1. A bar chart or pie chart is displayed on the dashboard.
-2. The chart visually represents income and expenses, or category-wise breakdown.
-3. The chart data is dynamically updated based on user entries.
-
-**Prerequisites:** Story 2.4
+1.  A new Supabase project is created.
+2.  A new FastAPI project is initialized.
+3.  Database connection between FastAPI and Supabase is established and verified.
+4.  Initial database schema for users, categories, income, and expenses is defined and created in Supabase.
 
 ---
 
-## Epic 3: Data Export & Gamification MVP
+**Story 1.2: User Authentication Endpoints**
 
-**Expanded Goal:** To enable users to export their budget data for external use and to introduce initial gamification elements to make budgeting more engaging and motivating.
-
-**Story Breakdown:**
-
-**Story 3.1: Export Budget Data to CSV/Excel**
-
-As a user,
-I want to be able to export my budget data (income, expenses, categories) to a CSV or Excel file,
-So that I can have a local copy or use it in other applications.
+As a developer,
+I want to create API endpoints for user registration and login,
+So that users can securely create accounts and sign in.
 
 **Acceptance Criteria:**
-1. A button or option is available on the dashboard or a dedicated section to trigger data export.
-2. The exported file contains all relevant income and expense entries, including category information.
-3. The file format is either CSV or a compatible Excel format.
-4. The export process is clear and provides feedback to the user.
+1.  An endpoint for user registration (`/register`) is created that securely hashes passwords.
+2.  An endpoint for user login (`/login`) is created that returns a JWT token upon success.
+3.  Supabase Auth is integrated for handling user management.
+4.  API endpoints are tested and functional.
 
-**Prerequisites:** Epic 2 Completion
+---
 
-**Story 3.2: Gamification - "Game Mode" Toggle**
+**Story 1.3: Frontend Project Setup & Authentication UI**
 
 As a user,
-I want to be able to toggle an optional "Game Mode" on or off,
-So that I can choose whether to engage with gamified features.
+I want to see a registration and login page,
+So that I can access the application.
 
 **Acceptance Criteria:**
-1. A clear toggle switch or setting is available in the user profile or settings.
-2. Toggling "Game Mode" on/off persists across sessions.
-3. When "Game Mode" is active, gamified elements become visible/active.
+1.  A new SvelteKit project is initialized.
+2.  Basic UI components for registration and login forms are created.
+3.  The UI is connected to the backend authentication endpoints.
+4.  Users can successfully register and log in, and the app stores the auth token.
+5.  A basic route protection mechanism is in place to prevent access to protected areas.
 
-**Prerequisites:** Epic 1 Completion
+---
 
-**Story 3.3: Gamification - Financial Goal Setting**
+**Story 1.4: Category Management API**
+
+As a developer,
+I want to build CRUD API endpoints for managing categories,
+So that the frontend can interact with user-defined categories.
+
+**Acceptance Criteria:**
+1.  API endpoints for creating, reading, updating, and deleting categories are created.
+2.  Endpoints are protected and only accessible by authenticated users.
+3.  Each category is associated with the correct user.
+4.  API endpoints are tested and functional.
+
+---
+
+**Story 1.5: Income/Expense Management API**
+
+As a developer,
+I want to build CRUD API endpoints for managing income and expense entries,
+So that the frontend can manage financial records.
+
+**Acceptance Criteria:**
+1.  API endpoints for creating, reading, updating, and deleting income/expense entries are created.
+2.  Endpoints are protected and only accessible by authenticated users.
+3.  Each entry is associated with the correct user and a category.
+4.  API endpoints are tested and functional.
+
+---
+
+**Story 1.6: Basic Frontend for Budget Management**
+
+As a user,
+I want to create, view, edit, and delete my income, expenses, and categories,
+So that I can manage my budget.
+
+**Acceptance Criteria:**
+1.  A UI is created for managing categories (create, view, edit, delete).
+2.  A UI is created for adding, editing, and deleting income and expense entries.
+3.  The UI is connected to the corresponding backend APIs.
+4.  The application displays a simple, real-time list of income and expenses.
+
+---
+
+**Epic 2: Dashboard, Visualizations, and Data Export**
+
+**Goal:** Develop the main dashboard, integrate charting libraries for visual representation of financial data, and implement the data export feature.
+
+---
+
+**Story 2.1: Dashboard Data API Endpoint**
+
+As a developer,
+I want to create an API endpoint that provides aggregated financial summary data,
+So that the frontend has a single source for dashboard information.
+
+**Acceptance Criteria:**
+1.  A protected API endpoint (e.g., `/dashboard/summary`) is created.
+2.  The endpoint returns the current user's total income, total expenses, and net balance for a default period (e.g., current month).
+3.  The endpoint also returns data structured for use in a charting library (e.g., expenses grouped by category).
+4.  The endpoint is tested for performance and accuracy.
+
+---
+
+**Story 2.2: Frontend Dashboard Layout**
+
+As a user,
+I want to see a central dashboard page when I log in,
+So that I can get an immediate overview of my financial situation.
+
+**Acceptance Criteria:**
+1.  A new, protected route for the dashboard is created in the SvelteKit application.
+2.  The dashboard page has clear placeholders for a financial summary, a main graph, and a list of recent transactions.
+3.  The dashboard UI is connected to the `/dashboard/summary` endpoint and displays the total income, expenses, and balance.
+
+---
+
+**Story 2.3: Integrate Charting Library and Display Graph**
+
+As a user,
+I want to see a simple graph of my finances,
+So that I can visually understand where my money is going.
+
+**Acceptance Criteria:**
+1.  A charting library (e.g., Chart.js) is integrated into the SvelteKit project.
+2.  The graph component on the dashboard is connected to the summary API endpoint.
+3.  A simple pie or bar chart is displayed, showing the breakdown of expenses by category.
+4.  The chart is visually clear and easy to understand.
+
+---
+
+**Story 2.4: Data Export API Endpoint**
+
+As a developer,
+I want to create an API endpoint that generates a CSV file of the user's budget data,
+So that users can download their financial records.
+
+**Acceptance Criteria:**
+1.  A protected API endpoint (e.g., `/export/csv`) is created.
+2.  The endpoint retrieves all income and expense entries for the authenticated user.
+3.  The endpoint formats the data into a valid CSV format with appropriate headers (Date, Category, Description, Income, Expense).
+4.  The endpoint returns the data as a downloadable file.
+
+---
+
+**Story 2.5: Frontend Export Button**
+
+As a user,
+I want to be able to download my budget data as a file,
+So that I can keep a local copy or use it in other applications.
+
+**Acceptance Criteria:**
+1.  An "Export to CSV" button is added to the dashboard UI.
+2.  Clicking the button calls the `/export/csv` API endpoint.
+3.  The browser prompts the user to download the generated CSV file.
+4.  The downloaded file is correctly formatted and contains the user's data.
+
+---
+
+**Epic 3 (Optional): Gamification and Enhanced User Experience**
+
+**Goal:** Implement the optional "Game Mode," including features like drag-and-drop, animations, and progress tracking.
+
+---
+
+**Story 3.1: "Game Mode" Toggle**
+
+As a user,
+I want to be able to turn "Game Mode" on or off,
+So that I can choose the experience that best suits me.
+
+**Acceptance Criteria:**
+1.  A user setting for "Game Mode" is added to the user profile in the database.
+2.  A toggle switch is available in the application's settings UI.
+3.  The application's UI conditionally renders gamified features based on this setting.
+
+---
+
+**Story 3.2: Drag-and-Drop Entry**
 
 As a user in "Game Mode",
-I want to set financial goals (e.g., "Save $500 this month", "Spend less than $200 on groceries"),
-So that I have clear targets to work towards and track my progress.
+I want to drag an icon to a drop zone to start adding an expense or income,
+So that data entry is faster and more interactive.
 
 **Acceptance Criteria:**
-1. Users can define a financial goal with a target amount and a timeframe.
-2. Goals are displayed on the dashboard when "Game Mode" is active.
-3. Progress towards goals is visually indicated (e.g., a progress bar).
-
-**Prerequisites:** Story 3.2
-
-**Story 3.4: Gamification - Achievement Pop-ups**
-
-As a user in "Game Mode",
-I want to receive achievement pop-ups when I reach a financial goal or milestone,
-So that I feel motivated and rewarded for my budgeting efforts.
-
-**Acceptance Criteria:**
-1. A visual pop-up notification appears when a user successfully meets a defined financial goal.
-2. The pop-up clearly states the achievement.
-3. Achievements are tracked and viewable in a dedicated section.
-
-**Prerequisites:** Story 3.3
+1.  A library like `svelte-dnd-action` is integrated into the project.
+2.  A selection of common category icons is displayed on the dashboard.
+3.  Dragging an icon to a designated drop zone opens the entry form with the category pre-selected.
+4.  This feature is only available when "Game Mode" is enabled.
 
 ---
 
-## Epic 4: Enhanced User Experience
+**Story 3.3: Add UI Animations**
 
-**Expanded Goal:** To elevate the user experience by implementing key differentiators like a drag-and-drop interface, engaging animations, and customizable categories, making the application more intuitive and visually appealing.
+As a user in "Game Mode",
+I want to see simple animations when I complete actions,
+So that the application feels more alive and provides satisfying feedback.
 
-**Story Breakdown:**
+**Acceptance criteria:**
+1.  Svelte's built-in animation modules are utilized.
+2.  A subtle animation is triggered when a new item is added to the income/expense list.
+3.  A confirmation animation (e.g., a brief flash or a checkmark) appears when an entry is successfully saved.
+4.  These animations are only present when "Game Mode" is enabled.
 
-**Story 4.1: Drag-and-Drop for Entries**
+---
 
-As a user,
-I want to be able to drag and drop income/expense items onto categories,
-So that I can add new entries in a more intuitive and faster way.
+**Story 3.4: Financial Goal Setting**
 
-**Acceptance Criteria:**
-1. A dedicated area or element is available for initiating a drag action for a new entry.
-2. Users can drag this element and drop it onto a category.
-3. Upon dropping, a modal or form appears to enter the amount and description.
-4. The new entry is created and associated with the target category.
-
-**Prerequisites:** Epic 2 Completion
-
-**Story 4.2: Engaging Animations**
-
-As a user,
-I want to see simple and fun animations when I add or update entries,
-So that I get immediate visual feedback and a more engaging experience.
+As a user in "Game Mode",
+I want to set a simple financial goal, like a monthly savings target,
+So that I can track my progress and stay motivated.
 
 **Acceptance Criteria:**
-1. An animation (e.g., a subtle bounce or fade-in) is triggered when a new income/expense entry is added.
-2. An animation is triggered when a financial goal is completed.
-3. Animations are smooth and do not negatively impact performance.
+1.  The database is updated to store user-defined goals.
+2.  A UI is created for the user to set or update their primary financial goal.
+3.  A simple progress bar or visual indicator is added to the dashboard, showing progress towards the active goal.
+4.  This feature is only available when "Game Mode" is enabled.
 
-**Prerequisites:** Epic 2 Completion
+---
 
-**Story 4.3: Customizable Category Icons**
+**Story 3.5: Achievements and Badges**
 
-As a user,
-I want to be able to assign icons or emojis to my categories,
-So that I can personalize my dashboard and quickly identify categories visually.
+As a user in "Game Mode",
+I want to earn badges for reaching financial milestones,
+So that I feel a sense of accomplishment and recognition.
 
 **Acceptance Criteria:**
-1. When creating or editing a category, users can select an icon or emoji from a predefined list.
-2. The selected icon/emoji is displayed next to the category name on the dashboard and in lists.
-3. The interface for selecting icons/emojis is user-friendly.
-
-**Prerequisites:** Story 2.1
+1.  A system for defining and awarding badges is created (e.g., "First Week Done!", "Savings Goal Met!").
+2.  Backend logic is implemented to award badges when criteria are met.
+3.  A non-intrusive notification appears when a user earns a badge.
+4.  A section in the user's profile displays their collection of earned badges.
+5.  This feature is only available when "Game Mode" is enabled.
 
 ---
 
@@ -290,7 +272,7 @@ So that I can personalize my dashboard and quickly identify categories visually.
 
 **Story Format:**
 
-```
+`'
 **Story [EPIC.N]: [Story Title]**
 
 As a [user type],
@@ -303,7 +285,7 @@ So that [benefit/value].
 3. [etc.]
 
 **Prerequisites:** [Dependencies on previous stories, if any]
-```
+`'
 
 **Story Requirements:**
 

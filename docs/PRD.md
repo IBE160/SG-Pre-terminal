@@ -1,9 +1,8 @@
 # Excelence Product Requirements Document (PRD)
 
 **Author:** BIP
-**Date:** 2025-11-06
+**Date:** 2025-11-07
 **Project Level:** 2
-**Target Scale:** Medium project - multiple epics, 10+ stories
 
 ---
 
@@ -11,13 +10,15 @@
 
 ### Goals
 
-- Simplify financial management for individuals and small organizations.
-- Empower non-technical users with an intuitive and engaging budgeting experience.
-- Foster financial literacy and collaboration through an improved overview of economic situation.
+*   **Simplify Financial Management:** Provide an intuitive and visually engaging budgeting tool for users unfamiliar with complex spreadsheets.
+*   **Enhance User Engagement:** Incorporate gamification and a modern, interactive interface to make budgeting an enjoyable experience.
+*   **Deliver Core Budgeting Functionality:** Ensure users can track income/expenses, categorize transactions, view visual summaries, and export their data.
+*   **Ensure Secure Access:** Implement robust user authentication to protect user's financial data.
+*   **Provide Desktop-First Experience:** Deliver a full-featured application for desktop users as the primary platform for the MVP.
 
 ### Background Context
 
-Excelence addresses the common challenge faced by individuals and small organizations who find traditional budgeting methods, often reliant on complex spreadsheets, daunting and unengaging. There is a clear need for a simplified, intuitive, and visually appealing financial management tool that fosters financial literacy and provides a clear overview of economic situations. Key insights from discovery indicate that users desire an an enjoyable budgeting experience, enhanced by features like gamification and real-time collaboration, to make financial management less intimidating and more insightful.
+Excelence aims to address the common challenge of budgeting for individuals and small organizations who lack expertise in traditional spreadsheet software like Excel. The primary problem is that existing tools can be intimidating and complex, leading to poor financial tracking or avoidance of budgeting altogether. By offering a simplified, visually-driven, and gamified user experience, Excelence will empower non-technical users to gain a clear and immediate overview of their financial situation. The project's timing is opportune, as there is a growing demand for user-friendly financial technology that fosters financial literacy and confidence.
 
 ---
 
@@ -25,65 +26,74 @@ Excelence addresses the common challenge faced by individuals and small organiza
 
 ### Functional Requirements
 
-- **FR001:** Users must be able to register for a new account and log in securely.
-- **FR002:** Users can create, edit, and delete custom categories for income and expenses.
-- **FR003:** Users can add, edit, and delete income entries, assigning them to a category.
-- **FR004:** Users can add, edit, and delete expense entries, assigning them to a category.
-- **FR005:** The system shall automatically calculate and display the current financial status (e.g., total income, total expenses, balance).
-- **FR006:** The system shall display a simple visual representation of income vs. expenses, such as a bar or pie chart.
-- **FR007:** Users can export their current budget data to a CSV or Excel file.
+*   **FR001:** Users must be able to register for a new account.
+*   **FR002:** Users must be able to log in and log out of their account.
+*   **FR003:** The system must allow users to create, read, update, and delete income and expense entries.
+*   **FR004:** The system must allow users to create, read, update, and delete custom categories for income and expenses.
+*   **FR005:** The system must automatically calculate and display the user's current financial status (e.g., total income, total expenses, net balance).
+*   **FR006:** The system must provide a visual representation of income and expenses using simple graphs (e.g., bar or pie charts).
+*   **FR007:** Users must be able to export their budget data to a CSV or Excel file.
+*   **FR008:** The application must provide a full-featured view on desktop browsers.
 
 ### Non-Functional Requirements
 
-- **NFR001:** The application must be accessible and fully functional on modern desktop web browsers.
-- **NFR002:** User authentication and data storage must be secure, utilizing Supabase's built-in security features.
-- **NFR003:** The user interface shall be intuitive and require minimal instruction for a non-technical user.
-- **NFR004:** The application will initially be designed for desktop-first use; a simplified mobile view is not part of the MVP.
+*   **NFR001:** The application must be intuitive and easy to use for non-technical users.
+*   **NFR002:** The application must provide a secure environment for user's financial data.
+*   **NFR003:** The application should be responsive and performant, with minimal loading times for core features.
 
 ---
 
 ## User Journeys
 
-**Primary User Journey: First-Time Budget Setup**
+**User Journey: Adding a New Expense**
 
-1.  **Registration:** A new user, Alex, navigates to the Excelence homepage and signs up for an account using their email and a password.
-2.  **Login:** Alex logs in and is greeted by a clean, empty dashboard.
-3.  **Category Creation:** Alex navigates to the 'Categories' section and creates several income categories (e.g., "Salary," "Freelance") and expense categories (e.g., "Rent," "Groceries," "Transport").
-4.  **Data Entry:** Alex adds their monthly salary under the "Salary" category and then adds several expenses for the month, such as rent and groceries.
-5.  **Dashboard Review:** Alex returns to the dashboard and sees the summary calculations and a simple graph that visually represents their income and expenses for the month.
-6.  **Export:** Satisfied with the overview, Alex uses the export feature to download a CSV file of their budget for their records.
-
----
-
-## UX Design Principles
-
-- **Simplicity First:** Prioritize a clean, uncluttered interface that avoids the complexity of traditional spreadsheets. Every feature should be intuitive and easy to find.
-- **Engagement Through Interaction:** Use animations, visual feedback, and interactive elements (like drag-and-drop) to make the budgeting process engaging and enjoyable.
-- **Visual Clarity:** Present financial data in a way that is easy to understand at a glance. Graphs and visual cues should empower users, not overwhelm them.
-- **Gamification for Motivation:** Incorporate optional game-like elements, such as goals and achievements, to encourage consistent user engagement and positive financial habits.
+1.  **Login:** The user navigates to the application and logs in with their credentials.
+2.  **Dashboard View:** The user is presented with their main dashboard, showing a summary of their current financial status, including a graph.
+3.  **Initiate Action:** The user clicks on an "Add Expense" button or drags an expense icon to a designated area.
+4.  **Enter Details:** A form or modal appears, prompting the user to enter the expense amount, select a category, add an optional description, and confirm the date.
+5.  **Confirm and Save:** The user submits the form.
+6.  **Visual Feedback:** The system provides immediate visual feedback, such as an animation, confirming the expense has been added.
+7.  **Dashboard Update:** The dashboard automatically updates to reflect the new expense. The graph and financial summary figures are refreshed in real-time.
 
 ---
 
-## User Interface Design Goals
+## UX and UI Vision
 
-- A central dashboard that provides an immediate, high-level overview of the user's financial status.
-- An intuitive and streamlined process for adding and categorizing income and expenses.
-- Simple, aesthetically pleasing, and easy-to-read charts for data visualization.
-- A consistent and predictable navigation structure throughout the application.
+### UX Principles
+
+*   **Simplicity First:** The interface should be clean, uncluttered, and intuitive, avoiding financial jargon.
+*   **Engaging and Fun:** Use animations and icons to make the budgeting process enjoyable. Gamification elements should be optional for the user.
+*   **Clear and Immediate Feedback:** Users should always understand the result of their actions through clear visual cues.
+
+### Platform & Screens
+
+*   **Target Platform:** Desktop web browser (primary for MVP).
+*   **Core Screens:**
+    *   Login/Registration Page
+    *   Main Dashboard (with graph and financial summary)
+    *   Transaction Entry/Edit Form (for income and expenses)
+    *   Category Management Page
+
+### Design Constraints
+
+*   No existing design system to adhere to, allowing for creative freedom.
+*   The UI should be responsive enough to function on various desktop screen sizes.
 
 ---
 
 ## Epic List
 
-- **Epic 1: Foundation & User Authentication**
-  - Goal: Set up the core technical infrastructure, including the database, backend API, and frontend application, and implement secure user registration and login.
-  - Estimated Stories: 5-7
-- **Epic 2: Core Budgeting Functionality**
-  - Goal: Implement the primary features for managing a budget, including creating categories, tracking income and expenses, and viewing a summary dashboard with calculations and graphs.
-  - Estimated Stories: 6-8
-- **Epic 3: Data Export & Gamification MVP**
-  - Goal: Allow users to export their budget data and introduce the initial gamification elements, such as a "Game Mode" toggle and achievement pop-ups for reaching financial goals.
-  - Estimated Stories: 4-6
+*   **Epic 1: Project Foundation & Core Budgeting**
+    *   **Goal:** Establish the project's technical foundation, implement user authentication, and deliver the core functionalities for tracking income, expenses, and categories.
+    *   **Estimated Story Count:** 8-12
+
+*   **Epic 2: Dashboard, Visualizations, and Data Export**
+    *   **Goal:** Develop the main dashboard, integrate charting libraries for visual representation of financial data, and implement the data export feature.
+    *   **Estimated Story Count:** 5-8
+
+*   **Epic 3 (Optional): Gamification and Enhanced User Experience**
+    *   **Goal:** Implement the optional "Game Mode," including features like drag-and-drop, animations, and progress tracking.
+    *   **Estimated Story Count:** 4-6
 
 > **Note:** Detailed epic breakdown with full story specifications is available in [epics.md](./epics.md)
 
@@ -91,10 +101,12 @@ Excelence addresses the common challenge faced by individuals and small organiza
 
 ## Out of Scope
 
-The following features are explicitly out of scope for the initial MVP but may be considered for future releases:
+The following features and capabilities are explicitly excluded from the initial MVP of Excelence:
 
-- Importing budget data from Excel/CSV files.
-- An advanced dashboard with sophisticated, customizable graphs.
-- Support for managing multiple budgets or organizations from a single account.
-- Detailed transaction tracking beyond simple income/expense entries.
-- A fully responsive, feature-complete mobile application view.
+*   **Data Import:** Users will not be able to import budget data from Excel/CSV files in this version.
+*   **Advanced Dashboard:** The dashboard will be simple and focused; advanced analytics, complex graphs, and customizable widgets are deferred.
+*   **Multi-Entity Management:** The application will support a single budget per user. Managing finances for multiple individuals or organizations is out of scope.
+*   **Detailed Transactions:** The focus is on high-level income and expense tracking, not detailed, bank-style transaction logging.
+*   **Mobile-Specific UI:** While the application may be viewable on a mobile browser, a dedicated or simplified mobile-first user interface is not part of the MVP.
+*   **Forecasting and Complex Analysis:** Any features related to financial forecasting, trend analysis, or complex calculations are excluded.
+*   **Monetization Features:** The MVP will not include any subscription models, payment gateways, or premium features.
