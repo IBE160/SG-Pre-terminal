@@ -238,6 +238,54 @@ So that I feel motivated and rewarded for my budgeting efforts.
 
 ---
 
+## Epic 4: Enhanced User Experience
+
+**Expanded Goal:** To elevate the user experience by implementing key differentiators like a drag-and-drop interface, engaging animations, and customizable categories, making the application more intuitive and visually appealing.
+
+**Story Breakdown:**
+
+**Story 4.1: Drag-and-Drop for Entries**
+
+As a user,
+I want to be able to drag and drop income/expense items onto categories,
+So that I can add new entries in a more intuitive and faster way.
+
+**Acceptance Criteria:**
+1. A dedicated area or element is available for initiating a drag action for a new entry.
+2. Users can drag this element and drop it onto a category.
+3. Upon dropping, a modal or form appears to enter the amount and description.
+4. The new entry is created and associated with the target category.
+
+**Prerequisites:** Epic 2 Completion
+
+**Story 4.2: Engaging Animations**
+
+As a user,
+I want to see simple and fun animations when I add or update entries,
+So that I get immediate visual feedback and a more engaging experience.
+
+**Acceptance Criteria:**
+1. An animation (e.g., a subtle bounce or fade-in) is triggered when a new income/expense entry is added.
+2. An animation is triggered when a financial goal is completed.
+3. Animations are smooth and do not negatively impact performance.
+
+**Prerequisites:** Epic 2 Completion
+
+**Story 4.3: Customizable Category Icons**
+
+As a user,
+I want to be able to assign icons or emojis to my categories,
+So that I can personalize my dashboard and quickly identify categories visually.
+
+**Acceptance Criteria:**
+1. When creating or editing a category, users can select an icon or emoji from a predefined list.
+2. The selected icon/emoji is displayed next to the category name on the dashboard and in lists.
+3. The interface for selecting icons/emojis is user-friendly.
+
+**Prerequisites:** Story 2.1
+
+---
+
 ## Story Guidelines Reference
 
 **Story Format:**
