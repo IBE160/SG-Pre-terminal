@@ -34,6 +34,8 @@ Each epic includes:
 
 **Story 1.1: Backend and Database Setup**
 
+**Covers:** Foundational Setup
+
 As a developer,
 I want to set up the FastAPI backend and connect it to a Supabase project,
 So that we have a foundational server and database to build upon.
@@ -48,6 +50,8 @@ So that we have a foundational server and database to build upon.
 
 **Story 1.2: User Authentication Endpoints**
 
+**Covers:** FR001, FR002
+
 As a developer,
 I want to create API endpoints for user registration and login,
 So that users can securely create accounts and sign in.
@@ -61,6 +65,8 @@ So that users can securely create accounts and sign in.
 ---
 
 **Story 1.3: Frontend Project Setup & Authentication UI**
+
+**Covers:** FR001, FR002, FR008
 
 As a user,
 I want to see a registration and login page,
@@ -77,6 +83,8 @@ So that I can access the application.
 
 **Story 1.4: Category Management API**
 
+**Covers:** FR004
+
 As a developer,
 I want to build CRUD API endpoints for managing categories,
 So that the frontend can interact with user-defined categories.
@@ -91,6 +99,8 @@ So that the frontend can interact with user-defined categories.
 
 **Story 1.5: Income/Expense Management API**
 
+**Covers:** FR003
+
 As a developer,
 I want to build CRUD API endpoints for managing income and expense entries,
 So that the frontend can manage financial records.
@@ -104,6 +114,8 @@ So that the frontend can manage financial records.
 ---
 
 **Story 1.6: Basic Frontend for Budget Management**
+
+**Covers:** FR003, FR004, FR008
 
 As a user,
 I want to create, view, edit, and delete my income, expenses, and categories,
@@ -125,6 +137,8 @@ So that I can manage my budget.
 
 **Story 2.1: Dashboard Data API Endpoint**
 
+**Covers:** FR005, FR006
+
 As a developer,
 I want to create an API endpoint that provides aggregated financial summary data,
 So that the frontend has a single source for dashboard information.
@@ -139,6 +153,8 @@ So that the frontend has a single source for dashboard information.
 
 **Story 2.2: Frontend Dashboard Layout**
 
+**Covers:** FR005, FR008
+
 As a user,
 I want to see a central dashboard page when I log in,
 So that I can get an immediate overview of my financial situation.
@@ -151,6 +167,8 @@ So that I can get an immediate overview of my financial situation.
 ---
 
 **Story 2.3: Integrate Charting Library and Display Graph**
+
+**Covers:** FR006, FR008
 
 As a user,
 I want to see a simple graph of my finances,
@@ -166,6 +184,8 @@ So that I can visually understand where my money is going.
 
 **Story 2.4: Data Export API Endpoint**
 
+**Covers:** FR007
+
 As a developer,
 I want to create an API endpoint that generates a CSV file of the user's budget data,
 So that users can download their financial records.
@@ -179,6 +199,8 @@ So that users can download their financial records.
 ---
 
 **Story 2.5: Frontend Export Button**
+
+**Covers:** FR007, FR008
 
 As a user,
 I want to be able to download my budget data as a file,
@@ -200,6 +222,8 @@ So that I can keep a local copy or use it in other applications.
 
 **Story 3.1: "Game Mode" Toggle**
 
+**Covers:** N/A (Optional Gamification)
+
 As a user,
 I want to be able to turn "Game Mode" on or off,
 So that I can choose the experience that best suits me.
@@ -212,6 +236,8 @@ So that I can choose the experience that best suits me.
 ---
 
 **Story 3.2: Drag-and-Drop Entry**
+
+**Covers:** N/A (Optional Gamification)
 
 As a user in "Game Mode",
 I want to drag an icon to a drop zone to start adding an expense or income,
@@ -227,6 +253,8 @@ So that data entry is faster and more interactive.
 
 **Story 3.3: Add UI Animations**
 
+**Covers:** N/A (Optional Gamification)
+
 As a user in "Game Mode",
 I want to see simple animations when I complete actions,
 So that the application feels more alive and provides satisfying feedback.
@@ -241,6 +269,8 @@ So that the application feels more alive and provides satisfying feedback.
 
 **Story 3.4: Financial Goal Setting**
 
+**Covers:** N/A (Optional Gamification)
+
 As a user in "Game Mode",
 I want to set a simple financial goal, like a monthly savings target,
 So that I can track my progress and stay motivated.
@@ -254,6 +284,8 @@ So that I can track my progress and stay motivated.
 ---
 
 **Story 3.5: Achievements and Badges**
+
+**Covers:** N/A (Optional Gamification)
 
 As a user in "Game Mode",
 I want to earn badges for reaching financial milestones,
