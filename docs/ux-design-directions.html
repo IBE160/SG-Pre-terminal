@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excelence - Design Directions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-8">
+        <header class="mb-12 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 font-inter">Excelence Design Directions</h1>
+            <p class="text-xl text-gray-600 mt-2 font-inter">A guide to the typography, spacing, and component styles for the Excelence application.</p>
+        </header>
+
+        <!-- Theme 1: Main Application -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 font-inter">Theme 1: Main Application</h2>
+
+            <!-- Typography -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 font-inter">Typography</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg font-medium mb-2 font-inter">Font Family: <span class="font-bold">Inter</span></p>
+                    <p class="text-gray-600 mb-4">Used for all dashboard, table, and settings screens.</p>
+                    <div class="space-y-4 font-inter">
+                        <p class="font-black text-4xl">Heading 1 (font-black)</p>
+                        <p class="font-bold text-3xl">Heading 2 (font-bold)</p>
+                        <p class="font-semibold text-2xl">Heading 3 (font-semibold)</p>
+                        <p class="font-medium text-xl">Medium Text (font-medium)</p>
+                        <p class="font-normal text-lg">Body Text (font-normal)</p>
+                        <p class="text-sm text-gray-500">Small/Subtle Text (text-sm)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Border Radius -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 font-inter">Border Radius</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <div class="h-24 bg-blue-200 rounded-md flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-inter">Default (0.5rem)</p>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-blue-200 rounded-lg flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-inter">Large (1rem)</p>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-blue-200 rounded-xl flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-inter">Extra Large (1.5rem)</p>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-blue-200 rounded-full flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-inter">Full</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theme 2: Modals -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-green-500 font-jakarta">Theme 2: Modals & Creation Flows</h2>
+
+            <!-- Typography -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 font-jakarta">Typography</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg font-medium mb-2 font-jakarta">Font Family: <span class="font-bold">Plus Jakarta Sans</span></p>
+                    <p class="text-gray-600 mb-4">Used for modals like "Create Goal" and "Create Category".</p>
+                    <div class="space-y-4 font-jakarta">
+                        <p class="font-black text-4xl">Heading 1 (font-black)</p>
+                        <p class="font-bold text-3xl">Heading 2 (font-bold)</p>
+                        <p class="font-medium text-xl">Medium Text (font-medium)</p>
+                        <p class="font-normal text-lg">Body Text (font-normal)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Border Radius -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 font-jakarta">Border Radius</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <div class="h-24 bg-green-200 rounded-xl flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-jakarta">Default (1rem)</p>
+                        </div>
+                         <div>
+                            <div class="h-24 bg-green-200 rounded-lg flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-jakarta">Large (2rem)</p>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-green-200 rounded-xl flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-jakarta">Extra Large (3rem)</p>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-green-200 rounded-full flex items-center justify-center"></div>
+                            <p class="mt-2 text-sm font-medium font-jakarta">Full</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
