@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Budgeting Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A90E2",
+                        "secondary": "#F5A623",
+                        "background-light": "#F4F7FA",
+                        "background-dark": "#1A202C",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#2D3748",
+                        "text-light": "#4A4A4A",
+                        "text-dark": "#E2E8F0",
+                        "subtext-light": "#A0AEC0",
+                        "subtext-dark": "#718096",
+                        "border-light": "#E2E8F0",
+                        "border-dark": "#4A5568",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-card-light dark:bg-card-dark p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary text-white rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">account_balance_wallet</span>
+</div>
+<h1 class="text-xl font-bold text-text-light dark:text-text-dark">FinFlow</h1>
+</div>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA3zy3GupTdNw7lNn72lmavyUMfRaiJIBn4p7xE7yEawlsJX_2G7KChY6Pq4BycRLxhBFSZBMIhTCFcmWrop07agbxmSeoVnRO6v77lWDyFfX8OiokSaDuR88IoY8XzfpgmItm7_c6AhrGw7BD2X9x19NvISG_n49iWY0giW6YuFG0WSNViRLAvuV9kpIHhkkU386v0yQRiA-lO3hFZ5mtKGRPvgzwaKjRLk-yfQ6uu-DAO8WPlC8wDHqoN3QLYxtwJXB_AFA36rU");'></div>
+<div class="flex flex-col">
+<h2 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Alex Doe</h2>
+<p class="text-subtext-light dark:text-subtext-dark text-sm font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<p class="text-sm font-medium leading-normal">Spreadsheet</p>
+</a>
+<div class="px-3 py-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">joystick</span>
+<p class="text-sm font-medium leading-normal">Game Mode</p>
+</div>
+<button class="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-card-dark" type="button">
+<span class="sr-only">Enable Game Mode</span>
+<span class="inline-block w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></span>
+<span class="inline-block w-4 h-4 transform bg-white dark:bg-subtext-dark rounded-full transition-transform absolute top-1 left-1 translate-x-5"></span>
+</button>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<header class="mb-8">
+<h1 class="text-text-light dark:text-text-dark text-3xl font-black leading-tight">Settings</h1>
+<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">Manage your account and app preferences.</p>
+</header>
+<div class="space-y-10">
+<section>
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark mb-1">Profile</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-6">This information will be displayed on your profile.</p>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm space-y-6">
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA3zy3GupTdNw7lNn72lmavyUMfRaiJIBn4p7xE7yEawlsJX_2G7KChY6Pq4BycRLxhBFSZBMIhTCFcmWrop07agbxmSeoVnRO6v77lWDyFfX8OiokSaDuR88IoY8XzfpgmItm7_c6AhrGw7BD2X9x19NvISG_n49iWY0giW6YuFG0WSNViRLAvuV9kpIHhkkU386v0yQRiA-lO3hFZ5mtKGRPvgzwaKjRLk-yfQ6uu-DAO8WPlC8wDHqoN3QLYxtwJXB_AFA36rU");'></div>
+<div class="flex gap-3 items-center">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal gap-2 shadow-sm hover:shadow-md transition-shadow">
+                                    Change Avatar
+                                </button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark text-text-light dark:text-text-dark text-sm font-bold leading-normal gap-2 shadow-sm hover:shadow-md transition-shadow">
+                                    Remove
+                                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-2" for="fullName">Full Name</label>
+<input class="w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark focus:ring-2 focus:ring-primary focus:border-primary" id="fullName" type="text" value="Alex Doe"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-2" for="email">Email Address</label>
+<input class="w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark focus:ring-2 focus:ring-primary focus:border-primary" id="email" type="email" value="alex.doe@email.com"/>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark mb-1">Preferences</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-6">Customize your experience.</p>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm divide-y divide-border-light dark:divide-border-dark">
+<div class="py-4 flex items-center justify-between">
+<div>
+<p class="font-medium">Currency</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Choose your preferred currency for budgeting.</p>
+</div>
+<div class="relative">
+<select class="appearance-none cursor-pointer bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg pl-4 pr-10 py-2 text-sm font-medium text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary">
+<option>GBP (£)</option>
+<option>EUR (€)</option>
+<option selected="">USD ($)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-subtext-light dark:text-subtext-dark">
+<span class="material-symbols-outlined text-base">expand_more</span>
+</div>
+</div>
+</div>
+<div class="py-4 flex items-center justify-between">
+<div>
+<p class="font-medium">Email Notifications</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Receive summaries and alerts in your inbox.</p>
+</div>
+<button class="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-card-dark" type="button">
+<span class="sr-only">Enable Notifications</span>
+<span class="inline-block w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></span>
+<span class="inline-block w-4 h-4 transform bg-white dark:bg-subtext-dark rounded-full transition-transform absolute top-1 left-1 translate-x-5"></span>
+</button>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark mb-1">Security</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-6">Keep your account secure.</p>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium">Change Password</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">It's a good idea to use a strong password.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark text-text-light dark:text-text-dark text-sm font-bold leading-normal gap-2 shadow-sm hover:shadow-md transition-shadow">
+                                Update Password
+                            </button>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark mb-1">Theme</h2>
+<p class="text-subtext-light dark:text-subtext-dark mb-6">Choose how FinFlow looks to you.</p>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<button class="p-4 rounded-lg border-2 border-primary ring-2 ring-primary/50 text-left">
+<span class="material-symbols-outlined text-primary mb-2">light_mode</span>
+<p class="font-bold">Light</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Default light theme.</p>
+</button>
+<button class="p-4 rounded-lg border-2 border-border-light dark:border-border-dark hover:border-primary text-left">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark mb-2">dark_mode</span>
+<p class="font-bold">Dark</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Comfortable for your eyes.</p>
+</button>
+<button class="p-4 rounded-lg border-2 border-border-light dark:border-border-dark hover:border-primary text-left">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark mb-2">desktop_windows</span>
+<p class="font-bold">System</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Follow your device's theme.</p>
+</button>
+</div>
+</div>
+</section>
+<div class="flex justify-end pt-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal gap-2 shadow-sm hover:shadow-md transition-shadow">
+                        Save Changes
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
