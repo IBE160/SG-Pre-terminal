@@ -1,14 +1,14 @@
-# Excelence - Epic Breakdown
+# Excelence - Epic Breakdown (Aligned with UX Specification)
 
 **Author:** BIP
-**Date:** 2025-11-07
+**Date:** 2025-11-28
 **Project Level:** 2
 
 ---
 
 ## Overview
 
-This document provides the detailed epic breakdown for Excelence, expanding on the high-level epic list in the [PRD](./PRD.md).
+This document provides the detailed epic breakdown for Excelence, expanded from the PRD and now aligned with the UX Design Specification and Stitch mockups.
 
 Each epic includes:
 
@@ -59,12 +59,12 @@ So that users can securely create accounts and sign in.
 **Acceptance Criteria:**
 1.  An endpoint for user registration (`/register`) is created that securely hashes passwords.
 2.  An endpoint for user login (`/login`) is created that returns a JWT token upon success.
-3.  Supabase Auth is integrated for handling user management.
+3.  Error handling for authentication is implemented.
 4.  API endpoints are tested and functional.
 
 ---
 
-**Story 1.3: Frontend Project Setup & Authentication UI**
+**Story 1.3: Frontend Project Setup & Login/Registration UI**
 
 **Covers:** FR001, FR002, FR008
 
@@ -74,10 +74,12 @@ So that I can access the application.
 
 **Acceptance Criteria:**
 1.  A new SvelteKit project is initialized.
-2.  Basic UI components for registration and login forms are created.
-3.  The UI is connected to the backend authentication endpoints.
-4.  Users can successfully register and log in, and the app stores the auth token.
-5.  A basic route protection mechanism is in place to prevent access to protected areas.
+2.  UI components for registration and login forms are created, matching the `login_/_registration` mockup.
+3.  The UI includes a tabbed interface to switch between "Sign Up" and "Log In" forms.
+4.  The UI is connected to the backend authentication endpoints.
+5.  Users can successfully register and log in, and the app stores the auth token.
+6.  A basic route protection mechanism is in place to prevent access to protected areas.
+> **Note:** The "Continue with Google" button from the mockup is out of scope for this story.
 
 ---
 
@@ -113,19 +115,50 @@ So that the frontend can manage financial records.
 
 ---
 
-**Story 1.6: Basic Frontend for Budget Management**
+**Story 1.6: Build Core App Layout with Sidebar Navigation**
 
-**Covers:** FR003, FR004, FR008
+**Covers:** FR008
 
 As a user,
-I want to create, view, edit, and delete my income, expenses, and categories,
-So that I can manage my budget.
+I want to see the main application layout with a consistent sidebar,
+So that I can navigate between different sections of the app.
 
 **Acceptance Criteria:**
-1.  A UI is created for managing categories (create, view, edit, delete).
-2.  A UI is created for adding, editing, and deleting income and expense entries.
-3.  The UI is connected to the corresponding backend APIs.
-4.  The application displays a simple, real-time list of income and expenses.
+1. The main two-column application shell is created.
+2. The sidebar component is built to match the mockups, including the logo, user profile section, and navigation links.
+3. Navigation links correctly route to the placeholder pages for Dashboard, Spreadsheet, Achievements, and Settings.
+4. The active navigation link is visually highlighted as shown in the mockups.
+
+---
+
+**Story 1.7: Build Spreadsheet View & Transaction Management**
+
+**Covers:** FR003, FR008
+
+As a user,
+I want a spreadsheet page to view all my transactions,
+So that I can see a detailed history of my finances.
+
+**Acceptance Criteria:**
+1. The Spreadsheet page is built to match the `main_dashboard_spreadsheet` mockup.
+2. The page connects to the backend to display a list of all transactions.
+3. On hovering a transaction row, "Edit" and "Delete" buttons appear as specified in the UX patterns.
+4. The "New Transaction" button is present and will later be linked to its modal.
+
+---
+
+**Story 1.8: Build 'Create Category' Modal**
+
+**Covers:** FR004, FR008
+
+As a user,
+I want to create new categories for my transactions,
+So that I can organize my spending.
+
+**Acceptance Criteria:**
+1. A modal for creating new categories is built to match the `create_category` mockup.
+2. The form within the modal connects to the category creation API endpoint.
+3. Upon successful creation, the modal closes and the user receives feedback.
 
 ---
 
@@ -146,7 +179,7 @@ So that the frontend has a single source for dashboard information.
 **Acceptance Criteria:**
 1.  A protected API endpoint (e.g., `/dashboard/summary`) is created.
 2.  The endpoint returns the current user's total income, total expenses, and net balance for a default period (e.g., current month).
-3.  The endpoint also returns data structured for use in a charting library (e.g., expenses grouped by category).
+3.  The endpoint also returns data structured for use in a donut chart (expenses grouped by category).
 4.  The endpoint is tested for performance and accuracy.
 
 ---
@@ -161,7 +194,7 @@ So that I can get an immediate overview of my financial situation.
 
 **Acceptance Criteria:**
 1.  A new, protected route for the dashboard is created in the SvelteKit application.
-2.  The dashboard page has clear placeholders for a financial summary, a main graph, and a list of recent transactions.
+2.  The dashboard page is built to match the `main_dashboard_default` mockup, including the stat cards, goals widget, and recent transactions list.
 3.  The dashboard UI is connected to the `/dashboard/summary` endpoint and displays the total income, expenses, and balance.
 
 ---
@@ -177,7 +210,7 @@ So that I can visually understand where my money is going.
 **Acceptance Criteria:**
 1.  A charting library (e.g., Chart.js) is integrated into the SvelteKit project.
 2.  The graph component on the dashboard is connected to the summary API endpoint.
-3.  A simple pie or bar chart is displayed, showing the breakdown of expenses by category.
+3.  A Donut Chart is displayed, showing the breakdown of expenses by category, as seen in the mockup.
 4.  The chart is visually clear and easy to understand.
 
 ---
@@ -207,7 +240,7 @@ I want to be able to download my budget data as a file,
 So that I can keep a local copy or use it in other applications.
 
 **Acceptance Criteria:**
-1.  An "Export to CSV" button is added to the dashboard UI.
+1.  An "Export to CSV" button is added to the UI (e.g., on the Spreadsheet page).
 2.  Clicking the button calls the `/export/csv` API endpoint.
 3.  The browser prompts the user to download the generated CSV file.
 4.  The downloaded file is correctly formatted and contains the user's data.
@@ -230,44 +263,12 @@ So that I can choose the experience that best suits me.
 
 **Acceptance Criteria:**
 1.  A user setting for "Game Mode" is added to the user profile in the database.
-2.  A toggle switch is available in the application's settings UI.
+2.  A toggle switch is available in the sidebar and the main Settings page, as per the mockups.
 3.  The application's UI conditionally renders gamified features based on this setting.
 
 ---
 
-**Story 3.2: Drag-and-Drop Entry**
-
-**Covers:** N/A (Optional Gamification)
-
-As a user in "Game Mode",
-I want to drag an icon to a drop zone to start adding an expense or income,
-So that data entry is faster and more interactive.
-
-**Acceptance Criteria:**
-1.  A library like `svelte-dnd-action` is integrated into the project.
-2.  A selection of common category icons is displayed on the dashboard.
-3.  Dragging an icon to a designated drop zone opens the entry form with the category pre-selected.
-4.  This feature is only available when "Game Mode" is enabled.
-
----
-
-**Story 3.3: Add UI Animations**
-
-**Covers:** N/A (Optional Gamification)
-
-As a user in "Game Mode",
-I want to see simple animations when I complete actions,
-So that the application feels more alive and provides satisfying feedback.
-
-**Acceptance criteria:**
-1.  Svelte's built-in animation modules are utilized.
-2.  A subtle animation is triggered when a new item is added to the income/expense list.
-3.  A confirmation animation (e.g., a brief flash or a checkmark) appears when an entry is successfully saved.
-4.  These animations are only present when "Game Mode" is enabled.
-
----
-
-**Story 3.4: Financial Goal Setting**
+**Story 3.2: Financial Goal Setting**
 
 **Covers:** N/A (Optional Gamification)
 
@@ -277,13 +278,13 @@ So that I can track my progress and stay motivated.
 
 **Acceptance Criteria:**
 1.  The database is updated to store user-defined goals.
-2.  A UI is created for the user to set or update their primary financial goal.
-3.  A simple progress bar or visual indicator is added to the dashboard, showing progress towards the active goal.
+2.  A UI is created for the user to set or update their goals, matching the `Create Goal` modal mockup.
+3.  A simple progress bar or visual indicator is added to the dashboard, showing progress towards the active goal, as seen in the 'Your Goals' widget on the dashboard.
 4.  This feature is only available when "Game Mode" is enabled.
 
 ---
 
-**Story 3.5: Achievements and Badges**
+**Story 3.3: Achievements and Badges**
 
 **Covers:** N/A (Optional Gamification)
 
@@ -295,8 +296,60 @@ So that I feel a sense of accomplishment and recognition.
 1.  A system for defining and awarding badges is created (e.g., "First Week Done!", "Savings Goal Met!").
 2.  Backend logic is implemented to award badges when criteria are met.
 3.  A non-intrusive notification appears when a user earns a badge.
-4.  A section in the user's profile displays their collection of earned badges.
+4.  A page is created to display the user's collection of earned badges, matching the `main_dashboard_achievements` mockup.
 5.  This feature is only available when "Game Mode" is enabled.
+
+---
+
+**Epic 4: Settings Management**
+
+**Goal:** Allow users to manage their profile, preferences, and application theme.
+
+---
+
+**Story 4.1: Build Settings Page UI**
+
+**Covers:** FR008
+
+As a user,
+I want a dedicated settings page,
+so that I can manage my account and preferences.
+
+**Acceptance Criteria:**
+1. A new, protected route for Settings is created.
+2. The UI is built to match the `main_dashboard_settings` mockup, including sections for Profile, Preferences, Security, and Theme.
+3. All form elements (inputs, dropdowns, toggles, buttons) are present as shown in the mockup.
+
+---
+
+**Story 4.2: Implement Profile & Preference Updates**
+
+**Covers:** FR001
+
+As a user,
+I want to update my name, email, and currency,
+so that my information is accurate and relevant.
+
+**Acceptance Criteria:**
+1. API endpoints are created to handle updates for user profile (name, email) and preferences (currency).
+2. The forms on the Settings page are connected to these endpoints.
+3. A "Save Changes" button triggers the updates.
+4. The user receives feedback upon successful save or if an error occurs.
+
+---
+
+**Story 4.3: Implement Theme Switching**
+
+**Covers:** NFR001
+
+As a user,
+I want to switch between light, dark, and system themes,
+so that I can customize the app's appearance.
+
+**Acceptance Criteria:**
+1. Frontend logic is implemented to dynamically switch CSS classes for theme changes.
+2. The theme selection buttons on the Settings page are functional.
+3. The user's theme preference is saved and persists across sessions.
 
 ---
 
