@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Achievements - Budgeting Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A90E2",
+                        "secondary": "#F5A623",
+                        "background-light": "#F4F7FA",
+                        "background-dark": "#1A202C",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#2D3748",
+                        "text-light": "#4A4A4A",
+                        "text-dark": "#E2E8F0",
+                        "subtext-light": "#A0AEC0",
+                        "subtext-dark": "#718096",
+                        "border-light": "#E2E8F0",
+                        "border-dark": "#4A5568",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow-secondary': '0 0 15px 0 rgba(245, 166, 35, 0.5)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-card-light dark:bg-card-dark p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary text-white rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">account_balance_wallet</span>
+</div>
+<h1 class="text-xl font-bold text-text-light dark:text-text-dark">FinFlow</h1>
+</div>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA3zy3GupTdNw7lNn72lmavyUMfRaiJIBn4p7xE7yEawlsJX_2G7KChY6Pq4BycRLxhBFSZBMIhTCFcmWrop07agbxmSeoVnRO6v77lWDyFfX8OiokSaDuR88IoY8XzfpgmItm7_c6AhrGw7BD2X9x19NvISG_n49iWY0giW6YuFG0WSNViRLAvuV9kpIHhkkU386v0yQRiA-lO3hFZ5mtKGRPvgzwaKjRLk-yfQ6uu-DAO8WPlC8wDHqoN3QLYxtwJXB_AFA36rU");'></div>
+<div class="flex flex-col">
+<h2 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Alex Doe</h2>
+<p class="text-subtext-light dark:text-subtext-dark text-sm font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<p class="text-sm font-medium leading-normal">Spreadsheet</p>
+</a>
+<div class="px-3 py-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">joystick</span>
+<p class="text-sm font-medium leading-normal">Game Mode</p>
+</div>
+<button class="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-card-dark" type="button">
+<span class="sr-only">Enable Game Mode</span>
+<span class="inline-block w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></span>
+<span class="inline-block w-4 h-4 transform bg-white dark:bg-subtext-dark rounded-full transition-transform absolute top-1 left-1 translate-x-5"></span>
+</button>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<header class="mb-8">
+<h1 class="text-text-light dark:text-text-dark text-3xl font-black leading-tight">Your Achievements</h1>
+<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal mt-1">Keep up the great work! Here are the badges you've earned and your progress on others.</p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="relative bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center border-2 border-secondary/50 shadow-glow-secondary">
+<div class="absolute top-3 right-3 text-green-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check_circle</span>
+</div>
+<div class="text-6xl text-secondary mb-4">🏆</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">First Budget</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">You've successfully created your first budget plan!</p>
+</div>
+<div class="relative bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center border-2 border-secondary/50 shadow-glow-secondary">
+<div class="absolute top-3 right-3 text-green-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check_circle</span>
+</div>
+<div class="text-6xl text-secondary mb-4">🎯</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">Goal Setter</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Created your first savings goal. Way to aim high!</p>
+</div>
+<div class="relative bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center border-2 border-secondary/50 shadow-glow-secondary">
+<div class="absolute top-3 right-3 text-green-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check_circle</span>
+</div>
+<div class="text-6xl text-secondary mb-4">💸</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">First Expense Tracked</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">You've logged your first expense. Every little bit counts.</p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center opacity-70">
+<div class="text-6xl text-subtext-light dark:text-subtext-dark mb-4">🔥</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">7-Day Streak</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Log in for 7 consecutive days to earn this badge.</p>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2.5 mt-4">
+<div class="bg-primary h-2.5 rounded-full" style="width: 57%"></div>
+</div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-1">4/7 days</p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center opacity-70">
+<div class="text-6xl text-subtext-light dark:text-subtext-dark mb-4">💰</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">Saver Level 1</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Save your first $100. You're on your way!</p>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2.5 mt-4">
+<div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+</div>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-1">$80 / $100</p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center opacity-50 border-2 border-dashed border-border-light dark:border-border-dark">
+<div class="text-6xl text-subtext-light dark:text-subtext-dark mb-4">❓</div>
+<h3 class="font-bold text-lg text-subtext-light dark:text-subtext-dark">Super Saver</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Save a total of $1,000. Keep going!</p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center opacity-50 border-2 border-dashed border-border-light dark:border-border-dark">
+<div class="text-6xl text-subtext-light dark:text-subtext-dark mb-4">❓</div>
+<h3 class="font-bold text-lg text-subtext-light dark:text-subtext-dark">On a Roll</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Log your expenses for 30 days in a row.</p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow-sm text-center flex flex-col items-center justify-center opacity-50 border-2 border-dashed border-border-light dark:border-border-dark">
+<div class="text-6xl text-subtext-light dark:text-subtext-dark mb-4">❓</div>
+<h3 class="font-bold text-lg text-subtext-light dark:text-subtext-dark">Goal Smasher</h3>
+<p class="text-sm text-subtext-light dark:text-subtext-dark mt-1">Successfully complete a savings goal.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

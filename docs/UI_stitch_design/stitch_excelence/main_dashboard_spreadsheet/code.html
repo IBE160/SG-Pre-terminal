@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Budgeting Tool - Spreadsheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .spreadsheet-cell {
+            @apply px-4 py-2 whitespace-nowrap border-r border-b border-border-light dark:border-border-dark;
+        }
+        .spreadsheet-header {
+            @apply px-4 py-2 font-semibold text-text-light dark:text-text-dark text-left sticky top-0 bg-background-light dark:bg-card-dark z-10 border-r border-b border-border-light dark:border-border-dark;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A90E2",
+                        "secondary": "#F5A623",
+                        "background-light": "#F4F7FA",
+                        "background-dark": "#1A202C",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#2D3748",
+                        "text-light": "#4A4A4A",
+                        "text-dark": "#E2E8F0",
+                        "subtext-light": "#A0AEC0",
+                        "subtext-dark": "#718096",
+                        "border-light": "#E2E8F0",
+                        "border-dark": "#4A5568",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-card-light dark:bg-card-dark p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary text-white rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">account_balance_wallet</span>
+</div>
+<h1 class="text-xl font-bold text-text-light dark:text-text-dark">FinFlow</h1>
+</div>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA3zy3GupTdNw7lNn72lmavyUMfRaiJIBn4p7xE7yEawlsJX_2G7KChY6Pq4BycRLxhBFSZBMIhTCFcmWrop07agbxmSeoVnRO6v77lWDyFfX8OiokSaDuR88IoY8XzfpgmItm7_c6AhrGw7BD2X9x19NvISG_n49iWY0giW6YuFG0WSNViRLAvuV9kpIHhkkU386v0yQRiA-lO3hFZ5mtKGRPvgzwaKjRLk-yfQ6uu-DAO8WPlC8wDHqoN3QLYxtwJXB_AFA36rU");'></div>
+<div class="flex flex-col">
+<h2 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Alex Doe</h2>
+<p class="text-subtext-light dark:text-subtext-dark text-sm font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<p class="text-sm font-medium leading-normal">Spreadsheet</p>
+</a>
+<div class="px-3 py-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">joystick</span>
+<p class="text-sm font-medium leading-normal">Game Mode</p>
+</div>
+<button class="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-card-dark" type="button">
+<span class="sr-only">Enable Game Mode</span>
+<span class="inline-block w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></span>
+<span class="inline-block w-4 h-4 transform bg-white dark:bg-subtext-dark rounded-full transition-transform absolute top-1 left-1 translate-x-5"></span>
+</button>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<header class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-text-light dark:text-text-dark text-3xl font-black leading-tight">Spreadsheet</h1>
+<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">View and manage your transactions.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal gap-2 shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-base">add</span>
+<span class="truncate">New Transaction</span>
+</button>
+</div>
+</header>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-sm border-collapse border-t border-l border-border-light dark:border-border-dark">
+<thead>
+<tr>
+<th class="spreadsheet-header w-12 text-center text-subtext-light dark:text-subtext-dark font-normal"></th>
+<th class="spreadsheet-header text-center w-32">A</th>
+<th class="spreadsheet-header text-center w-48">B</th>
+<th class="spreadsheet-header text-center flex-1">C</th>
+<th class="spreadsheet-header text-center w-48">D</th>
+<th class="spreadsheet-header text-center w-32">E</th>
+</tr>
+<tr>
+<th class="spreadsheet-header w-12 text-center text-subtext-light dark:text-subtext-dark font-normal sticky top-9 bg-background-light dark:bg-card-dark"></th>
+<th class="spreadsheet-header sticky top-9 bg-background-light dark:bg-card-dark">Amount</th>
+<th class="spreadsheet-header sticky top-9 bg-background-light dark:bg-card-dark">Category</th>
+<th class="spreadsheet-header sticky top-9 bg-background-light dark:bg-card-dark">Description</th>
+<th class="spreadsheet-header sticky top-9 bg-background-light dark:bg-card-dark">Date</th>
+<th class="spreadsheet-header sticky top-9 bg-background-light dark:bg-card-dark text-center">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">1</td>
+<td class="spreadsheet-cell font-medium text-green-500">+$2,600.00</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:text-green-300">Income</span>
+</td>
+<td class="spreadsheet-cell">Paycheck</td>
+<td class="spreadsheet-cell">June 15, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">2</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$1,000.00</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">Housing</span>
+</td>
+<td class="spreadsheet-cell">Monthly Rent</td>
+<td class="spreadsheet-cell">June 14, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">3</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$55.20</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-0.5 text-xs font-medium text-yellow-700 dark:text-yellow-300">Transport</span>
+</td>
+<td class="spreadsheet-cell">Gas Station</td>
+<td class="spreadsheet-cell">June 13, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">4</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$6.75</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-300">Food</span>
+</td>
+<td class="spreadsheet-cell">Starbucks Coffee</td>
+<td class="spreadsheet-cell">June 13, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">5</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$124.50</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-purple-100 dark:bg-purple-900/50 px-2.5 py-0.5 text-xs font-medium text-purple-700 dark:text-purple-300">Groceries</span>
+</td>
+<td class="spreadsheet-cell">Groceries at Whole Foods</td>
+<td class="spreadsheet-cell">June 12, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">6</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$32.00</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-pink-100 dark:bg-pink-900/50 px-2.5 py-0.5 text-xs font-medium text-pink-700 dark:text-pink-300">Entertainment</span>
+</td>
+<td class="spreadsheet-cell">Movie Tickets</td>
+<td class="spreadsheet-cell">June 10, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 dark:hover:bg-primary/20">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">7</td>
+<td class="spreadsheet-cell font-medium text-red-500">-$49.99</td>
+<td class="spreadsheet-cell">
+<span class="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900/50 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300">Health</span>
+</td>
+<td class="spreadsheet-cell">Gym Membership</td>
+<td class="spreadsheet-cell">June 8, 2024</td>
+<td class="spreadsheet-cell">
+<div class="flex justify-center items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined !text-xl">edit</span></button>
+<button class="p-2 rounded-md text-subtext-light dark:text-subtext-dark hover:bg-red-500/10 hover:text-red-500"><span class="material-symbols-outlined !text-xl">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="group">
+<td class="px-4 py-2 text-center text-subtext-light dark:text-subtext-dark border-r border-b border-border-light dark:border-border-dark">8</td>
+<td class="spreadsheet-cell text-subtext-light dark:text-subtext-dark" colspan="5">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary">
+<span class="material-symbols-outlined !text-xl">add_circle</span>
+<span>Add new transaction</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
