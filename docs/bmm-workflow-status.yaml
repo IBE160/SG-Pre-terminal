@@ -3,8 +3,8 @@ PROJECT_TYPE: software
 PROJECT_LEVEL: 2
 FIELD_TYPE: greenfield
 CURRENT_PHASE: 4-Implementation
-CURRENT_WORKFLOW: create-story-context - Complete for story 1.1
-NEXT_ACTION: Implement Story 1.1
+CURRENT_WORKFLOW: dev-story - Story 1.1 Complete
+NEXT_ACTION: Implement Story 1.2
 NEXT_COMMAND: dev-story
 NEXT_AGENT: dev
 START_DATE: 2025-10-29
