@@ -19,3 +19,4 @@ workflow_status:
   create-ux-design: docs/ux-design-specification.md
   validate-design: docs/validation-report-20251128-final.md
   create-architecture: docs/architecture.md
+  create-epics-and-stories: docs/epics.md

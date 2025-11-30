@@ -1,385 +1,272 @@
-# Excelence - Epic Breakdown (Aligned with UX Specification)
+# ibe160 - Epic Breakdown
 
 **Author:** BIP
-**Date:** 2025-11-28
-**Project Level:** 2
+**Date:** 2025-11-30
+**Project Level:** 
+**Target Scale:** 
 
 ---
 
 ## Overview
 
-This document provides the detailed epic breakdown for Excelence, expanded from the PRD and now aligned with the UX Design Specification and Stitch mockups.
+This document provides the complete epic and story breakdown for ibe160, decomposing the requirements from the [PRD](./PRD.md) into implementable stories.
 
-Each epic includes:
+**Living Document Notice:** This is the initial version. It will be updated after UX Design and Architecture workflows add interaction and technical details to stories.
 
-- Expanded goal and value proposition
-- Complete story breakdown with user stories
-- Acceptance criteria for each story
-- Story sequencing and dependencies
+Here is the proposed epic structure. Each epic is designed to deliver incremental user value.
 
-**Epic Sequencing Principles:**
-
-- Epic 1 establishes foundational infrastructure and initial functionality
-- Subsequent epics build progressively, each delivering significant end-to-end value
-- Stories within epics are vertically sliced and sequentially ordered
-- No forward dependencies - each story builds only on previous work
+*   **Epic 1: Project Foundation & User Authentication:** Establishes the project's technical foundation and implements the core user account and authentication features.
+*   **Epic 2: Core Financial Management:** Delivers the primary CRUD (Create, Read, Update, Delete) functionality for managing income, expenses, and categories.
+*   **Epic 3: Dashboard, Visualization & Data Export:** Focuses on providing users with insights into their financial status through a dashboard, charts, and the ability to export their data.
 
 ---
 
-**Epic 1: Project Foundation & Core Budgeting**
+## Functional Requirements Inventory
 
-**Goal:** Establish the project's technical foundation, implement user authentication, and deliver the core functionalities for tracking income, expenses, and categories.
+This inventory lists all functional requirements (FRs) from the PRD to ensure complete coverage in the epics and stories below.
+
+*   **FR001:** Users must be able to register for a new account.
+*   **FR002:** Users must be able to log in and log out of their account.
+*   **FR003:** The system must allow users to create, read, update, and delete income and expense entries.
+*   **FR004:** The system must allow users to create, read, update, and delete custom categories for income and expenses.
+*   **FR005:** The system must automatically calculate and display the user's current financial status (e.g., total income, total expenses, net balance).
+*   **FR006:** The system must provide a visual representation of income and expenses using simple graphs (e.g., bar or pie charts).
+*   **FR007:** Users must be able to export their budget data to a CSV or Excel file.
+*   **FR008:** The application must provide a full-featured view on desktop browsers.
 
 ---
 
-**Story 1.1: Backend and Database Setup**
+## FR Coverage Map
 
-**Covers:** Foundational Setup
+This map shows which Functional Requirements (FRs) are addressed by each epic. Note that FR008 is a cross-cutting concern that applies to all epics.
+
+*   **Epic 1: Project Foundation & User Authentication**
+    *   Covers: **FR001, FR002**
+*   **Epic 2: Core Financial Management**
+    *   Covers: **FR003, FR004**
+*   **Epic 3: Dashboard, Visualization & Data Export**
+    *   Covers: **FR005, FR006, FR007**
+
+---
+
+## Epic 1: Project Foundation & User Authentication
+
+**Goal:** Establish the project's technical foundation, implement user authentication, and deliver the core functionalities for account management. This epic ensures a secure and stable base for all future features.
+
+### Story 1.1: Initialize Project Structure
 
 As a developer,
-I want to set up the FastAPI backend and connect it to a Supabase project,
-So that we have a foundational server and database to build upon.
+I want to initialize the codebase using the full-stack starter template,
+So that we have a consistent and pre-configured foundation for development.
 
 **Acceptance Criteria:**
-1.  A new Supabase project is created.
-2.  A new FastAPI project is initialized.
-3.  Database connection between FastAPI and Supabase is established and verified.
-4.  Initial database schema for users, categories, income, and expenses is defined and created in Supabase.
+
+**Given** the project's approved tech stack (FastAPI, SvelteKit)
+**When** the `cookiecutter` command is executed with the specified template
+**Then** the project directory is created with separate `frontend` and `backend` folders
+**And** all initial dependencies for both frontend and backend are installed and ready.
+
+**Prerequisites:** None
+
+**Technical Notes:** As per the architecture document, use the `cookiecutter https://github.com/tiangolo/full-stack-fastapi-postgresql` command. This sets up the monorepo structure, Docker configuration, and initial JWT authentication boilerplate.
+
+### Story 1.2: Implement User Registration
+
+As a new user,
+I want to register for an account using my email and a password,
+So that I can access the application and manage my finances securely.
+
+**Acceptance Criteria:**
+
+**Given** a user is on the registration page
+**When** they enter a valid email and a strong password and submit the form
+**Then** a new user record is created in the `users` database table
+**And** the user is automatically logged in and redirected to the main dashboard.
+**And** the API returns a JWT token upon successful registration.
+
+**Prerequisites:** Story 1.1
+
+**Technical Notes:** This involves creating a `POST /api/v1/users` endpoint in the FastAPI backend. The endpoint should validate the incoming data using Pydantic schemas and hash the password before storing it. The frontend will have a registration form that calls this endpoint.
+
+### Story 1.3: Implement User Login and Logout
+
+As a registered user,
+I want to log in with my email and password and be able to log out,
+So that I can securely access my financial data and end my session.
+
+**Acceptance Criteria:**
+
+**Given** a registered user is on the login page
+**When** they enter their correct credentials and submit the form
+**Then** the system validates their credentials and returns a JWT token
+**And** the user is redirected to the main dashboard.
+**When** a logged-in user clicks the "Logout" button
+**Then** their session is terminated and they are redirected to the login page.
+
+**Prerequisites:** Story 1.2
+
+**Technical Notes:** The backend will have a `POST /api/v1/auth/login` endpoint as defined in the architecture. The frontend will use Svelte's built-in stores to manage the user's authentication state and the JWT token. The logout functionality will clear the token from the store and local storage.
 
 ---
 
-**Story 1.2: User Authentication Endpoints**
+## Epic 2: Core Financial Management
 
-**Covers:** FR001, FR002
+**Goal:** Deliver the primary CRUD (Create, Read, Update, Delete) functionality for managing income, expenses, and the categories they belong to. This epic empowers users to take control of their financial data.
 
-As a developer,
-I want to create API endpoints for user registration and login,
-So that users can securely create accounts and sign in.
-
-**Acceptance Criteria:**
-1.  An endpoint for user registration (`/register`) is created that securely hashes passwords.
-2.  An endpoint for user login (`/login`) is created that returns a JWT token upon success.
-3.  Error handling for authentication is implemented.
-4.  API endpoints are tested and functional.
-
----
-
-**Story 1.3: Frontend Project Setup & Login/Registration UI**
-
-**Covers:** FR001, FR002, FR008
+### Story 2.1: Create and Manage Categories
 
 As a user,
-I want to see a registration and login page,
-So that I can access the application.
+I want to create, view, update, and delete custom categories,
+So that I can organize my financial entries in a way that is meaningful to me.
 
 **Acceptance Criteria:**
-1.  A new SvelteKit project is initialized.
-2.  UI components for registration and login forms are created, matching the `login_/_registration` mockup.
-3.  The UI includes a tabbed interface to switch between "Sign Up" and "Log In" forms.
-4.  The UI is connected to the backend authentication endpoints.
-5.  Users can successfully register and log in, and the app stores the auth token.
-6.  A basic route protection mechanism is in place to prevent access to protected areas.
-> **Note:** The "Continue with Google" button from the mockup is out of scope for this story.
 
----
+**Given** a user is on the category management page
+**When** they create a new category with a unique name
+**Then** the new category is saved to the database and appears in their list of categories.
+**When** they edit an existing category's name
+**Then** the change is reflected in the database and the UI.
+**When** they delete a category
+**Then** it is removed from the database and the UI.
 
-**Story 1.4: Category Management API**
+**Prerequisites:** Story 1.3
 
-**Covers:** FR004
+**Technical Notes:** This requires a new set of CRUD endpoints in the backend under `/api/v1/categories`. The frontend will have a dedicated settings page for category management, likely in `frontend/src/routes/settings/categories`.
 
-As a developer,
-I want to build CRUD API endpoints for managing categories,
-So that the frontend can interact with user-defined categories.
-
-**Acceptance Criteria:**
-1.  API endpoints for creating, reading, updating, and deleting categories are created.
-2.  Endpoints are protected and only accessible by authenticated users.
-3.  Each category is associated with the correct user.
-4.  API endpoints are tested and functional.
-
----
-
-**Story 1.5: Income/Expense Management API**
-
-**Covers:** FR003
-
-As a developer,
-I want to build CRUD API endpoints for managing income and expense entries,
-So that the frontend can manage financial records.
-
-**Acceptance Criteria:**
-1.  API endpoints for creating, reading, updating, and deleting income/expense entries are created.
-2.  Endpoints are protected and only accessible by authenticated users.
-3.  Each entry is associated with the correct user and a category.
-4.  API endpoints are tested and functional.
-
----
-
-**Story 1.6: Build Core App Layout with Sidebar Navigation**
-
-**Covers:** FR008
+### Story 2.2: Record Income and Expenses
 
 As a user,
-I want to see the main application layout with a consistent sidebar,
-So that I can navigate between different sections of the app.
+I want to add new income and expense entries,
+So that I can keep an accurate record of my finances.
 
 **Acceptance Criteria:**
-1. The main two-column application shell is created.
-2. The sidebar component is built to match the mockups, including the logo, user profile section, and navigation links.
-3. Navigation links correctly route to the placeholder pages for Dashboard, Spreadsheet, Achievements, and Settings.
-4. The active navigation link is visually highlighted as shown in the mockups.
 
----
+**Given** a user is on the main dashboard
+**When** they open the "Add Transaction" form and enter an amount, select a category, and a date for an income or expense
+**Then** a new record is created in the `transactions` table in the database.
+**And** the main dashboard immediately updates to reflect the new entry.
 
-**Story 1.7: Build Spreadsheet View & Transaction Management**
+**Prerequisites:** Story 2.1
 
-**Covers:** FR003, FR008
+**Technical Notes:** This will be the primary user interaction. A `POST /api/v1/transactions` endpoint is needed. The frontend will feature a prominent "Add" button that opens a modal form, as described in the PRD's user journey.
+
+### Story 2.3: View and Update Transactions
 
 As a user,
-I want a spreadsheet page to view all my transactions,
-So that I can see a detailed history of my finances.
+I want to view a list of my past transactions and be able to edit them,
+So that I can review my financial history and correct any mistakes.
 
 **Acceptance Criteria:**
-1. The Spreadsheet page is built to match the `main_dashboard_spreadsheet` mockup.
-2. The page connects to the backend to display a list of all transactions.
-3. On hovering a transaction row, "Edit" and "Delete" buttons appear as specified in the UX patterns.
-4. The "New Transaction" button is present and will later be linked to its modal.
 
----
+**Given** a user is viewing their transaction history
+**When** they select a specific transaction to edit
+**Then** a form appears pre-filled with the transaction's details.
+**When** the user modifies and saves the changes
+**Then** the transaction is updated in the database and the list is refreshed.
 
-**Story 1.8: Build 'Create Category' Modal**
+**Prerequisites:** Story 2.2
 
-**Covers:** FR004, FR008
+**Technical Notes:** The backend needs `GET /api/v1/transactions` to list transactions and `PUT /api/v1/transactions/{transaction_id}` to update a specific one. The frontend will display these in a table or list format.
+
+### Story 2.4: Delete Transactions
 
 As a user,
-I want to create new categories for my transactions,
-So that I can organize my spending.
+I want to be able to delete a transaction,
+So that I can remove accidental or incorrect entries.
 
 **Acceptance Criteria:**
-1. A modal for creating new categories is built to match the `create_category` mockup.
-2. The form within the modal connects to the category creation API endpoint.
-3. Upon successful creation, the modal closes and the user receives feedback.
+
+**Given** a user is viewing their transaction history
+**When** they select an option to delete a specific transaction and confirm the action
+**Then** the transaction is permanently removed from the database.
+**And** the transaction list and dashboard summary update to reflect the removal.
+
+**Prerequisites:** Story 2.3
+
+**Technical Notes:** Requires a `DELETE /api/v1/transactions/{transaction_id}` endpoint. The UI should include a confirmation step (e.g., a modal dialog) to prevent accidental deletions.
 
 ---
 
-**Epic 2: Dashboard, Visualizations, and Data Export**
+## Epic 3: Dashboard, Visualization & Data Export
 
-**Goal:** Develop the main dashboard, integrate charting libraries for visual representation of financial data, and implement the data export feature.
+**Goal:** To provide users with a clear, visual summary of their financial situation and allow them to export their data for external use, turning raw data into actionable insights.
 
----
-
-**Story 2.1: Dashboard Data API Endpoint**
-
-**Covers:** FR005, FR006
-
-As a developer,
-I want to create an API endpoint that provides aggregated financial summary data,
-So that the frontend has a single source for dashboard information.
-
-**Acceptance Criteria:**
-1.  A protected API endpoint (e.g., `/dashboard/summary`) is created.
-2.  The endpoint returns the current user's total income, total expenses, and net balance for a default period (e.g., current month).
-3.  The endpoint also returns data structured for use in a donut chart (expenses grouped by category).
-4.  The endpoint is tested for performance and accuracy.
-
----
-
-**Story 2.2: Frontend Dashboard Layout**
-
-**Covers:** FR005, FR008
+### Story 3.1: Display Financial Summary
 
 As a user,
-I want to see a central dashboard page when I log in,
-So that I can get an immediate overview of my financial situation.
+I want to see a real-time summary of my total income, expenses, and net balance on the dashboard,
+So that I can quickly understand my current financial standing.
 
 **Acceptance Criteria:**
-1.  A new, protected route for the dashboard is created in the SvelteKit application.
-2.  The dashboard page is built to match the `main_dashboard_default` mockup, including the stat cards, goals widget, and recent transactions list.
-3.  The dashboard UI is connected to the `/dashboard/summary` endpoint and displays the total income, expenses, and balance.
 
----
+**Given** a user is logged in and on the dashboard
+**When** they view the page
+**Then** the dashboard displays the calculated total income, total expenses, and the net balance for all their transactions.
+**And** these totals automatically update whenever a transaction is added, edited, or deleted.
 
-**Story 2.3: Integrate Charting Library and Display Graph**
+**Prerequisites:** Story 2.2
 
-**Covers:** FR006, FR008
+**Technical Notes:** The backend needs an endpoint like `GET /api/v1/dashboard/summary` to provide these calculated figures. The SvelteKit frontend will call this on dashboard load and refresh the data in its store after any transaction change.
+
+### Story 3.2: Visualize Spending Breakdown
 
 As a user,
-I want to see a simple graph of my finances,
-So that I can visually understand where my money is going.
+I want to see a simple chart on my dashboard that visualizes my expenses by category,
+So that I can easily identify where my money is going.
 
 **Acceptance Criteria:**
-1.  A charting library (e.g., Chart.js) is integrated into the SvelteKit project.
-2.  The graph component on the dashboard is connected to the summary API endpoint.
-3.  A Donut Chart is displayed, showing the breakdown of expenses by category, as seen in the mockup.
-4.  The chart is visually clear and easy to understand.
 
----
+**Given** a user is on the dashboard and has recorded expenses
+**When** the dashboard loads
+**Then** a pie or bar chart is displayed, showing the proportion of spending for each category.
+**And** hovering over a chart segment displays the category name and total amount.
 
-**Story 2.4: Data Export API Endpoint**
+**Prerequisites:** Story 2.2
 
-**Covers:** FR007
+**Technical Notes:** Per the architecture, this will use Chart.js with the `svelty-chartjs` wrapper. A backend endpoint, `GET /api/v1/dashboard/chart-data`, will provide the aggregated data needed to render the chart.
 
-As a developer,
-I want to create an API endpoint that generates a CSV file of the user's budget data,
-So that users can download their financial records.
-
-**Acceptance Criteria:**
-1.  A protected API endpoint (e.g., `/export/csv`) is created.
-2.  The endpoint retrieves all income and expense entries for the authenticated user.
-3.  The endpoint formats the data into a valid CSV format with appropriate headers (Date, Category, Description, Income, Expense).
-4.  The endpoint returns the data as a downloadable file.
-
----
-
-**Story 2.5: Frontend Export Button**
-
-**Covers:** FR007, FR008
+### Story 3.3: Export Budget Data
 
 As a user,
-I want to be able to download my budget data as a file,
-So that I can keep a local copy or use it in other applications.
+I want to export my transaction data to a CSV file,
+So that I can perform my own analysis or keep a local backup.
 
 **Acceptance Criteria:**
-1.  An "Export to CSV" button is added to the UI (e.g., on the Spreadsheet page).
-2.  Clicking the button calls the `/export/csv` API endpoint.
-3.  The browser prompts the user to download the generated CSV file.
-4.  The downloaded file is correctly formatted and contains the user's data.
+
+**Given** a user is on their dashboard
+**When** they click an "Export to CSV" button
+**Then** a `.csv` file is generated and downloaded by their browser.
+**And** the file contains all their income and expense transactions, including columns for date, description, category, and amount.
+
+**Prerequisites:** Story 2.3
+
+**Technical Notes:** A backend endpoint, `GET /api/v1/export/csv`, will be created. This endpoint will query the user's transactions, format them into a CSV string, and return it with the appropriate headers for file download.
 
 ---
 
-**Epic 3 (Optional): Gamification and Enhanced User Experience**
+## FR Coverage Matrix
 
-**Goal:** Implement the optional "Game Mode," including features like drag-and-drop, animations, and progress tracking.
+This matrix confirms that all functional requirements from the PRD have been mapped to at least one story.
 
----
-
-**Story 3.1: "Game Mode" Toggle**
-
-**Covers:** N/A (Optional Gamification)
-
-As a user,
-I want to be able to turn "Game Mode" on or off,
-So that I can choose the experience that best suits me.
-
-**Acceptance Criteria:**
-1.  A user setting for "Game Mode" is added to the user profile in the database.
-2.  A toggle switch is available in the sidebar and the main Settings page, as per the mockups.
-3.  The application's UI conditionally renders gamified features based on this setting.
+| FR ID | Requirement Description | Epic(s) | Story(ies) |
+|---|---|---|---|
+| FR001 | User Registration | 1 | 1.2 |
+| FR002 | User Login/Logout | 1 | 1.3 |
+| FR003 | CRUD for Transactions | 2 | 2.2, 2.3, 2.4 |
+| FR004 | CRUD for Categories | 2 | 2.1 |
+| FR005 | Display Financial Status | 3 | 3.1 |
+| FR006 | Visual Representation/Graphs | 3 | 3.2 |
+| FR007 | Export Data | 3 | 3.3 |
+| FR008 | Desktop-First Experience | 1, 2, 3 | All |
 
 ---
 
-**Story 3.2: Financial Goal Setting**
+## Summary
 
-**Covers:** N/A (Optional Gamification)
-
-As a user in "Game Mode",
-I want to set a simple financial goal, like a monthly savings target,
-So that I can track my progress and stay motivated.
-
-**Acceptance Criteria:**
-1.  The database is updated to store user-defined goals.
-2.  A UI is created for the user to set or update their goals, matching the `Create Goal` modal mockup.
-3.  A simple progress bar or visual indicator is added to the dashboard, showing progress towards the active goal, as seen in the 'Your Goals' widget on the dashboard.
-4.  This feature is only available when "Game Mode" is enabled.
+This document provides a complete, story-by-story breakdown of the work required to deliver the Excelence MVP. The project is structured into three value-driven epics, ensuring that each phase of development delivers tangible functionality. All requirements from the PRD, UX, and Architecture documents have been incorporated. The project is now ready for implementation.
 
 ---
 
-**Story 3.3: Achievements and Badges**
+_For implementation: Use the `create-story` workflow to generate individual story implementation plans from this epic breakdown._
 
-**Covers:** N/A (Optional Gamification)
-
-As a user in "Game Mode",
-I want to earn badges for reaching financial milestones,
-So that I feel a sense of accomplishment and recognition.
-
-**Acceptance Criteria:**
-1.  A system for defining and awarding badges is created (e.g., "First Week Done!", "Savings Goal Met!").
-2.  Backend logic is implemented to award badges when criteria are met.
-3.  A non-intrusive notification appears when a user earns a badge.
-4.  A page is created to display the user's collection of earned badges, matching the `main_dashboard_achievements` mockup.
-5.  This feature is only available when "Game Mode" is enabled.
-
----
-
-**Epic 4: Settings Management**
-
-**Goal:** Allow users to manage their profile, preferences, and application theme.
-
----
-
-**Story 4.1: Build Settings Page UI**
-
-**Covers:** FR008
-
-As a user,
-I want a dedicated settings page,
-so that I can manage my account and preferences.
-
-**Acceptance Criteria:**
-1. A new, protected route for Settings is created.
-2. The UI is built to match the `main_dashboard_settings` mockup, including sections for Profile, Preferences, Security, and Theme.
-3. All form elements (inputs, dropdowns, toggles, buttons) are present as shown in the mockup.
-
----
-
-**Story 4.2: Implement Profile & Preference Updates**
-
-**Covers:** FR001
-
-As a user,
-I want to update my name, email, and currency,
-so that my information is accurate and relevant.
-
-**Acceptance Criteria:**
-1. API endpoints are created to handle updates for user profile (name, email) and preferences (currency).
-2. The forms on the Settings page are connected to these endpoints.
-3. A "Save Changes" button triggers the updates.
-4. The user receives feedback upon successful save or if an error occurs.
-
----
-
-**Story 4.3: Implement Theme Switching**
-
-**Covers:** NFR001
-
-As a user,
-I want to switch between light, dark, and system themes,
-so that I can customize the app's appearance.
-
-**Acceptance Criteria:**
-1. Frontend logic is implemented to dynamically switch CSS classes for theme changes.
-2. The theme selection buttons on the Settings page are functional.
-3. The user's theme preference is saved and persists across sessions.
-
----
-
-## Story Guidelines Reference
-
-**Story Format:**
-
-`'
-**Story [EPIC.N]: [Story Title]**
-
-As a [user type],
-I want [goal/desire],
-So that [benefit/value].
-
-**Acceptance Criteria:**
-1. [Specific testable criterion]
-2. [Another specific criterion]
-3. [etc.]
-
-**Prerequisites:** [Dependencies on previous stories, if any]
-`'
-
-**Story Requirements:**
-
-- **Vertical slices** - Complete, testable functionality delivery
-- **Sequential ordering** - Logical progression within epic
-- **No forward dependencies** - Only depend on previous work
-- **AI-agent sized** - Completable in 2-4 hour focused session
-- **Value-focused** - Integrate technical enablers into value-delivering stories
-
----
-
-**For implementation:** Use the `create-story` workflow to generate individual story implementation plans from this epic breakdown.
+_This document will be updated after UX Design and Architecture workflows to incorporate interaction details and technical decisions._
