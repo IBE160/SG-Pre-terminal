@@ -1,6 +1,6 @@
 # Story 1.1: Initialize Project Structure
 
-Status: drafted
+Status: ready-for-dev
 
 ## Story
 
@@ -47,7 +47,7 @@ The primary goal of this story is to establish the baseline project structure as
 
 ### Context Reference
 
-<!-- Path(s) to story context XML will be added here by context workflow -->
+- docs/sprint-artifacts/1-1-initialize-project-structure.context.xml
 
 ### Agent Model Used
 
