@@ -1,0 +1,146 @@
+<story-context id=".bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>2</storyId>
+    <title>Implement User Registration</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-01</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/sprint-artifacts/1-2-implement-user-registration.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>a new user</asA>
+    <iWant>to register for an account using my email and a password</iWant>
+    <soThat>I can access the application and manage my finances securely</soThat>
+    <tasks>
+- [ ] Task 1: Create a `POST /api/v1/users` endpoint in the FastAPI backend. (AC: 3, 5)
+- [ ] Task 2: Implement data validation for the registration endpoint using Pydantic schemas. (AC: 2)
+- [ ] Task 3: Add logic to hash user passwords before storing them in the database. (AC: 3)
+- [ ] Task 4: Create a user registration form in the SvelteKit frontend. (AC: 1, 2)
+- [ ] Task 5: Implement frontend logic to call the registration API endpoint. (AC: 2)
+- [ ] Task 6: Implement logic to handle the JWT token returned by the API and store it. (AC: 5)
+- [ ] Task 7: Redirect the user to the main dashboard upon successful registration. (AC: 4)
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+1.  **Given** a user is on the registration page
+2.  **When** they enter a valid email and a strong password and submit the form
+3.  **Then** a new user record is created in the `users` database table
+4.  **And** the user is automatically logged in and redirected to the main dashboard.
+5.  **And** the API returns a JWT token upon successful registration.
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>Excelence Product Requirements Document (PRD)</title>
+        <section>Functional Requirements</section>
+        <snippet>FR001: Users must be able to register for a new account.</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Excelence: Decision Architecture Document</title>
+        <section>3.2. API Design &amp; Communication</section>
+        <snippet>The API will adhere to a standardized JSON response format (JSend-style).</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Excelence: Decision Architecture Document</title>
+        <section>4. Project Structure and Boundaries</section>
+        <snippet>The project will follow a monorepo structure provided by the starter, with clear separation between the frontend and backend. API endpoint for authentication will be in `backend/app/api/v1/endpoints/auth.py`.</snippet>
+      </doc>
+      <doc>
+        <path>docs/ux-design-specification.md</path>
+        <title>UX Design Specification: Excelence</title>
+        <section>6.1. Onboarding (New User Registration &amp; Login)</section>
+        <snippet>User lands on the Login/Registration page, selects the "Sign Up" tab, fills in their email and password, and clicks "Create My Account".</snippet>
+      </doc>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>ibe160 - Epic Breakdown</title>
+        <section>Story 1.2: Implement User Registration</section>
+        <snippet>As a new user, I want to register for an account using my email and a password, so that I can access the application and manage my finances securely.</snippet>
+      </doc>
+    </docs>
+    <code>
+      <artifact>
+        <path>excelence/backend/app/api/v1/endpoints/users.py</path>
+        <kind>endpoint</kind>
+        <symbol>POST /api/v1/users</symbol>
+        <lines></lines>
+        <reason>Primary backend endpoint for user registration. To be created.</reason>
+      </artifact>
+      <artifact>
+        <path>excelence/backend/app/schemas/user.py</path>
+        <kind>schema</kind>
+        <symbol>UserCreate</symbol>
+        <lines></lines>
+        <reason>Pydantic schema for validating user registration data. To be created.</reason>
+      </artifact>
+      <artifact>
+        <path>excelence/backend/app/crud/crud_user.py</path>
+        <kind>crud</kind>
+        <symbol>create_user</symbol>
+        <lines></lines>
+        <reason>Contains the database logic to create a new user. To be created.</reason>
+      </artifact>
+      <artifact>
+        <path>excelence/frontend/src/routes/login/+page.svelte</path>
+        <kind>component</kind>
+        <symbol>RegistrationForm</symbol>
+        <lines></lines>
+        <reason>Svelte component for the user registration form. To be created.</reason>
+      </artifact>
+      <artifact>
+        <path>excelence/frontend/src/lib/stores/auth.ts</path>
+        <kind>store</kind>
+        <symbol>authStore</symbol>
+        <lines></lines>
+        <reason>Svelte store to manage user authentication state and JWT token. To be created/adapted.</reason>
+      </artifact>
+    </code>
+    <dependencies>
+      <backend>
+        <package name="fastapi" version="^0.104.1" />
+        <package name="pydantic" version="^2.5.2" />
+        <package name="passlib" version="^1.7.4" />
+        <package name="python-jose" version="^3.3.0" />
+      </backend>
+      <frontend>
+        <package name="@sveltejs/kit" version="^1.20.4" />
+        <package name="svelte" version="^4.0.5" />
+        <package name="typescript" version="^5.0.0" />
+      </frontend>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    - Passwords must be hashed before being stored in the database.
+    - API responses must follow the JSend-style format defined in the architecture.
+    - Frontend state management should use Svelte's built-in stores.
+  </constraints>
+  <interfaces>
+      <interface>
+        <name>User Registration</name>
+        <kind>REST endpoint</kind>
+        <signature>POST /api/v1/users</signature>
+        <path>excelence/backend/app/api/v1/endpoints/users.py</path>
+      </interface>
+  </interfaces>
+  <tests>
+    <standards>As per the architecture document, testing frameworks were skipped for the initial project setup. Backend API input validation will be strictly enforced by Pydantic schemas, serving as a form of runtime data testing.</standards>
+    <locations>
+      - backend/tests/
+      - frontend/src/tests/
+    </locations>
+    <ideas>
+      - (AC: 2, 3) Test user registration with a valid email and strong password. Expect a successful creation and a JWT token.
+      - (AC: 2) Test user registration with an invalid email format. Expect a validation error.
+      - (AC: 2) Test user registration with a weak password. Expect a validation error.
+      - (AC: 5) Test that the API returns a JWT token on successful registration.
+    </ideas>
+  </tests>
+</story-context>
