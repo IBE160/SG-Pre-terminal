@@ -1,39 +1,41 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-
-from app import crud
-from app.api import deps
-from app.schemas.user import UserCreate, UserCreateResponse, UserResponse, Token
-from app.core.security import create_access_token
-
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+from app.db.session import supabase
 
 router = APIRouter()
 
+class UserCreate(BaseModel):
+    email: str
+    password: str
 
-@router.post("/users", response_model=UserCreateResponse)
-def create_user(
-    *,
-    db: Session = Depends(deps.get_db),
-    user_in: UserCreate,
-):
+class UserLogin(BaseModel):
+    email: str
+    password: str
+
+@router.post("/signup")
+def signup(user: UserCreate):
     """
-    Create new user.
+    Create a new user.
     """
-    user = crud.get_user_by_email(db, email=user_in.email)
-    if user:
-        raise HTTPException(
-            status_code=400,
-            detail="The user with this email already exists in the system.",
-        )
-    user = crud.create_user(db, obj_in=user_in)
-    token = Token(
-        access_token=create_access_token(user.id),
-        token_type="bearer",
-    )
-    return {
-        "status": "success",
-        "data": {
-            "user": UserResponse.from_orm(user),
-            "token": token,
-        },
-    }
+    try:
+        res = supabase.auth.sign_up({
+            "email": user.email,
+            "password": user.password,
+        })
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.post("/login")
+def login(user: UserLogin):
+    """
+    Authenticate a user.
+    """
+    try:
+        res = supabase.auth.sign_in_with_password({
+            "email": user.email,
+            "password": user.password,
+        })
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

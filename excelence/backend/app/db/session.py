@@ -1,7 +1,5 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
+from supabase import create_client, Client
 from app.core.config import settings
 
-engine = create_engine(settings.SQLALCHEMY_DATABASE_URI)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+
