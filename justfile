@@ -38,7 +38,7 @@ install-frontend:
 # Run backend tests
 test-backend:
     @echo "Running backend tests..."
-    cd excelence/backend && pytest
+    cd excelence/backend && uv run pytest
 
 # Run frontend tests
 test-frontend:
@@ -53,7 +53,7 @@ test:
 # Lint backend code
 lint-backend:
     @echo "Linting backend code..."
-    cd excelence/backend && ruff check .
+    cd excelence/backend && uv run ruff check .
 
 # Lint frontend code
 lint-frontend:
@@ -68,7 +68,7 @@ lint:
 # Format backend code
 format-backend:
     @echo "Formatting backend code..."
-    cd excelence/backend && ruff format .
+    cd excelence/backend && uv run ruff format .
 
 # Format frontend code
 format-frontend:

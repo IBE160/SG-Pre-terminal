@@ -36,8 +36,8 @@ declare module '$env/static/private' {
 	export const HISTCONTROL: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const GEMINI_CLI_IDE_SERVER_PORT: string;
-	export const HOSTNAME: string;
 	export const HISTSIZE: string;
+	export const HOSTNAME: string;
 	export const I3SOCK: string;
 	export const NODE: string;
 	export const WEZTERM_CONFIG_DIR: string;
@@ -59,8 +59,8 @@ declare module '$env/static/private' {
 	export const XDG_SEAT: string;
 	export const PWD: string;
 	export const XDG_VIDEOS_DIR: string;
-	export const LOGNAME: string;
 	export const XDG_SESSION_DESKTOP: string;
+	export const LOGNAME: string;
 	export const XDG_SESSION_TYPE: string;
 	export const npm_config_init_module: string;
 	export const _: string;
@@ -73,8 +73,8 @@ declare module '$env/static/private' {
 	export const XDG_PUBLICSHARE_DIR: string;
 	export const LANG: string;
 	export const WEZTERM_UNIX_SOCKET: string;
-	export const LS_COLORS: string;
 	export const _JAVA_AWT_WM_NONREPARENTING: string;
+	export const LS_COLORS: string;
 	export const XDG_CURRENT_DESKTOP: string;
 	export const npm_package_version: string;
 	export const PYTHONSTARTUP: string;
@@ -183,8 +183,8 @@ declare module '$env/dynamic/private' {
 		HISTCONTROL: string;
 		TERM_PROGRAM_VERSION: string;
 		GEMINI_CLI_IDE_SERVER_PORT: string;
-		HOSTNAME: string;
 		HISTSIZE: string;
+		HOSTNAME: string;
 		I3SOCK: string;
 		NODE: string;
 		WEZTERM_CONFIG_DIR: string;
@@ -206,8 +206,8 @@ declare module '$env/dynamic/private' {
 		XDG_SEAT: string;
 		PWD: string;
 		XDG_VIDEOS_DIR: string;
-		LOGNAME: string;
 		XDG_SESSION_DESKTOP: string;
+		LOGNAME: string;
 		XDG_SESSION_TYPE: string;
 		npm_config_init_module: string;
 		_: string;
@@ -220,8 +220,8 @@ declare module '$env/dynamic/private' {
 		XDG_PUBLICSHARE_DIR: string;
 		LANG: string;
 		WEZTERM_UNIX_SOCKET: string;
-		LS_COLORS: string;
 		_JAVA_AWT_WM_NONREPARENTING: string;
+		LS_COLORS: string;
 		XDG_CURRENT_DESKTOP: string;
 		npm_package_version: string;
 		PYTHONSTARTUP: string;
