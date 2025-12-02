@@ -1,8 +1,22 @@
-import { render, fireEvent, screen } from '@testing-library/svelte';
+import { render, fireEvent, screen, waitFor } from '@testing-library/svelte';
 import Register from './+page.svelte';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Mock the $app/navigation module
+vi.mock('$app/navigation', () => ({
+  goto: vi.fn(),
+}));
+
+// Mock the API service
+vi.mock('$lib/services/api', () => ({
+  registerUser: vi.fn(),
+}));
 
 describe('Register Component', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('renders the registration form', () => {
     render(Register);
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
@@ -12,12 +26,18 @@ describe('Register Component', () => {
 
   it('shows an error message for short passwords', async () => {
     render(Register);
+    
+    const emailInput = screen.getByLabelText('Email');
     const passwordInput = screen.getByLabelText('Password');
+    
+    await fireEvent.input(emailInput, { target: { value: 'test@example.com' } });
     await fireEvent.input(passwordInput, { target: { value: 'short' } });
     
-    const registerButton = screen.getByRole('button', { name: 'Register' });
-    await fireEvent.click(registerButton);
+    const form = screen.getByRole('button', { name: 'Register' }).closest('form');
+    await fireEvent.submit(form!);
 
-    expect(await screen.findByText('Password must be at least 8 characters long.')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Password must be at least 8 characters long.')).toBeInTheDocument();
+    });
   });
 });
