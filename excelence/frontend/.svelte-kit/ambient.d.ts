@@ -59,8 +59,8 @@ declare module '$env/static/private' {
 	export const XDG_SEAT: string;
 	export const PWD: string;
 	export const XDG_VIDEOS_DIR: string;
-	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
+	export const XDG_SESSION_DESKTOP: string;
 	export const XDG_SESSION_TYPE: string;
 	export const npm_config_init_module: string;
 	export const _: string;
@@ -104,6 +104,7 @@ declare module '$env/static/private' {
 	export const npm_config_prefix: string;
 	export const LESSOPEN: string;
 	export const USER: string;
+	export const GIT_PAGER: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const HOMEBREW_CELLAR: string;
 	export const MANPAGER: string;
@@ -205,8 +206,8 @@ declare module '$env/dynamic/private' {
 		XDG_SEAT: string;
 		PWD: string;
 		XDG_VIDEOS_DIR: string;
-		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
+		XDG_SESSION_DESKTOP: string;
 		XDG_SESSION_TYPE: string;
 		npm_config_init_module: string;
 		_: string;
@@ -250,6 +251,7 @@ declare module '$env/dynamic/private' {
 		npm_config_prefix: string;
 		LESSOPEN: string;
 		USER: string;
+		GIT_PAGER: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		HOMEBREW_CELLAR: string;
 		MANPAGER: string;

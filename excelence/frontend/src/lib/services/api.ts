@@ -1,21 +1,40 @@
-// src/lib/services/api.ts
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
-const BASE_URL = '/api/v1';
-
-// TODO: Replace 'any' with a proper response interface if available
-export async function registerUser(email: string, password: string): Promise<any> {
-  const response = await fetch(`${BASE_URL}/users`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
-  });
-
-  if (response.ok) {
-    return response.json();
-  } else {
-    const err = await response.json();
-    throw new Error(err.detail || 'Registration failed');
+const getHeaders = () => {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  const token = localStorage.getItem('jwt_token');
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
   }
-}
+  return headers;
+};
+
+const handleResponse = async (response) => {
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.detail || 'API request failed');
+  }
+  return response.json();
+};
+
+const api = {
+  get: async (endpoint) => {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+      method: 'GET',
+      headers: getHeaders(),
+    });
+    return handleResponse(response);
+  },
+  post: async (endpoint, data, options = {}) => {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+      method: 'POST',
+      headers: { ...getHeaders(), ...options.headers },
+      body: data instanceof URLSearchParams ? data.toString() : JSON.stringify(data),
+    });
+    return handleResponse(response);
+  },
+};
+
+export default api;

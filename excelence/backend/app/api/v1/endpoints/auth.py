@@ -1,14 +1,12 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import BaseModel
 from app.db.session import supabase
+from supabase_auth.errors import AuthApiError
 
 router = APIRouter()
 
 class UserCreate(BaseModel):
-    email: str
-    password: str
-
-class UserLogin(BaseModel):
     email: str
     password: str
 
@@ -23,19 +21,21 @@ def signup(user: UserCreate):
             "password": user.password,
         })
         return res
+    except AuthApiError as e:
+        raise HTTPException(status_code=e.status, detail=e.message)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.post("/login")
-def login(user: UserLogin):
+def login(form_data: OAuth2PasswordRequestForm = Depends()):
     """
-    Authenticate a user.
+    Authenticate a user and return a token.
     """
     try:
         res = supabase.auth.sign_in_with_password({
-            "email": user.email,
-            "password": user.password,
+            "email": form_data.username,
+            "password": form_data.password,
         })
         return res
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    except AuthApiError as e:
+        raise HTTPException(status_code=401, detail=e.message or "Invalid email or password")
