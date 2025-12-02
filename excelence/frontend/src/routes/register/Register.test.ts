@@ -26,13 +26,13 @@ describe('Register Component', () => {
 
   it('shows an error message for short passwords', async () => {
     render(Register);
-    
+
     const emailInput = screen.getByLabelText('Email');
     const passwordInput = screen.getByLabelText('Password');
-    
+
     await fireEvent.input(emailInput, { target: { value: 'test@example.com' } });
     await fireEvent.input(passwordInput, { target: { value: 'short' } });
-    
+
     const form = screen.getByRole('button', { name: 'Register' }).closest('form');
     await fireEvent.submit(form!);
 
