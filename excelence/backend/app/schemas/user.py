@@ -20,7 +20,6 @@ class UserCreate(UserBase):
         return v
 
 
-        return v
 
 
 class UserResponse(UserBase):
