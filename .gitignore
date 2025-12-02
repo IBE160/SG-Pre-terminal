@@ -61,3 +61,5 @@ dist/
 # IDE-specific files
 .vscode/
 .idea/
+
+.devcontainer/.env
