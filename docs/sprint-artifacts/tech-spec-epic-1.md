@@ -150,8 +150,9 @@ This epic directly implements the foundational components of the chosen architec
 ## Dependencies and Integrations
 
 - **Backend (Python/FastAPI):**
+- - `uv`: The core web framework for building the API.
   - `fastapi`: The core web framework for building the API.
-  - `uvicorn`: The ASGI server to run the FastAPI application.
+  - `uvicorn`: The ASGI server to run the FastAPI application. Should be run with UV. Should be executed with `uv run uvicorn main:app --reload`
   - `pydantic`: For data validation and settings management.
   - `python-dotenv`: For managing environment variables from `.env` files.
   - `passlib[bcrypt]`: For securely hashing and verifying passwords.
