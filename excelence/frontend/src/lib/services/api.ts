@@ -2,7 +2,7 @@
 
 const BASE_URL = '/api/v1';
 
-export async function registerUser(email, password) {
+export async function registerUser(email: string, password: string) {
   const response = await fetch(`${BASE_URL}/users`, {
     method: 'POST',
     headers: {
