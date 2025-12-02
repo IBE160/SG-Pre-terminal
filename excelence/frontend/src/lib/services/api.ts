@@ -2,7 +2,8 @@
 
 const BASE_URL = '/api/v1';
 
-export async function registerUser(email, password) {
+// TODO: Replace 'any' with a proper response interface if available
+export async function registerUser(email: string, password: string): Promise<any> {
   const response = await fetch(`${BASE_URL}/users`, {
     method: 'POST',
     headers: {
