@@ -1,5 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
+import type { UserConfig } from 'vite';
+import type { InlineConfig } from 'vitest/node';
 
 export default defineConfig({
   plugins: [sveltekit()],
@@ -12,4 +14,4 @@ export default defineConfig({
   resolve: {
     conditions: ['browser']
   }
-});
+} as UserConfig & { test: InlineConfig });
