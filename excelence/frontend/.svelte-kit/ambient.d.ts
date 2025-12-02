@@ -36,8 +36,8 @@ declare module '$env/static/private' {
 	export const HISTCONTROL: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const GEMINI_CLI_IDE_SERVER_PORT: string;
-	export const HISTSIZE: string;
 	export const HOSTNAME: string;
+	export const HISTSIZE: string;
 	export const I3SOCK: string;
 	export const NODE: string;
 	export const WEZTERM_CONFIG_DIR: string;
@@ -59,8 +59,8 @@ declare module '$env/static/private' {
 	export const XDG_SEAT: string;
 	export const PWD: string;
 	export const XDG_VIDEOS_DIR: string;
-	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
+	export const XDG_SESSION_DESKTOP: string;
 	export const XDG_SESSION_TYPE: string;
 	export const npm_config_init_module: string;
 	export const _: string;
@@ -104,7 +104,6 @@ declare module '$env/static/private' {
 	export const npm_config_prefix: string;
 	export const LESSOPEN: string;
 	export const USER: string;
-	export const GIT_PAGER: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const HOMEBREW_CELLAR: string;
 	export const MANPAGER: string;
@@ -183,8 +182,8 @@ declare module '$env/dynamic/private' {
 		HISTCONTROL: string;
 		TERM_PROGRAM_VERSION: string;
 		GEMINI_CLI_IDE_SERVER_PORT: string;
-		HISTSIZE: string;
 		HOSTNAME: string;
+		HISTSIZE: string;
 		I3SOCK: string;
 		NODE: string;
 		WEZTERM_CONFIG_DIR: string;
@@ -206,8 +205,8 @@ declare module '$env/dynamic/private' {
 		XDG_SEAT: string;
 		PWD: string;
 		XDG_VIDEOS_DIR: string;
-		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
+		XDG_SESSION_DESKTOP: string;
 		XDG_SESSION_TYPE: string;
 		npm_config_init_module: string;
 		_: string;
@@ -251,7 +250,6 @@ declare module '$env/dynamic/private' {
 		npm_config_prefix: string;
 		LESSOPEN: string;
 		USER: string;
-		GIT_PAGER: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		HOMEBREW_CELLAR: string;
 		MANPAGER: string;
