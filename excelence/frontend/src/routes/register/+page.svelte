@@ -1,4 +1,8 @@
-<script>
+<script lang="ts">
+  import { goto } from '$app/navigation';
+  import { registerUser } from '$lib/services/api';
+  import { jwt_token } from '$lib/stores/auth';
+
   let email = '';
   let password = '';
   let error = '';
@@ -10,31 +14,23 @@
       error = 'Password must be at least 8 characters long.';
       return;
     }
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      error = 'Password must contain at least one letter and one number.';
+      return;
+    }
 
     loading = true;
     try {
-      const response = await fetch('/api/v1/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data.status === 'success' && data.data.access_token) {
-          localStorage.setItem('jwt_token', data.data.access_token);
-          window.location.href = '/dashboard';
-        } else {
-          error = 'Registration successful, but no token received.';
-        }
+      const data = await registerUser(email, password);
+      if (data.status === 'success' && data.data.token.access_token) {
+        jwt_token.set(data.data.token.access_token);
+        goto('/dashboard');
       } else {
-        const err = await response.json();
-        error = err.detail || 'Registration failed';
+        error = 'Registration successful, but no token received.';
       }
-    } catch (e) {
-      error = 'An unexpected error occurred.';
+    } catch (e: any) {
+      error = e.message || 'An unexpected error occurred.';
     } finally {
       loading = false;
     }

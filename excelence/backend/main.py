@@ -2,8 +2,11 @@ from fastapi import FastAPI
 from app.api.v1.endpoints import auth
 from app.db.init_db import init_db
 from app.db.session import SessionLocal
+import os
 
-init_db(SessionLocal())
+# Only initialize database if not in test mode
+if os.getenv("TESTING") != "true":
+    init_db(SessionLocal())
 
 app = FastAPI()
 

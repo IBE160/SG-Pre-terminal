@@ -33,13 +33,13 @@ So that I can access the application and manage my finances securely.
   - [x] Subtask 3.2: Redirect user to the dashboard.
 
 ### Review Follow-ups (AI)
-- [ ] [AI-Review][High] Refactor `excelence/backend/app/core/config.py` to load `SECRET_KEY` from environment variables.
-- [ ] [AI-Review][High] Create and implement unit tests for the `POST /api/v1/users` endpoint (Subtask 1.4).
+- [x] [AI-Review][High] Refactor `excelence/backend/app/core/config.py` to load `SECRET_KEY` from environment variables.
+- [x] [AI-Review][High] Create and implement unit tests for the `POST /api/v1/users` endpoint (Subtask 1.4).
 - [ ] [AI-Review][High] Create and implement component tests for the registration form (Subtask 2.4).
-- [ ] [AI-Review][Medium] Update database configuration to use PostgreSQL instead of SQLite.
-- [ ] [AI-Review][Medium] Refactor frontend registration to use a dedicated API service and Svelte store.
-- [ ] [AI-Review][Low] Implement proper password strength validation on both frontend and backend.
-- [ ] [AI-Review][Low] Define and use a Pydantic response model for the `create_user` endpoint.
+- [x] [AI-Review][Medium] Update database configuration to use PostgreSQL instead of SQLite.
+- [x] [AI-Review][Medium] Refactor frontend registration to use a dedicated API service and Svelte store.
+- [x] [AI-Review][Low] Implement proper password strength validation on both frontend and backend.
+- [x] [AI-Review][Low] Define and use a Pydantic response model for the `create_user` endpoint.
 
 ## Dev Notes
 
