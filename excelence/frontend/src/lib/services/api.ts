@@ -83,5 +83,9 @@ export const createTransaction = (transaction) => {
     return api.post('/api/v1/transactions/', transaction);
 };
 
+export const updateTransaction = (id, transaction) => {
+    return api.put(`/api/v1/transactions/${id}`, transaction);
+};
+
 
 export default api;

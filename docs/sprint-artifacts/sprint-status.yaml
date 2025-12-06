@@ -44,7 +44,7 @@ development_status:
   epic-2: contexted
   2-1-create-and-manage-categories: done
   2-2-record-income-and-expenses: done
-  2-3-view-and-update-transactions: ready-for-dev
+  2-3-view-and-update-transactions: in-progress
   2-4-delete-transactions: backlog
   epic-2-retrospective: optional
   epic-3: contexted

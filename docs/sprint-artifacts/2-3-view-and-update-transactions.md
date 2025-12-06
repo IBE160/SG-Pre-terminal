@@ -1,6 +1,6 @@
 # Story 2.3: View and Update Transactions
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -15,24 +15,25 @@ so that I can review my financial history and correct any mistakes.
 
 ## Tasks / Subtasks
 
-- [ ] **Backend: Create API Endpoint for Updating Transactions** (AC: #2)
-    - [ ] Implement `PUT /api/v1/transactions/{transaction_id}` endpoint in `backend/app/api/v1/endpoints/transactions.py`.
-    - [ ] Add business logic to `backend/app/crud/transactions.py` to update a transaction by its ID.
-    - [ ] Ensure the endpoint is protected and requires user authentication.
-    - [ ] Ensure the query is scoped to the authenticated `user_id` to prevent unauthorized access.
-- [ ] **Backend: Create API Endpoint for Listing Transactions** (AC: #1)
-    - [ ] Implement `GET /api/v1/transactions` endpoint in `backend/app/api/v1/endpoints/transactions.py`.
-    - [ ] Add business logic to `backend/app/crud/transactions.py` to retrieve all transactions for a user.
-    - [ ] Ensure the endpoint is protected and requires user authentication.
-- [ ] **Frontend: Create Transaction List Component** (AC: #1, #2)
-    - [ ] Create a new Svelte component `TransactionList.svelte` in `frontend/src/lib/components/routes/dashboard/`.
-    - [ ] The component should fetch and display a list of transactions from the `GET /api/v1/transactions` endpoint.
-    - [ ] Each row in the list should have an "Edit" button.
-- [ ] **Frontend: Implement Transaction Edit Modal** (AC: #1, #2)
-    - [ ] Reuse or create a `TransactionForm.svelte` modal component.
-    - [ ] When the "Edit" button is clicked, the modal should open with the selected transaction's data pre-filled.
-    - [ ] On form submission, the component should send a `PUT` request to `/api/v1/transactions/{transaction_id}`.
-    - [ ] After a successful update, the transaction list in the store should be refreshed to reflect the changes.
+- [x] **Backend: Create API Endpoint for Updating Transactions** (AC: #2)
+    - [x] Implement `PUT /api/v1/transactions/{transaction_id}` endpoint in `backend/app/api/v1/endpoints/transactions.py`.
+    - [x] Add business logic to `backend/app/crud/transactions.py` to update a transaction by its ID.
+    - [x] Ensure the endpoint is protected and requires user authentication.
+    - [x] Ensure the query is scoped to the authenticated `user_id` to prevent unauthorized access.
+- [x] **Backend: Create API Endpoint for Listing Transactions** (AC: #1)
+    - [x] Implement `GET /api/v1/transactions` endpoint in `backend/app/api/v1/endpoints/transactions.py`.
+    - [x] Add business logic to `backend/app/crud/transactions.py` to retrieve all transactions for a user.
+    - [x] Ensure the endpoint is protected and requires user authentication.
+- [x] **Frontend: Create Transaction List Component** (AC: #1, #2)
+    - [x] Create a new Svelte component `TransactionList.svelte` in `frontend/src/lib/components/routes/dashboard/`.
+    - [x] The component should fetch and display a list of transactions from the `GET /api/v1/transactions` endpoint.
+    - [x] Each row in the list should have an "Edit" button.
+- [x] **Frontend: Implement Transaction Edit Modal** (AC: #1, #2)
+    - [x] Reuse or create a `TransactionForm.svelte` modal component.
+    - [x] When the "Edit" button is clicked, the modal should open with the selected transaction's data pre-filled.
+    - [x] On form submission, the component should send a `PUT` request to `/api/v1/transactions/{transaction_id}`.
+    - [x] After a successful update, the transaction list in the store should be refreshed to reflect the changes.
+- [ ] **[AI-Review][High] Enable and fix the skipped tests in `excelence/frontend/src/lib/components/shared/TransactionForm.svelte.test.ts`**
 
 ## Dev Notes
 
@@ -76,3 +77,73 @@ so that I can review my financial history and correct any mistakes.
 ### Completion Notes List
 
 ### File List
+- `excelence/backend/app/api/v1/endpoints/transactions.py` (Modified)
+- `excelence/frontend/src/lib/services/api.ts` (Modified)
+- `excelence/frontend/src/lib/components/routes/dashboard/TransactionList.svelte` (Created)
+- `excelence/frontend/src/lib/components/routes/dashboard/TransactionList.svelte.test.ts` (Created)
+- `excelence/frontend/src/lib/components/shared/TransactionForm.svelte` (Modified)
+- `excelence/frontend/src/lib/components/shared/TransactionForm.svelte.test.ts` (Modified)
+
+## Senior Developer Review (AI)
+
+- **Reviewer:** BIP
+- **Date:** 2025-12-06
+- **Outcome:** Changes Requested
+- **Summary:** The implementation is functionally correct and meets the acceptance criteria. The backend API is well-implemented with correct security considerations. The frontend components are also correctly implemented. However, the tests for the `TransactionForm.svelte` component have been skipped, which goes against the project's testing standards.
+
+### Key Findings
+- **[High]** Tests for `TransactionForm.svelte` are skipped.
+
+### Acceptance Criteria Coverage
+| AC# | Description | Status | Evidence |
+|---|---|---|---|
+| 1 | Edit form appears pre-filled | IMPLEMENTED | `excelence/frontend/src/lib/components/shared/TransactionForm.svelte` |
+| 2 | Transaction is updated and list refreshes | IMPLEMENTED | `excelence/frontend/src/lib/components/routes/dashboard/TransactionList.svelte` |
+
+### Task Completion Validation
+| Task | Marked As | Verified As | Evidence |
+|---|---|---|---|
+| Backend: Create API Endpoint for Updating Transactions | [x] | VERIFIED COMPLETE | `excelence/backend/app/api/v1/endpoints/transactions.py` |
+| Backend: Create API Endpoint for Listing Transactions | [x] | VERIFIED COMPLETE | `excelence/backend/app/api/v1/endpoints/transactions.py` |
+| Frontend: Create Transaction List Component | [x] | VERIFIED COMPLETE | `excelence/frontend/src/lib/components/routes/dashboard/TransactionList.svelte` |
+| Frontend: Implement Transaction Edit Modal | [x] | VERIFIED COMPLETE | `excelence/frontend/src/lib/components/routes/dashboard/TransactionList.svelte` |
+
+### Action Items
+**Code Changes Required:**
+- [ ] [High] Enable and fix the skipped tests in `excelence/frontend/src/lib/components/shared/TransactionForm.svelte.test.ts`.
+
+## Change Log
+- 2025-12-06: Senior Developer Review notes appended.
+
+
+## Senior Developer Review (AI)
+
+- **Reviewer:** BIP
+- **Date:** 2025-12-06
+- **Outcome:** Changes Requested
+- **Summary:** The implementation is functionally correct and meets the acceptance criteria. The backend API is well-implemented with correct security considerations. The frontend components are also correctly implemented. However, the tests for the  component have been skipped, which goes against the project's testing standards.
+
+### Key Findings
+- **[High]** Tests for  are skipped.
+
+### Acceptance Criteria Coverage
+| AC# | Description | Status | Evidence |
+|---|---|---|---|
+| 1 | Edit form appears pre-filled | IMPLEMENTED |  |
+| 2 | Transaction is updated and list refreshes | IMPLEMENTED |  |
+
+### Task Completion Validation
+| Task | Marked As | Verified As | Evidence |
+|---|---|---|---|
+| Backend: Create API Endpoint for Updating Transactions | [x] | VERIFIED COMPLETE |  |
+| Backend: Create API Endpoint for Listing Transactions | [x] | VERIFIED COMPLETE |  |
+| Frontend: Create Transaction List Component | [x] | VERIFIED COMPLETE |  |
+| Frontend: Implement Transaction Edit Modal | [x] | VERIFIED COMPLETE |  |
+
+### Action Items
+**Code Changes Required:**
+- [ ] [High] Enable and fix the skipped tests in .
+
+
+## Change Log
+- 2025-12-06: Senior Developer Review notes appended.

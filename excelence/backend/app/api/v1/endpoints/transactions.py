@@ -25,7 +25,57 @@ class Transaction(BaseModel):
     user_id: uuid.UUID
     category_id: uuid.UUID
 
+class TransactionUpdate(BaseModel):
+    amount: Optional[float] = None
+    type: Optional[str] = None  # "income" or "expense"
+    date: Optional[date] = None
+    description: Optional[str] = None
+    category_id: Optional[uuid.UUID] = None
+
 # --- API Endpoints ---
+@router.get("/", response_model=List[Transaction])
+def list_transactions(user: dict = Depends(deps.get_current_user)):
+    """
+    Retrieve all transactions for the current user.
+    """
+    try:
+        user_id = user.user.id
+        response = supabase.table('transactions').select('*').match({
+            'user_id': user_id
+        }).order('date', desc=True).execute()
+
+        if not response.data:
+            return []
+
+        return [Transaction(**t) for t in response.data]
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.put("/{transaction_id}", response_model=Transaction)
+def update_transaction(transaction_id: uuid.UUID, transaction: TransactionUpdate, user: dict = Depends(deps.get_current_user)):
+    """
+    Update a transaction for the current user.
+    """
+    try:
+        user_id = user.user.id
+        update_data = transaction.dict(exclude_unset=True)
+
+        if not update_data:
+            raise HTTPException(status_code=400, detail="No update data provided.")
+
+        response = supabase.table('transactions').update(update_data).match({
+            'id': transaction_id,
+            'user_id': user_id
+        }).execute()
+
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Transaction not found or user does not have permission.")
+
+        updated_transaction = response.data[0]
+        return Transaction(**updated_transaction)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
 @router.post("/", response_model=Transaction)
 def create_transaction(transaction: TransactionCreate, user: dict = Depends(deps.get_current_user)):
     """

@@ -2,12 +2,30 @@
 	import { createEventDispatcher } from 'svelte';
 
 	export let categories: { id: number; name: string }[] = [];
+	export let transaction: any = null; // If passed, component is in edit mode
 
 	let amount: number | null = null;
 	let type: 'income' | 'expense' = 'expense';
 	let date = new Date().toISOString().split('T')[0];
 	let description = '';
 	let category_id: number | null = null;
+
+	$: {
+		if (transaction) {
+			amount = transaction.amount;
+			type = transaction.type;
+			date = new Date(transaction.date).toISOString().split('T')[0];
+			description = transaction.description;
+			category_id = transaction.category_id;
+		} else {
+			// Reset form for "add" mode
+			amount = null;
+			type = 'expense';
+			date = new Date().toISOString().split('T')[0];
+			description = '';
+			category_id = null;
+		}
+	}
 
 	const dispatch = createEventDispatcher();
 
@@ -33,7 +51,7 @@
 
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 	<div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
-		<h2 class="text-xl font-bold mb-4">Add Transaction</h2>
+		<h2 class="text-xl font-bold mb-4">{transaction ? 'Edit' : 'Add'} Transaction</h2>
 		<form on:submit|preventDefault={handleSave}>
 			<div class="mb-4">
 				<label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
