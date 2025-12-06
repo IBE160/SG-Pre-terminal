@@ -31,14 +31,17 @@ def mock_supabase_db(mocker):
 def test_create_transaction(client: TestClient, mock_supabase_auth, mock_supabase_db):
     mock_execute = MagicMock()
     today = date.today()
+    category_id = uuid.uuid4()
+    transaction_id = uuid.uuid4()
+    
     type(mock_execute).data = PropertyMock(return_value=[{
-        "id": 1,
+        "id": transaction_id,
         "amount": 50.0,
         "type": "expense",
         "date": str(today),
         "description": "Groceries",
         "user_id": USER_ID,
-        "category_id": 1
+        "category_id": category_id
     }])
     mock_supabase_db.return_value.insert.return_value.execute.return_value = mock_execute
 
@@ -49,7 +52,7 @@ def test_create_transaction(client: TestClient, mock_supabase_auth, mock_supabas
             "type": "expense",
             "date": str(today),
             "description": "Groceries",
-            "category_id": 1
+            "category_id": str(category_id)
         },
         headers={"Authorization": "Bearer fake-token"}
     )
@@ -60,4 +63,5 @@ def test_create_transaction(client: TestClient, mock_supabase_auth, mock_supabas
     assert data["type"] == "expense"
     assert data["description"] == "Groceries"
     assert data["user_id"] == str(USER_ID)
-    assert data["category_id"] == 1
+    assert data["category_id"] == str(category_id)
+    assert data["id"] == str(transaction_id)

@@ -14,16 +14,16 @@ class TransactionCreate(BaseModel):
     type: str  # "income" or "expense"
     date: date
     description: Optional[str] = None
-    category_id: int
+    category_id: uuid.UUID
 
 class Transaction(BaseModel):
-    id: int
+    id: uuid.UUID
     amount: float
     type: str
     date: date
     description: Optional[str] = None
     user_id: uuid.UUID
-    category_id: int
+    category_id: uuid.UUID
 
 # --- API Endpoints ---
 @router.post("/", response_model=Transaction)

@@ -5,6 +5,8 @@ Status: ready-for-dev
 ## Dev Agent Record
 
 - Context Reference: [2-2-record-income-and-expenses.context.xml](./2-2-record-income-and-expenses.context.xml)
+- Change Log:
+    - 2025-12-06: Addressed review blockers. Implemented frontend dashboard UI, corrected backend Pydantic models to use UUIDs, and improved frontend component tests.
 
 
 ## Story
@@ -63,3 +65,5 @@ So that I can keep an accurate record of my finances.
 -   [Source: docs/sprint-artifacts/tech-spec-epic-2.md#apis-and-interfaces]
 -   [Source: docs/sprint-artifacts/tech-spec-epic-2.md#data-models-and-contracts]
 -   [Source: docs/architecture.md#4-project-structure-and-boundaries]
+
+
