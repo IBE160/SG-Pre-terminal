@@ -42,16 +42,16 @@ const api = {
   },
   put: async (endpoint, data) => {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
-        method: 'PUT',
-        headers: getHeaders(),
-        body: JSON.stringify(data)
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify(data)
     });
     return handleResponse(response);
   },
   delete: async (endpoint) => {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
-        method: 'DELETE',
-        headers: getHeaders()
+      method: 'DELETE',
+      headers: getHeaders()
     });
     return handleResponse(response);
   }
@@ -59,33 +59,50 @@ const api = {
 
 // --- Category Specific Functions ---
 export const getCategories = () => {
-    return api.get('/api/v1/categories/');
+  return api.get('/api/v1/categories/');
 };
 
 export const createCategory = (name: string) => {
-    return api.post('/api/v1/categories/', { name });
+  return api.post('/api/v1/categories/', { name });
 };
 
 export const updateCategory = (id: number, name: string) => {
-    return api.put(`/api/v1/categories/${id}`, { name });
+  return api.put(`/api/v1/categories/${id}`, { name });
 };
 
 export const deleteCategory = (id: number) => {
-    return api.delete(`/api/v1/categories/${id}`);
+  return api.delete(`/api/v1/categories/${id}`);
 };
 
 // --- Transaction Specific Functions ---
 export const getTransactions = () => {
-    return api.get('/api/v1/transactions/');
+  return api.get('/api/v1/transactions/');
 };
 
 export const createTransaction = (transaction) => {
-    return api.post('/api/v1/transactions/', transaction);
+  return api.post('/api/v1/transactions/', transaction);
 };
 
 export const updateTransaction = (id, transaction) => {
-    return api.put(`/api/v1/transactions/${id}`, transaction);
+  return api.put(`/api/v1/transactions/${id}`, transaction);
 };
 
+export const deleteTransaction = (id) => {
+  return api.delete(`/api/v1/transactions/${id}`);
+};
+
+// --- Auth Specific Functions ---
+export const registerUser = (email: string, password: string) => {
+  return api.post('/api/v1/auth/signup', { email, password });
+};
+
+export const loginUser = (email: string, password: string) => {
+  const formData = new URLSearchParams();
+  formData.append('username', email);
+  formData.append('password', password);
+  return api.post('/api/v1/auth/login', formData, {
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  });
+};
 
 export default api;

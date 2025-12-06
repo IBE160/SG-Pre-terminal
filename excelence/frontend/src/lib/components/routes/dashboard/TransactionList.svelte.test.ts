@@ -1,14 +1,17 @@
-import { render, screen, waitFor } from '@testing-library/svelte';
+import { render, screen, waitFor, fireEvent } from '@testing-library/svelte';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import TransactionList from './TransactionList.svelte';
+import userEvent from '@testing-library/user-event';
 
 // Mock the API service
 vi.mock('$lib/services/api', () => ({
   getTransactions: vi.fn(),
   getCategories: vi.fn(() => Promise.resolve({ data: [] })),
+  updateTransaction: vi.fn(),
+  deleteTransaction: vi.fn(),
 }));
 
-import { getTransactions } from '$lib/services/api';
+import { getTransactions, deleteTransaction } from '$lib/services/api';
 
 const mockTransactions = [
   {
@@ -65,4 +68,70 @@ describe('TransactionList Component', () => {
     });
   });
 
+  it('opens delete confirmation modal when delete button is clicked', async () => {
+    const user = userEvent.setup();
+    getTransactions.mockResolvedValue({ data: mockTransactions });
+    render(TransactionList);
+
+    await waitFor(() => {
+      expect(screen.getAllByText('Delete')[0]).toBeInTheDocument();
+    });
+
+    const deleteBtns = screen.getAllByText('Delete');
+    await user.click(deleteBtns[0]);
+
+    expect(screen.getByText('Are you sure you want to delete this transaction? This action cannot be undone.')).toBeInTheDocument();
+    expect(screen.getByText('Confirm')).toBeInTheDocument();
+  });
+
+  it('calls deleteTransaction and refreshes list on confirmation', async () => {
+    const user = userEvent.setup();
+    getTransactions.mockResolvedValueOnce({ data: mockTransactions }); // Initial load
+    deleteTransaction.mockResolvedValue({});
+    getTransactions.mockResolvedValueOnce({ data: [mockTransactions[1]] }); // After delete
+
+    render(TransactionList);
+
+    await waitFor(() => {
+      expect(screen.getByText('Coffee')).toBeInTheDocument();
+    });
+
+    // Click delete on first item
+    const deleteBtns = screen.getAllByText('Delete');
+    await user.click(deleteBtns[0]);
+
+    // Click confirm
+    const confirmBtn = screen.getByText('Confirm');
+    await user.click(confirmBtn);
+
+    await waitFor(() => {
+      expect(deleteTransaction).toHaveBeenCalledWith('1');
+      // Should verify list is refreshed, but that depends on implementation details of loadData call.
+      // We mocked getTransactions a second time, so if it's called again, that's good.
+      expect(getTransactions).toHaveBeenCalledTimes(2); 
+    });
+  });
+
+  it('does not delete if cancel is clicked', async () => {
+    const user = userEvent.setup();
+    getTransactions.mockResolvedValue({ data: mockTransactions });
+    render(TransactionList);
+
+    await waitFor(() => {
+      expect(screen.getByText('Coffee')).toBeInTheDocument();
+    });
+
+    // Click delete
+    const deleteBtns = screen.getAllByText('Delete');
+    await user.click(deleteBtns[0]);
+
+    // Click cancel
+    const cancelBtn = screen.getByText('Cancel');
+    await user.click(cancelBtn);
+
+    await waitFor(() => {
+      expect(screen.queryByText('Confirm Action')).not.toBeInTheDocument();
+      expect(deleteTransaction).not.toHaveBeenCalled();
+    });
+  });
 });

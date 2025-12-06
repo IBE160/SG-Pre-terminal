@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
 from app.db.session import supabase
 from app.api import deps
+from app.crud import transactions as crud_transactions
 import uuid
 from datetime import date
 
@@ -98,4 +99,22 @@ def create_transaction(transaction: TransactionCreate, user: dict = Depends(deps
         created_transaction = response.data[0]
         return Transaction(**created_transaction)
     except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.delete("/{transaction_id}", response_model=dict)
+def delete_transaction(transaction_id: uuid.UUID, user: dict = Depends(deps.get_current_user)):
+    """
+    Delete a transaction for the current user.
+    """
+    try:
+        user_id = user.user.id
+        success = crud_transactions.delete_transaction(transaction_id, user_id)
+
+        if not success:
+            raise HTTPException(status_code=404, detail="Transaction not found or user does not have permission.")
+
+        return {"detail": "Transaction deleted successfully"}
+    except Exception as e:
+        if isinstance(e, HTTPException):
+            raise e
         raise HTTPException(status_code=400, detail=str(e))

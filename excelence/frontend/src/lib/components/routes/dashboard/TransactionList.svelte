@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { getTransactions, getCategories, updateTransaction } from '$lib/services/api';
+  import { getTransactions, getCategories, updateTransaction, deleteTransaction } from '$lib/services/api';
   import TransactionForm from '$lib/components/shared/TransactionForm.svelte';
+  import ConfirmationModal from '$lib/components/shared/ConfirmationModal.svelte';
 
   let transactions = [];
   let categories = [];
@@ -52,6 +53,32 @@
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString();
   }
+
+  // --- Delete Handling ---
+  let isDeleteModalOpen = false;
+  let transactionToDelete = null;
+
+  const openDeleteModal = (transaction) => {
+    transactionToDelete = transaction;
+    isDeleteModalOpen = true;
+  };
+
+  const handleDeleteClose = () => {
+    isDeleteModalOpen = false;
+    transactionToDelete = null;
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!transactionToDelete) return;
+    try {
+      await deleteTransaction(transactionToDelete.id);
+      handleDeleteClose();
+      await loadData();
+    } catch (err) {
+      console.error("Failed to delete transaction:", err);
+      error = err.message;
+    }
+  };
 </script>
 
 {#if isModalOpen}
@@ -60,6 +87,15 @@
     categories={categories}
     onSave={handleSave}
     onClose={handleModalClose}
+  />
+{/if}
+
+{#if isDeleteModalOpen}
+  <ConfirmationModal
+    isOpen={isDeleteModalOpen}
+    message="Are you sure you want to delete this transaction? This action cannot be undone."
+    onConfirm={handleConfirmDelete}
+    onCancel={handleDeleteClose}
   />
 {/if}
 
@@ -90,7 +126,8 @@
               {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}
             </td>
             <td class="p-2 text-right">
-              <button class="text-primary hover:underline" on:click={() => openEditModal(transaction)}>Edit</button>
+              <button class="text-primary hover:underline mr-2" on:click={() => openEditModal(transaction)}>Edit</button>
+              <button class="text-semantic-error hover:underline" on:click={() => openDeleteModal(transaction)}>Delete</button>
             </td>
           </tr>
         {/each}
