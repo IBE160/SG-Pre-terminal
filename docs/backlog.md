@@ -1,5 +1,2 @@
-# Backlog
-
-| Date       | Story      | Epic | Type      | Severity | Owner | Status | Notes                                                                            |
-|------------|------------|------|-----------|----------|-------|--------|----------------------------------------------------------------------------------|
-| 2025-12-01 | 1.1        | 1    | TechDebt  | Low      | TBD   | Done   | Create a `requirements.txt` file for the backend to ensure a reproducible environment. |
+Date,Story,Epic,Type,Severity,Owner,Status,Notes
+2025-12-06,2.1,2,Bug,High,TBD,Open,"Create and implement component tests for the category management page [file: excelence/frontend/src/routes/settings/categories/+page.test.ts]"
