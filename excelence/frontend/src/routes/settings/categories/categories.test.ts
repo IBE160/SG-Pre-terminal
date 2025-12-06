@@ -109,7 +109,7 @@ describe('CategoriesPage', () => {
         vi.spyOn(api, 'getCategories').mockResolvedValue(mockCategories);
         const deleteCategoryMock = vi.spyOn(api, 'deleteCategory').mockResolvedValue({});
 
-        const { getAllByText, getByRole, findByText } = render(CategoriesPage);
+        const { getAllByText, getAllByRole, findByText } = render(CategoriesPage);
 
         await findByText('Groceries');
         
@@ -119,7 +119,8 @@ describe('CategoriesPage', () => {
         const confirmModalTitle = await findByText('Confirm Deletion');
         expect(confirmModalTitle).toBeInTheDocument();
 
-        const confirmDeleteButton = getByRole('button', { name: 'Delete' });
+        const confirmDeleteButtons = getAllByRole('button', { name: 'Delete' });
+        const confirmDeleteButton = confirmDeleteButtons[confirmDeleteButtons.length - 1];
         await fireEvent.click(confirmDeleteButton);
 
         expect(deleteCategoryMock).toHaveBeenCalledWith(1);

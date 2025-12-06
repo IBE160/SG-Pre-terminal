@@ -74,5 +74,14 @@ export const deleteCategory = (id: number) => {
     return api.delete(`/api/v1/categories/${id}`);
 };
 
+// --- Transaction Specific Functions ---
+export const getTransactions = () => {
+    return api.get('/api/v1/transactions/');
+};
+
+export const createTransaction = (transaction) => {
+    return api.post('/api/v1/transactions/', transaction);
+};
+
 
 export default api;

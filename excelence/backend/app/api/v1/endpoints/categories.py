@@ -41,6 +41,8 @@ def create_category(category: CategoryCreate, user: dict = Depends(deps.get_curr
             name=created_category['name'],
             user_id=created_category['user_id']
         )
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -73,6 +75,8 @@ def update_category(category_id: int, category: CategoryUpdate, user: dict = Dep
 
         updated_category = response.data[0]
         return Category(**updated_category)
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

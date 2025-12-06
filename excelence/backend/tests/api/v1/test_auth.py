@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 import pytest
-from supabase_auth.errors import AuthApiError
+from gotrue.errors import AuthApiError
 
 def test_login_success(client: TestClient, mocker):
     mocker.patch(
