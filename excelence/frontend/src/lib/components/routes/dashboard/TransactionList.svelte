@@ -36,11 +36,11 @@
     selectedTransaction = null;
   }
 
-  const handleSave = async (event) => {
+  const handleSave = async (data) => {
     if (!selectedTransaction) return; // Should only be handling updates here
 
     try {
-        await updateTransaction(selectedTransaction.id, event.detail);
+        await updateTransaction(selectedTransaction.id, data);
         handleModalClose();
         await loadData(); // Re-fetch data to show updates
     } catch (err) {
@@ -58,8 +58,8 @@
   <TransactionForm
     transaction={selectedTransaction}
     categories={categories}
-    on:save={handleSave}
-    on:close={handleModalClose}
+    onSave={handleSave}
+    onClose={handleModalClose}
   />
 {/if}
 

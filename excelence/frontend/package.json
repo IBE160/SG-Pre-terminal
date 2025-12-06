@@ -24,6 +24,7 @@
 		"@tailwindcss/vite": "^4.1.17",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/svelte": "^5.2.9",
+		"@testing-library/user-event": "^14.6.1",
 		"@types/node": "^22",
 		"@vitest/ui": "^4.0.15",
 		"eslint": "^9.39.1",

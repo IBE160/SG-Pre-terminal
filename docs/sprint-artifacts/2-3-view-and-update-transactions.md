@@ -33,7 +33,7 @@ so that I can review my financial history and correct any mistakes.
     - [x] When the "Edit" button is clicked, the modal should open with the selected transaction's data pre-filled.
     - [x] On form submission, the component should send a `PUT` request to `/api/v1/transactions/{transaction_id}`.
     - [x] After a successful update, the transaction list in the store should be refreshed to reflect the changes.
-- [ ] **[AI-Review][High] Enable and fix the skipped tests in `excelence/frontend/src/lib/components/shared/TransactionForm.svelte.test.ts`**
+- [x] **[AI-Review][High] Enable and fix the skipped tests in `excelence/frontend/src/lib/components/shared/TransactionForm.svelte.test.ts`**
 
 ## Dev Notes
 

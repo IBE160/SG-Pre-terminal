@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent, screen } from '@testing-library/svelte';
+import userEvent from '@testing-library/user-event';
 import TransactionForm from './TransactionForm.svelte';
 
 describe('TransactionForm', () => {
@@ -17,45 +18,59 @@ describe('TransactionForm', () => {
         category_id: mockCategories[0].id
     };
 
-    // TODO: Re-enable these tests when testing libraries are updated for Svelte 5.
-    // The current test runner setup has an incompatibility that prevents
-    // event handlers from being tested correctly, leading to contradictory errors.
-	it.skip('dispatches a save event with form data on submit', async () => {
-        const saveHandler = vi.fn();
-        render(TransactionForm, { 
-            props: { categories: mockCategories },
-            'on:save': saveHandler
-        });
+	it('calls the onSave handler with form data on submit', async () => {
+		const user = userEvent.setup();
+		const onSave = vi.fn();
+		render(TransactionForm, {
+			props: {
+				categories: mockCategories,
+				onSave,
+				onClose: vi.fn()
+			}
+		});
 
         // Fill out the form
-        await fireEvent.input(screen.getByLabelText('Amount'), { target: { value: '123.45' } });
-        await fireEvent.change(screen.getByLabelText('Type'), { target: { value: 'expense' } });
+        await user.type(screen.getByLabelText('Amount'), '123.45');
+        await user.selectOptions(screen.getByLabelText('Type'), 'expense');
         await fireEvent.input(screen.getByLabelText('Date'), { target: { value: '2025-12-06' } });
-        await fireEvent.change(screen.getByLabelText('Category'), { target: { value: mockCategories[0].id } });
-        await fireEvent.input(screen.getByLabelText('Description'), { target: { value: 'Test purchase' } });
+        await user.selectOptions(screen.getByLabelText('Category'), mockCategories[0].id);
+        await user.type(screen.getByLabelText('Description'), 'Test purchase');
 
         // Submit the form
-        await fireEvent.submit(screen.getByRole('form'));
+        await fireEvent.submit(screen.getByTestId('transaction-form'));
 
-        expect(saveHandler).toHaveBeenCalled();
-        const detail = saveHandler.mock.calls[0][0].detail;
-        expect(detail.amount).toBe(123.45);
+        expect(onSave).toHaveBeenCalledWith({
+            amount: 123.45,
+            type: 'expense',
+            date: '2025-12-06',
+            description: 'Test purchase',
+            category_id: mockCategories[0].id
+        });
     });
 
-	it.skip('dispatches a close event when cancel is clicked', async () => {
-        const closeHandler = vi.fn();
-        render(TransactionForm, { 
-            props: { categories: mockCategories },
-            'on:close': closeHandler
-         });
+	it('calls the onClose handler when cancel is clicked', async () => {
+		const user = userEvent.setup();
+		const onClose = vi.fn();
+		render(TransactionForm, {
+			props: {
+				categories: mockCategories,
+				onSave: vi.fn(),
+				onClose
+			}
+		});
 
-        await fireEvent.click(screen.getByText('Cancel'));
-        expect(closeHandler).toHaveBeenCalled();
+        await user.click(screen.getByText('Cancel'));
+        expect(onClose).toHaveBeenCalled();
     });
 
     it('pre-fills the form when a transaction prop is provided', () => {
         render(TransactionForm, {
-            props: { categories: mockCategories, transaction: mockTransaction }
+            props: {
+				categories: mockCategories,
+				transaction: mockTransaction,
+				onSave: vi.fn(),
+				onClose: vi.fn()
+			}
         });
 
         expect(screen.getByLabelText('Amount').value).toBe('50');

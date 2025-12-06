@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
 	export let categories: { id: number; name: string }[] = [];
 	export let transaction: any = null; // If passed, component is in edit mode
+	export let onSave: (data: any) => void;
+	export let onClose: () => void;
 
 	let amount: number | null = null;
 	let type: 'income' | 'expense' = 'expense';
@@ -27,32 +27,27 @@
 		}
 	}
 
-	const dispatch = createEventDispatcher();
-
-	function closeModal() {
-		dispatch('close');
-	}
-
 	function handleSave() {
 		if (!amount || !category_id) {
 			// Basic validation
 			alert('Amount and category are required.');
 			return;
 		}
-		dispatch('save', {
-			amount,
+		const data = {
+			amount: parseFloat(amount),
 			type,
 			date,
 			description,
 			category_id
-		});
+		};
+		onSave(data);
 	}
 </script>
 
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 	<div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
 		<h2 class="text-xl font-bold mb-4">{transaction ? 'Edit' : 'Add'} Transaction</h2>
-		<form on:submit|preventDefault={handleSave}>
+		<form on:submit|preventDefault={handleSave} data-testid="transaction-form">
 			<div class="mb-4">
 				<label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
 				<input
@@ -99,7 +94,7 @@
 				/>
 			</div>
 			<div class="flex justify-end gap-4">
-				<button type="button" on:click={closeModal} class="text-gray-600">Cancel</button>
+				<button type="button" on:click={onClose} class="text-gray-600">Cancel</button>
 				<button
 					type="submit"
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
