@@ -1,6 +1,6 @@
 # Story 2.1: Create and Manage Categories
 
-Status: drafted
+Status: review
 
 ## Story
 
@@ -21,20 +21,20 @@ So that I can organize my financial entries in a way that is meaningful to me.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Implement Backend API for Categories (AC: 3, 5, 7, 8)
-    - [ ] Subtask 1.1: Create `categories` table model in `excelence/backend/app/models/category.py`.
-    - [ ] Subtask 1.2: Create Pydantic schemas for category data in `excelence/backend/app/schemas/category.py`.
-    - [ ] Subtask 1.3: Implement CRUD functions for categories in `excelence/backend/app/crud/crud_category.py`.
-    - [ ] Subtask 1.4: Create API endpoints (`GET`, `POST`, `PUT`, `DELETE`) in `excelence/backend/app/api/v1/endpoints/categories.py`.
-    - [ ] Subtask 1.5: Implement logic to block deletion of categories in use.
-    - [ ] Subtask 1.6: Add unit tests for all category endpoints, including security checks.
-- [ ] Task 2: Implement Frontend UI for Category Management (AC: 1, 2, 4, 6)
-    - [ ] Subtask 2.1: Create a new page for category management at `excelence/frontend/src/routes/settings/categories/+page.svelte`.
-    - [ ] Subtask 2.2: Implement a component to display the list of categories.
-    - [ ] Subtask 2.3: Implement a form to create and edit categories.
-    - [ ] Subtask 2.4: Implement a confirmation modal for deleting categories.
-    - [ ] Subtask 2.5: Integrate the UI with the backend API using the existing API service.
-    - [ ] Subtask 2.6: Add component tests for the category management page.
+- [x] Task 1: Implement Backend API for Categories (AC: 3, 5, 7, 8)
+    - [x] Subtask 1.1: Create `categories` table model in `excelence/backend/app/models/category.py`. (Note: Implemented via Supabase client, not SQLAlchemy model file).
+    - [x] Subtask 1.2: Create Pydantic schemas for category data in `excelence/backend/app/schemas/category.py`. (Note: Implemented within endpoint file).
+    - [x] Subtask 1.3: Implement CRUD functions for categories in `excelence/backend/app/crud/crud_category.py`. (Note: Implemented within endpoint file).
+    - [x] Subtask 1.4: Create API endpoints (`GET`, `POST`, `PUT`, `DELETE`) in `excelence/backend/app/api/v1/endpoints/categories.py`.
+    - [x] Subtask 1.5: Implement logic to block deletion of categories in use.
+    - [x] Subtask 1.6: Add unit tests for all category endpoints, including security checks.
+- [x] Task 2: Implement Frontend UI for Category Management (AC: 1, 2, 4, 6)
+    - [x] Subtask 2.1: Create a new page for category management at `excelence/frontend/src/routes/settings/categories/+page.svelte`.
+    - [x] Subtask 2.2: Implement a component to display the list of categories.
+    - [x] Subtask 2.3: Implement a form to create and edit categories.
+    - [x] Subtask 2.4: Implement a confirmation modal for deleting categories.
+    - [x] Subtask 2.5: Integrate the UI with the backend API using the existing API service.
+    - [x] Subtask 2.6: Add component tests for the category management page.
 
 ## Dev Notes
 
@@ -75,5 +75,15 @@ So that I can organize my financial entries in a way that is meaningful to me.
 ### Debug Log References
 
 ### Completion Notes List
+- Completed implementation of backend API and frontend UI for category management.
+- Discovered and corrected a significant deviation in the backend's authentication pattern. The existing code uses standard Bearer tokens in headers, contrary to an example file. Refactored the new backend API and tests to use a robust, header-based auth dependency (`app/api/deps.py`), improving security and consistency.
+- All tasks and subtasks are complete, and tests are passing.
 
 ### File List
+- **ADDED:** `excelence/backend/app/api/deps.py`
+- **ADDED:** `excelence/backend/app/api/v1/endpoints/categories.py`
+- **ADDED:** `excelence/backend/tests/api/v1/test_categories.py`
+- **ADDED:** `excelence/frontend/src/routes/settings/categories/+page.svelte`
+- **ADDED:** `excelence/frontend/src/routes/settings/categories/+page.test.ts`
+- **MODIFIED:** `excelence/backend/main.py`
+- **MODIFIED:** `excelence/frontend/src/lib/services/api.ts`

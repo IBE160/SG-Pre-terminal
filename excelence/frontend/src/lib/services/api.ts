@@ -4,14 +4,19 @@ const getHeaders = () => {
   const headers = {
     'Content-Type': 'application/json',
   };
+  // @ts-ignore
   const token = localStorage.getItem('jwt_token');
   if (token) {
+    // @ts-ignore
     headers['Authorization'] = `Bearer ${token}`;
   }
   return headers;
 };
 
 const handleResponse = async (response) => {
+  if (response.status === 204) {
+    return {}; // No content to parse
+  }
   if (!response.ok) {
     const error = await response.json();
     throw new Error(error.detail || 'API request failed');
@@ -35,6 +40,39 @@ const api = {
     });
     return handleResponse(response);
   },
+  put: async (endpoint, data) => {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify(data)
+    });
+    return handleResponse(response);
+  },
+  delete: async (endpoint) => {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+        method: 'DELETE',
+        headers: getHeaders()
+    });
+    return handleResponse(response);
+  }
 };
+
+// --- Category Specific Functions ---
+export const getCategories = () => {
+    return api.get('/api/v1/categories/');
+};
+
+export const createCategory = (name: string) => {
+    return api.post('/api/v1/categories/', { name });
+};
+
+export const updateCategory = (id: number, name: string) => {
+    return api.put(`/api/v1/categories/${id}`, { name });
+};
+
+export const deleteCategory = (id: number) => {
+    return api.delete(`/api/v1/categories/${id}`);
+};
+
 
 export default api;
