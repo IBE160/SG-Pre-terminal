@@ -3,10 +3,13 @@
 	import favicon from "$lib/assets/favicon.svg";
 	import { authStore } from "$lib/stores/auth";
 	import { themeStore } from "$lib/stores/theme";
+	import { animationTrigger } from "$lib/stores/partyMode";
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import { browser } from "$app/environment";
 	import Sidebar from "$lib/components/layout/Sidebar.svelte";
+	import MoneyRain from "$lib/components/animations/MoneyRain.svelte";
+	import Confetti from "$lib/components/animations/Confetti.svelte";
 
 	let { children } = $props();
 
@@ -30,6 +33,11 @@
 			themeStore.init();
 		}
 	});
+
+	// Debug animation trigger
+	$effect(() => {
+		console.log('Animation trigger changed:', $animationTrigger);
+	});
 </script>
 
 <svelte:head>
@@ -51,6 +59,14 @@
 		</div>
 		{@render children()}
 	</main>
+	
+	<!-- Party Mode Animations -->
+	{#if $animationTrigger === 'money'}
+		<MoneyRain />
+	{/if}
+	{#if $animationTrigger === 'confetti'}
+		<Confetti />
+	{/if}
 {:else}
 	<main class="min-h-screen bg-slate-50 dark:bg-slate-900">
 		{@render children()}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { partyModeStore } from '$lib/stores/partyMode';
 
 	// Derived state for the current path
 	let currentPath = $derived($page.url.pathname);
@@ -15,6 +16,12 @@
 
 	function toggle() {
 		isOpen = !isOpen;
+	}
+
+	function togglePartyMode() {
+		console.log('Toggling party mode, current state:', $partyModeStore);
+		partyModeStore.toggle();
+		console.log('Party mode after toggle:', $partyModeStore);
 	}
 
 	// Close sidebar when navigating
@@ -82,6 +89,29 @@
 				</li>
 			{/each}
 		</ul>
+
+		<!-- Party Mode Toggle -->
+		<div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+			<button
+				onclick={togglePartyMode}
+				class="w-full flex items-center justify-between rounded-lg p-3 transition-colors duration-200"
+				class:bg-gradient-to-r={$partyModeStore}
+				class:from-purple-500={$partyModeStore}
+				class:to-pink-500={$partyModeStore}
+				class:text-white={$partyModeStore}
+				class:bg-slate-100={!$partyModeStore}
+				class:text-slate-600={!$partyModeStore}
+				class:hover:bg-slate-200={!$partyModeStore}
+				class:dark:bg-slate-700={!$partyModeStore}
+				class:dark:text-slate-200={!$partyModeStore}
+				class:dark:hover:bg-slate-600={!$partyModeStore}
+			>
+				<span class="font-medium">🎉 Party Mode</span>
+				<span class="text-sm">
+					{$partyModeStore ? 'ON' : 'OFF'}
+				</span>
+			</button>
+		</div>
 	</div>
 </aside>
 

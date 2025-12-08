@@ -13,6 +13,7 @@
 		loadTransactions,
 	} from "$lib/stores/data";
 	import { createTransaction, exportTransactions } from "$lib/services/api";
+	import { partyModeStore, animationTrigger } from "$lib/stores/partyMode";
 	import type { Transaction } from "$lib/types";
 
 	let showTransactionModal = false;
@@ -78,6 +79,23 @@
 			await createTransaction(data);
 			await loadTransactions(); // Refreshes both transactions and summary
 			showTransactionModal = false;
+			
+			// Trigger party mode animations if enabled
+			console.log('Party mode enabled:', $partyModeStore);
+			console.log('Transaction type:', data.type);
+			if ($partyModeStore) {
+				if (data.type === 'expense') {
+					console.log('Setting money trigger');
+					animationTrigger.set('money');
+				} else if (data.type === 'income') {
+					console.log('Setting confetti trigger');
+					animationTrigger.set('confetti');
+				}
+				// Reset trigger after animation completes (3.5 seconds)
+				setTimeout(() => {
+					animationTrigger.set(null);
+				}, 3500);
+			}
 		} catch (error) {
 			alert(`Error creating transaction: ${(error as Error).message}`);
 		}

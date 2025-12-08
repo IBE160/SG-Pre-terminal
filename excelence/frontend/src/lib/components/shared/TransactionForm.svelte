@@ -105,6 +105,7 @@
 			description,
 			category_id,
 		};
+		
 		onSave(data);
 	}
 </script>
