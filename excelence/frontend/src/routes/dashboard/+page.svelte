@@ -79,17 +79,17 @@
 			await createTransaction(data);
 			await loadTransactions(); // Refreshes both transactions and summary
 			showTransactionModal = false;
-			
+
 			// Trigger party mode animations if enabled
-			console.log('Party mode enabled:', $partyModeStore);
-			console.log('Transaction type:', data.type);
+			console.log("Party mode enabled:", $partyModeStore);
+			console.log("Transaction type:", data.type);
 			if ($partyModeStore) {
-				if (data.type === 'expense') {
-					console.log('Setting money trigger');
-					animationTrigger.set('money');
-				} else if (data.type === 'income') {
-					console.log('Setting confetti trigger');
-					animationTrigger.set('confetti');
+				if (data.type === "expense") {
+					console.log("Setting money trigger");
+					animationTrigger.set("money");
+				} else if (data.type === "income") {
+					console.log("Setting confetti trigger");
+					animationTrigger.set("confetti");
 				}
 				// Reset trigger after animation completes (3.5 seconds)
 				setTimeout(() => {

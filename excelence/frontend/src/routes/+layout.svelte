@@ -36,7 +36,7 @@
 
 	// Debug animation trigger
 	$effect(() => {
-		console.log('Animation trigger changed:', $animationTrigger);
+		console.log("Animation trigger changed:", $animationTrigger);
 	});
 </script>
 
@@ -59,12 +59,12 @@
 		</div>
 		{@render children()}
 	</main>
-	
+
 	<!-- Party Mode Animations -->
-	{#if $animationTrigger === 'money'}
+	{#if $animationTrigger === "money"}
 		<MoneyRain />
 	{/if}
-	{#if $animationTrigger === 'confetti'}
+	{#if $animationTrigger === "confetti"}
 		<Confetti />
 	{/if}
 {:else}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { partyModeStore } from '$lib/stores/partyMode';
+	import { page } from "$app/stores";
+	import { partyModeStore } from "$lib/stores/partyMode";
 
 	// Derived state for the current path
 	let currentPath = $derived($page.url.pathname);
@@ -9,9 +9,9 @@
 	let isOpen = $state(false);
 
 	const links = [
-		{ href: '/dashboard', label: 'Dashboard' },
-		{ href: '/spreadsheet', label: 'Spreadsheet' },
-		{ href: '/settings', label: 'Settings' }
+		{ href: "/dashboard", label: "Dashboard" },
+		{ href: "/spreadsheet", label: "Spreadsheet" },
+		{ href: "/settings", label: "Settings" },
 	];
 
 	function toggle() {
@@ -19,9 +19,9 @@
 	}
 
 	function togglePartyMode() {
-		console.log('Toggling party mode, current state:', $partyModeStore);
+		console.log("Toggling party mode, current state:", $partyModeStore);
 		partyModeStore.toggle();
-		console.log('Party mode after toggle:', $partyModeStore);
+		console.log("Party mode after toggle:", $partyModeStore);
 	}
 
 	// Close sidebar when navigating
@@ -64,14 +64,17 @@
 >
 	<div class="h-full overflow-y-auto px-3 py-4">
 		<div class="mb-6 px-4">
-			<span class="self-center text-xl font-black whitespace-nowrap text-slate-800 dark:text-white">
+			<span
+				class="self-center text-xl font-black whitespace-nowrap text-slate-800 dark:text-white"
+			>
 				Excelence
 			</span>
 		</div>
 		<ul class="space-y-2 font-medium">
 			{#each links as link}
 				{@const isActive =
-					currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))}
+					currentPath === link.href ||
+					(link.href !== "/" && currentPath.startsWith(link.href))}
 				<li>
 					<a
 						href={link.href}
@@ -108,7 +111,7 @@
 			>
 				<span class="font-medium">🎉 Party Mode</span>
 				<span class="text-sm">
-					{$partyModeStore ? 'ON' : 'OFF'}
+					{$partyModeStore ? "ON" : "OFF"}
 				</span>
 			</button>
 		</div>
